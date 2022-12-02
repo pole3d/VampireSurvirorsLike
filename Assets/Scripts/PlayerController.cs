@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Unit
 {
     public GameObject PrefabBullet;
     public float Speed = 5;
@@ -35,10 +35,12 @@ public class PlayerController : MonoBehaviour
             return;
 
         _timerCoolDown -= CoolDown;
-        GameObject go = GameObject.Instantiate(PrefabBullet, transform.position, Quaternion.identity);
 
         EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
-
+        if (enemy == null)
+            return;
+        
+        GameObject go = GameObject.Instantiate(PrefabBullet, transform.position, Quaternion.identity);
         Vector3 direction = enemy.transform.position - transform.position;
         if (direction.sqrMagnitude > 0)
         {

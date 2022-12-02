@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5972753027238745607}
   - component: {fileID: 8580888707000828428}
   - component: {fileID: 6828276246516835449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,4 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1482f50dd94184b9a94dc0fb609185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PrefabBullet: {fileID: 0}
   Speed: 5
+  CoolDown: 2

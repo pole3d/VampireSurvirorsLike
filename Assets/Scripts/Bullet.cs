@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float Speed = 10;
+    public int Team;
+    public float Damage = 5;
 
     private Vector3 _direction;
 
@@ -22,6 +25,23 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         transform.position += _direction * Speed * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        Unit other = col.GetComponent<Unit>();
+        if (other == null)
+        {
+            GameObject.Destroy(gameObject);
+        }
+        else
+        {
+            GameObject.Destroy(gameObject);
+
+            other.Hit(Damage);
+        }
     }
 }

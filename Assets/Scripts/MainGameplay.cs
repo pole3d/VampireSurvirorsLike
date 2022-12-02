@@ -18,10 +18,7 @@ public class MainGameplay : MonoBehaviour
     void Start()
     {
 
-        foreach (var enemy in Enemies)
-        {
-            enemy.Initialize(Player);
-        }
+ 
 
     }
 
