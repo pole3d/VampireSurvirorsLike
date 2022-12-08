@@ -189,6 +189,7 @@ MonoBehaviour:
     EnemyCount: 3
     Enemy: {fileID: 11400000, guid: de7771034e75ff04197edc11a666a0a1, type: 2}
     MoveType: 0
+    SpawnDistance: 15
 --- !u!1 &401613619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3633932044844237191, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
@@ -295,11 +296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972753027238745607, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972753027238745607, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5972753027238745607, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -333,10 +334,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
-      propertyPath: PrefabBullet
-      value: 
-      objectReference: {fileID: 3633932044844237191, guid: 4660ac6ef21504147b176616fca71ee3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
 --- !u!1 &4098126190579216838

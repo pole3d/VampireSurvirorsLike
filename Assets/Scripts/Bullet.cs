@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
-        else
+        else if (other.Team != Team)
         {
             GameObject.Destroy(gameObject);
 

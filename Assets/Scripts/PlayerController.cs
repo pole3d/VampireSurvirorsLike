@@ -7,6 +7,7 @@ public class PlayerController : Unit
 {
     public GameObject PrefabBullet;
     public float Speed = 5;
+    public LifeBar LifeBar;
 
     public float CoolDown = 2;
 
@@ -16,7 +17,8 @@ public class PlayerController : Unit
     // Start is called before the first frame update
     void Start()
     {
-        
+        LifeMax = 50;
+        Life = LifeMax;
     }
 
     // Update is called once per frame
@@ -63,5 +65,12 @@ public class PlayerController : Unit
             direction.Normalize();
             transform.position += direction * Speed * Time.deltaTime;
         }
+    }
+
+    public override void Hit(float damage)
+    {
+        Life -= damage;
+
+        LifeBar.SetValue(Life, LifeMax);
     }
 }

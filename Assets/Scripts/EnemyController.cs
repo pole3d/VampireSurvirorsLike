@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : Unit
 {
     public float Speed = 4;
+    public float Damage = 15;
 
     private GameObject _player;
     private Rigidbody2D _rb;
@@ -59,4 +60,16 @@ public class EnemyController : Unit
             GameObject.Destroy(gameObject);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        var player = collision.GetComponent<PlayerController>();
+
+        if (player != null)
+        {
+            player.Hit(Time.deltaTime * Damage);
+        }
+    }
+
+   
 }
