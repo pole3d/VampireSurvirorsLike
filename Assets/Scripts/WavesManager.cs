@@ -7,7 +7,6 @@ public class WavesManager : MonoBehaviour
     public List<WaveData> Waves;
 
     private List<WaveInstance> _wavesToPlay = new List<WaveInstance>();
-
     private float _timer;
 
     void Awake()

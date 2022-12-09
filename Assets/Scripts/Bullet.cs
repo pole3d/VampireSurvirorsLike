@@ -32,16 +32,18 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Unit other = col.GetComponent<Unit>();
-        if (other == null)
+        var other = HitWithParent.GetGameObject(col);
+        Unit otherUnit = other.GetComponent<Unit>();
+        
+        if (otherUnit == null)
         {
             GameObject.Destroy(gameObject);
         }
-        else if (other.Team != Team)
+        else if (otherUnit.Team != Team)
         {
             GameObject.Destroy(gameObject);
 
-            other.Hit(Damage);
+            otherUnit.Hit(Damage);
         }
     }
 }

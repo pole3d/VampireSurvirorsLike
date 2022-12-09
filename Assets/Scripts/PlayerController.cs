@@ -17,7 +17,13 @@ public class PlayerController : Unit
     public Action OnDeath;
 
     bool _isDead;
+    Rigidbody2D _rb;
+    Vector2 _inputs; 
 
+    void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +37,23 @@ public class PlayerController : Unit
     {
         if (_isDead)
             return;
-        
-        Move();
+
+        ReadInputs();
         Shoot();
+    }
+
+    void ReadInputs()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        _inputs = new Vector2(horizontal, vertical);
+    }
+
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     private void Shoot()
@@ -61,15 +81,15 @@ public class PlayerController : Unit
 
     private void Move()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 direction = new Vector2(horizontal, vertical);
-
-        if (direction.sqrMagnitude > 0)
+      
+        if (_inputs.sqrMagnitude > 0)
         {
-            direction.Normalize();
-            transform.position += direction * Speed * Time.deltaTime;
+            _inputs.Normalize();
+            _rb.velocity = _inputs * Speed;
+        }
+        else
+        {
+            _rb.velocity = new Vector2();
         }
     }
 

@@ -63,7 +63,12 @@ public class EnemyController : Unit
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        var player = collision.GetComponent<PlayerController>();
+        var other = collision.gameObject;
+        var hitWithParent = collision.GetComponent<HitWithParent>();
+        if (hitWithParent != null)
+            other = hitWithParent.transform.parent.gameObject;
+        
+        var player = other.GetComponent<PlayerController>();
 
         if (player != null)
         {
