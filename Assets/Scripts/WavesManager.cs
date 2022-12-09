@@ -22,6 +22,9 @@ public class WavesManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
+            return;
+        
         _timer += Time.deltaTime;
 
         for (int i = _wavesToPlay.Count - 1; i >= 0; i--)
@@ -35,7 +38,6 @@ public class WavesManager : MonoBehaviour
 
     public void Spawn(WaveData data)
     {
-        Debug.Log("Spawn Wave");
         for (int i = 0; i < data.EnemyCount; i++)
         {
             GameObject go = GameObject.Instantiate(data.Enemy.Prefab);
@@ -46,7 +48,7 @@ public class WavesManager : MonoBehaviour
             go.transform.position = spawnPosition * data.SpawnDistance;
             
             var enemy = go.GetComponent<EnemyController>();
-            enemy.Initialize(MainGameplay.Instance.Player , data.Enemy);
+            enemy.Initialize(MainGameplay.Instance.Player.gameObject , data.Enemy);
             MainGameplay.Instance.Enemies.Add(enemy);
         }
     }

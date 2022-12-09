@@ -1,14 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainGameplay : MonoBehaviour
 {
     public static MainGameplay Instance;
 
-    public GameObject Player;
-    public List<EnemyController> Enemies;
+    public enum GameState
+    {
+        Gameplay,
+        GameOver
+    }
 
+    public PlayerController Player;
+    public List<EnemyController> Enemies;
+    public GameObject PanelGameOver;
+
+    public GameState State;
+    
     private void Awake()
     {
         Instance = this;
@@ -17,9 +28,14 @@ public class MainGameplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player.OnDeath += OnGameOver;
+    }
+    
 
- 
-
+    void OnGameOver()
+    {
+        State = GameState.GameOver;
+        PanelGameOver.SetActive(true);
     }
 
     // Update is called once per frame
@@ -47,5 +63,10 @@ public class MainGameplay : MonoBehaviour
         }
 
         return bestEnemy;
+    }
+
+    public void OnClickQuit()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

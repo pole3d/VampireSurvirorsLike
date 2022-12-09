@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PlayerController : Unit
 {
@@ -12,6 +13,10 @@ public class PlayerController : Unit
     public float CoolDown = 2;
 
     private float _timerCoolDown;
+
+    public Action OnDeath;
+
+    bool _isDead;
 
 
     // Start is called before the first frame update
@@ -24,9 +29,11 @@ public class PlayerController : Unit
     // Update is called once per frame
     void Update()
     {
+        if (_isDead)
+            return;
+        
         Move();
         Shoot();
-
     }
 
     private void Shoot()
@@ -41,7 +48,7 @@ public class PlayerController : Unit
         EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
         if (enemy == null)
             return;
-        
+
         GameObject go = GameObject.Instantiate(PrefabBullet, transform.position, Quaternion.identity);
         Vector3 direction = enemy.transform.position - transform.position;
         if (direction.sqrMagnitude > 0)
@@ -50,7 +57,6 @@ public class PlayerController : Unit
 
             go.GetComponent<Bullet>().Initialize(direction);
         }
-
     }
 
     private void Move()
@@ -69,8 +75,22 @@ public class PlayerController : Unit
 
     public override void Hit(float damage)
     {
+        if (_isDead)
+            return;
+
         Life -= damage;
 
         LifeBar.SetValue(Life, LifeMax);
+
+        if (Life <= 0)
+        {
+            _isDead = true;
+            OnDeath?.Invoke();
+        }
+    }
+
+    void OnDestroy()
+    {
+        OnDeath = null;
     }
 }
