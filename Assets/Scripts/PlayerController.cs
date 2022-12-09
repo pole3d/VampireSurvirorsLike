@@ -35,7 +35,7 @@ public class PlayerController : Unit
     // Update is called once per frame
     void Update()
     {
-        if (_isDead)
+        if (_isDead )
             return;
 
         ReadInputs();
@@ -44,6 +44,12 @@ public class PlayerController : Unit
 
     void ReadInputs()
     {
+        if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
+        {
+            _inputs = new Vector2();
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -58,6 +64,9 @@ public class PlayerController : Unit
 
     private void Shoot()
     {
+        if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
+            return;
+        
         _timerCoolDown += Time.deltaTime;
 
         if (_timerCoolDown < CoolDown)

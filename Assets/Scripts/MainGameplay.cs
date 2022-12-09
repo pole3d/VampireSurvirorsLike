@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,8 +18,15 @@ public class MainGameplay : MonoBehaviour
     public PlayerController Player;
     public List<EnemyController> Enemies;
     public GameObject PanelGameOver;
+    public GameObject PanelVictory;
 
     public GameState State;
+    public TMP_Text TextTimer;
+
+    public GameplayData Data;
+
+    float _timerIncrement;
+    int _timerSeconds;
     
     private void Awake()
     {
@@ -28,20 +36,48 @@ public class MainGameplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player.OnDeath += OnGameOver;
+        UpdateTimer();
+        Player.OnDeath += OnPlayerDeath;
     }
     
 
-    void OnGameOver()
+    void OnPlayerDeath()
     {
         State = GameState.GameOver;
         PanelGameOver.SetActive(true);
     }
 
+    void SetVictory()
+    {
+        State = GameState.GameOver;
+        PanelVictory.SetActive(true);
+    }
+    
     // Update is called once per frame
     void Update()
     {
+        _timerIncrement += Time.deltaTime;
+
+        if (_timerIncrement >= 1)
+        {
+            _timerIncrement -= 1;
+            _timerSeconds++;
+            UpdateTimer();
+
+            if (_timerSeconds >= Data.TimerToWin)
+            {
+                SetVictory();
+            }
+        }
         
+        
+    }
+
+    void UpdateTimer()
+    {
+        int seconds = _timerSeconds % 60;
+        int minutes = _timerSeconds / 60;
+        TextTimer.text = $"{minutes:00}:{seconds:00}";
     }
 
     public EnemyController GetClosestEnemy( Vector3 position  )
