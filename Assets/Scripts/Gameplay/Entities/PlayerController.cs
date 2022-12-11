@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Gameplay.Weapons;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,13 +16,12 @@ public class PlayerController : Unit
     [SerializeField] LifeBar _lifeBar;
 
     [SerializeField] GameObject _prefabBullet;
-    [SerializeField] float _coolDown = 2;
 
     public Action OnDeath { get; set; }
     public Action<int, int, int> OnXP { get; set; }
     public Action<int> OnLevelUp { get; set; }
 
-    float _timerCoolDown;
+    public GameObject PrefabBullet => _prefabBullet;
 
     int _level = 1;
     int _xp = 0;
@@ -28,6 +29,7 @@ public class PlayerController : Unit
     bool _isDead;
     Rigidbody2D _rb;
     Vector2 _inputs;
+    List<WeaponBase> _weapons = new();
 
     void Awake()
     {
@@ -38,6 +40,8 @@ public class PlayerController : Unit
     {
         _lifeMax = _playerData.Life;
         _life = LifeMax;
+        
+        _weapons.Add(new WeaponBullet());
     }
 
     void Update()
@@ -74,24 +78,9 @@ public class PlayerController : Unit
         if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
             return;
 
-        _timerCoolDown += Time.deltaTime;
-
-        if (_timerCoolDown < _coolDown)
-            return;
-
-        _timerCoolDown -= _coolDown;
-
-        EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
-        if (enemy == null)
-            return;
-
-        GameObject go = GameObject.Instantiate(_prefabBullet, transform.position, Quaternion.identity);
-        Vector3 direction = enemy.transform.position - transform.position;
-        if (direction.sqrMagnitude > 0)
+        foreach (var weapon in _weapons)
         {
-            direction.Normalize();
-
-            go.GetComponent<Bullet>().Initialize(direction);
+            weapon.Update(this);
         }
     }
 
