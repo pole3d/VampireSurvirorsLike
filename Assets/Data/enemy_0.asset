@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
-  m_Name: enemy_0
+  m_Name: Enemy_0
   m_EditorClassIdentifier: 
   Life: 12
   MoveSpeed: 1

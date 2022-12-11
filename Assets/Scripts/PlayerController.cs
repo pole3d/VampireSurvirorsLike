@@ -9,12 +9,18 @@ public class PlayerController : Unit
     public GameObject PrefabBullet;
     public float Speed = 5;
     public LifeBar LifeBar;
+    public int Level = 1;
+    public int XP = 0;
 
     public float CoolDown = 2;
 
     private float _timerCoolDown;
 
     public Action OnDeath;
+    public Action<int, int,int> OnXP;
+    public Action<int> OnLevelUp;
+
+    [SerializeField] LevelUpData _levelUpData;
 
     bool _isDead;
     Rigidbody2D _rb;
@@ -121,5 +127,37 @@ public class PlayerController : Unit
     void OnDestroy()
     {
         OnDeath = null;
+        OnXP = null;
+        OnLevelUp = null;
+    }
+
+    public void GetXP(int value)
+    {
+        if (_levelUpData.IsLevelMax(Level))
+            return;
+        
+        XP += value;
+        
+        int nextLevel = Level + 1;
+        int currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
+        if (XP >= currentLevelMaxXP)
+        {
+            Level++;
+            OnLevelUp?.Invoke(Level);
+            currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
+        }
+
+        int currentLevelMinXP = _levelUpData.GetXpForLevel(Level);
+
+        if (_levelUpData.IsLevelMax(Level))
+        {
+            OnXP?.Invoke(currentLevelMaxXP+1 , currentLevelMinXP , currentLevelMaxXP+1);
+        }
+        else
+        {
+            OnXP?.Invoke(XP , currentLevelMinXP , currentLevelMaxXP);
+        }
+
+
     }
 }

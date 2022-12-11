@@ -16,4 +16,11 @@ public class HitWithParent : MonoBehaviour
 
         return other;
     }
+    
+    public static T GetComponent<T>(Collider2D collision) where T : MonoBehaviour
+    {
+        var other = GetGameObject(collision);
+
+        return other.GetComponent<T>();
+    }
 }

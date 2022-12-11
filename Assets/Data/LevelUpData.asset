@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e518678f9354641820becc1a90140a, type: 3}
-  m_Name: Gameplay
+  m_Script: {fileID: 11500000, guid: d7b86bd7009b2e34bad173aea64b75ea, type: 3}
+  m_Name: LevelUpData
   m_EditorClassIdentifier: 
-  TimerToWin: 300
+  _xpForLevels: 0000000000000000050000000a000000

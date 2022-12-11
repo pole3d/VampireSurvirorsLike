@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MainGameplay : MonoBehaviour
 {
@@ -22,8 +23,15 @@ public class MainGameplay : MonoBehaviour
 
     public GameState State;
     public TMP_Text TextTimer;
-
+    public Image ImageXP;
+    
     public GameplayData Data;
+    public GameObject PrefabXp;
+
+    public XPBar XPBar;
+    
+    
+    
 
     float _timerIncrement;
     int _timerSeconds;
@@ -36,10 +44,23 @@ public class MainGameplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         UpdateTimer();
         Player.OnDeath += OnPlayerDeath;
+        Player.OnXP += OnXP;
+        Player.OnLevelUp += OnLevelUp;
     }
-    
+
+    void OnLevelUp(int level)
+    {
+        XPBar.SetLevel(level);
+    }
+
+    void OnXP(int currentXP , int levelXPMin , int levelXPMax)
+    {
+        XPBar.SetValue( currentXP , levelXPMin , levelXPMax );
+    }
+
 
     void OnPlayerDeath()
     {
