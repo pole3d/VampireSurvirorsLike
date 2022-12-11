@@ -1,9 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Represents some global gameplay values
+/// </summary>
 [CreateAssetMenu]
 public class GameplayData : ScriptableObject
 {
-  public int TimerToWin = 10;
+    [Tooltip("Player wins after surviving this time in seconds")]
+    public int TimerToWin = 10;
 }

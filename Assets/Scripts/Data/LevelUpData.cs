@@ -1,7 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Represents the xp required to level up
+/// CAUTION : First level of the player is level 1
+/// So the 2 first entries should be 0
+/// </summary>
 [CreateAssetMenu]
 public class LevelUpData : ScriptableObject
 {

@@ -1,15 +1,19 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
+/// <summary>
+/// Represents a bullet moving in a given direction
+/// A bullet can be fired by the player or by an enemy
+/// call Initialize to set the direction
+/// </summary>
 public class Bullet : MonoBehaviour
 {
-    public float Speed = 10;
-    public int Team;
-    public float Damage = 5;
+    [SerializeField] float _speed = 10;
+    [SerializeField] int _team;
+    [SerializeField] float _damage = 5;
+    [SerializeField] float _timeToLive = 10.0f;
 
-    private Vector3 _direction;
+    Vector3 _direction;
 
     public void Initialize(Vector3 direction)
     {
@@ -19,31 +23,27 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Destroy(gameObject, 10);
+        GameObject.Destroy(gameObject, _timeToLive);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        
-        transform.position += _direction * Speed * Time.deltaTime;
+        transform.position += _direction * _speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        var other = HitWithParent.GetGameObject(col);
-        Unit otherUnit = other.GetComponent<Unit>();
-        
-        if (otherUnit == null)
+        var other = HitWithParent.GetComponent<Unit>(col);
+
+        if (other == null)
         {
             GameObject.Destroy(gameObject);
         }
-        else if (otherUnit.Team != Team)
+        else if (other.Team != _team)
         {
             GameObject.Destroy(gameObject);
 
-            otherUnit.Hit(Damage);
+            other.Hit(_damage);
         }
     }
 }

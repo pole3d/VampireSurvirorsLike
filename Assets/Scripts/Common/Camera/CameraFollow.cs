@@ -1,18 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Represents a following camera
+/// on the X and Y axis
+/// </summary>
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject Target;
-    public float Speed = 0.3f;
-    public Transform TopRight;
-    public Transform BottomLeft;
+    #region Inspector
+
+    [Tooltip("The target to follow")] [SerializeField]
+    GameObject _target;
+
+    [Tooltip("Time in seconds to catch the target")] [SerializeField]
+    float _speed = 0.3f;
+
+    [Header("Limits")] [SerializeField] Transform _topRight;
+    [SerializeField] Transform _bottomLeft;
+
+    #endregion
+
+    #region Fields
 
     Transform _transform;
     Vector3 _velocity;
     Camera _camera;
+
+    #endregion
 
     void Awake()
     {
@@ -20,20 +34,20 @@ public class CameraFollow : MonoBehaviour
         _camera = GetComponent<Camera>();
     }
 
-
     // Update is called once per frame
     void LateUpdate()
     {
         float orthoSizeY = _camera.orthographicSize;
-        float orthoSizeX = (Screen.width * _camera.orthographicSize)/Screen.height;
-        
-        
-        var targetPosition = Target.transform.position;
-        Vector3 cameraDestination = new Vector3(targetPosition.x,targetPosition.y, transform.position.z);
+        float orthoSizeX = (Screen.width * _camera.orthographicSize) / Screen.height;
 
-        cameraDestination.y = Mathf.Clamp(cameraDestination.y, BottomLeft.transform.position.y + orthoSizeY, TopRight.transform.position.y - orthoSizeY);
-        cameraDestination.x= Mathf.Clamp(cameraDestination.x, BottomLeft.transform.position.x + orthoSizeX, TopRight.transform.position.x - orthoSizeX);
+        var targetPosition = _target.transform.position;
+        Vector3 cameraDestination = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
 
-        _transform.position = Vector3.SmoothDamp(transform.position, cameraDestination, ref _velocity, Speed);
+        cameraDestination.y = Mathf.Clamp(cameraDestination.y, _bottomLeft.transform.position.y + orthoSizeY,
+            _topRight.transform.position.y - orthoSizeY);
+        cameraDestination.x = Mathf.Clamp(cameraDestination.x, _bottomLeft.transform.position.x + orthoSizeX,
+            _topRight.transform.position.x - orthoSizeX);
+
+        _transform.position = Vector3.SmoothDamp(_transform.position, cameraDestination, ref _velocity, _speed);
     }
 }
