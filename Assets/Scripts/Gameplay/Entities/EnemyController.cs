@@ -64,7 +64,7 @@ public class EnemyController : Unit
     {
         MainGameplay.Instance.Enemies.Remove(this);
         GameObject.Destroy(gameObject);
-        var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXp, transform.position, Quaternion.identity);
+        var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXP, transform.position, Quaternion.identity);
         xp.GetComponent<CollectableXp>().Initialize(1);
     }
 

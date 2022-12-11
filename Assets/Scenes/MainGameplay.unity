@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 133957340}
   - component: {fileID: 133957339}
   - component: {fileID: 133957341}
+  - component: {fileID: 133957342}
   m_Layer: 0
   m_Name: _Scripts
   m_TagString: Untagged
@@ -153,15 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078bf64f205830140ae4d30dfc611601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 401613622}
-  Enemies: []
-  PanelGameOver: {fileID: 1485665038}
-  PanelVictory: {fileID: 6270350766995238266}
-  State: 0
-  TextTimer: {fileID: 1759684998}
-  Data: {fileID: 11400000, guid: 28b16b29f0fb36643b646547ec2f7958, type: 2}
-  PrefabXp: {fileID: 3633932044844237191, guid: aa92c9dfc5a3f9646b9d2671a9841506, type: 3}
-  XPBar: {fileID: 2024001952}
+  _player: {fileID: 401613622}
+  _data: {fileID: 11400000, guid: 28b16b29f0fb36643b646547ec2f7958, type: 2}
+  _gameUIManager: {fileID: 133957342}
+  _prefabXp: {fileID: 3633932044844237191, guid: aa92c9dfc5a3f9646b9d2671a9841506, type: 3}
 --- !u!4 &133957340
 Transform:
   m_ObjectHideFlags: 0
@@ -192,6 +188,22 @@ MonoBehaviour:
   _wavesLevel: {fileID: 11400000, guid: 70fcb7aa3f9c34e44a8a7c6cf3c3113a, type: 2}
   _topRight: {fileID: 1623486575}
   _bottomLeft: {fileID: 1789567486}
+--- !u!114 &133957342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133957338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6befadbc05492149b210949f095b5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelGameOver: {fileID: 1485665038}
+  _panelVictory: {fileID: 6270350766995238266}
+  _textTimer: {fileID: 1759684998}
+  _xpBar: {fileID: 2024001952}
 --- !u!1 &264379874
 GameObject:
   m_ObjectHideFlags: 0
