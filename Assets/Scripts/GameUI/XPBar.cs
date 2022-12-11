@@ -2,11 +2,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Represents the XP bar in the UI
+/// </summary>
 public class XPBar : MonoBehaviour
 {
     [SerializeField] TMP_Text _textLevel;
     [SerializeField] Image _imageXP;
-
 
     void Start()
     {
@@ -16,9 +18,6 @@ public class XPBar : MonoBehaviour
 
     public void SetValue(float current , float minValue , float maxValue)
     {
-        Debug.Log($"current{current} / minvalue{minValue} / maxValue{maxValue}");
-        
-        
         float value = (current - minValue) / (maxValue-minValue);
         _imageXP.fillAmount = Mathf.Clamp01(value);;
     }

@@ -189,16 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3981a6131969643aba97585c290911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waves:
-  - TimeToStart: 2
-    NumberOfOccurence: 10
-    RepeatTimer: 4
-    EnemyCount: 3
-    Enemy: {fileID: 11400000, guid: de7771034e75ff04197edc11a666a0a1, type: 2}
-    MoveType: 0
-    SpawnDistance: 15
-  TopRight: {fileID: 1623486575}
-  BottomLeft: {fileID: 1789567486}
+  _wavesLevel: {fileID: 11400000, guid: 70fcb7aa3f9c34e44a8a7c6cf3c3113a, type: 2}
+  _topRight: {fileID: 1623486575}
+  _bottomLeft: {fileID: 1789567486}
 --- !u!1 &264379874
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,10 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27b537010019f847a27f04fdd931ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 401613619}
-  Speed: 0.3
-  TopRight: {fileID: 1623486575}
-  BottomLeft: {fileID: 1789567486}
+  _target: {fileID: 401613619}
+  _speed: 0.3
+  _topRight: {fileID: 1623486575}
+  _bottomLeft: {fileID: 1789567486}
 --- !u!1 &913869575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,6 +1255,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: _coolDown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: _levelUpData
       value: 
       objectReference: {fileID: 11400000, guid: b53a9205d0857e44fb835c421f87f376, type: 2}
@@ -1279,7 +1276,7 @@ GameObject:
   - component: {fileID: 7705419816352909548}
   - component: {fileID: 4648063148360442677}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Bloc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

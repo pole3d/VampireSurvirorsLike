@@ -1,12 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Represents an enemy who's moving toward the player
+/// and damage him on collision
+/// data bout the enemy are stored in the EnemyData class
+/// CAUTION : don't forget to call Initialize when you create an enemy
+/// </summary>
 public class EnemyController : Unit
 {
-    public float Speed = 4;
-    public float Damage = 15;
-
-    private GameObject _player;
-    private Rigidbody2D _rb;
+    GameObject _player;
+    Rigidbody2D _rb;
+    EnemyData _data;
 
     private void Awake()
     {
@@ -14,18 +19,17 @@ public class EnemyController : Unit
     }
 
 
-    public void Initialize( GameObject player , EnemyData data)
+    public void Initialize(GameObject player, EnemyData data)
     {
         _player = player;
-        Team = 1;
-        Speed = data.MoveSpeed;
-        Life = data.Life;
+        _data = data;
+        _life = data.Life;
+        _team = 1;
     }
 
     void FixedUpdate()
     {
         MoveToPlayer();
-
     }
 
     private void MoveToPlayer()
@@ -33,48 +37,44 @@ public class EnemyController : Unit
         Vector3 direction = _player.transform.position - transform.position;
         direction.z = 0;
 
-        float moveStep = Speed * Time.deltaTime;
+        float moveStep = _data.MoveSpeed * Time.deltaTime;
         if (moveStep >= direction.magnitude)
         {
             _rb.velocity = Vector2.zero;
             transform.position = _player.transform.position;
-
         }
         else
         {
             direction.Normalize();
-            _rb.velocity = direction * Speed;
+            _rb.velocity = direction * _data.MoveSpeed;
         }
-
     }
 
     public override void Hit(float damage)
     {
-        Life -= damage;
+        _life -= damage;
 
         if (Life <= 0)
         {
-            MainGameplay.Instance.Enemies.Remove(this);
-            GameObject.Destroy(gameObject);
-            var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXp, transform.position, Quaternion.identity);
-            xp.GetComponent<CollectibleXp>().Initialize(1);
+            Die();
         }
+    }
+
+    void Die()
+    {
+        MainGameplay.Instance.Enemies.Remove(this);
+        GameObject.Destroy(gameObject);
+        var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXp, transform.position, Quaternion.identity);
+        xp.GetComponent<CollectableXp>().Initialize(1);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        var other = collision.gameObject;
-        var hitWithParent = collision.GetComponent<HitWithParent>();
-        if (hitWithParent != null)
-            other = hitWithParent.transform.parent.gameObject;
-        
-        var player = other.GetComponent<PlayerController>();
+        var other = HitWithParent.GetComponent<PlayerController>(collision);
 
-        if (player != null)
+        if (other != null)
         {
-            player.Hit(Time.deltaTime * Damage);
+            other.Hit(Time.deltaTime * _data.DamagePerSeconds);
         }
     }
-
-   
 }

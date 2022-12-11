@@ -1,25 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the waves : stores the data, updates and plays them 
+/// </summary>
 public class WavesManager : MonoBehaviour
 {
-    public List<WaveData> Waves;
-    public Transform TopRight;
-    public Transform BottomLeft;
+    [SerializeField] WavesLevelData _wavesLevel;
+    [SerializeField] Transform _topRight;
+    [SerializeField] Transform _bottomLeft;
 
-    private List<WaveInstance> _wavesToPlay = new List<WaveInstance>();
-    private float _timer;
+    readonly List<WaveInstance> _wavesToPlay = new();
+    float _timer;
 
     void Awake()
     {
-        foreach (var data in Waves)
+        foreach (var data in _wavesLevel.Waves)
         {
             WaveInstance instance = new WaveInstance(data);
             _wavesToPlay.Add(instance);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
@@ -31,7 +33,7 @@ public class WavesManager : MonoBehaviour
         {
             _wavesToPlay[i].Update(this,_timer);
             
-            if ( _wavesToPlay[i].Done)
+            if ( _wavesToPlay[i].IsDone)
                 _wavesToPlay.RemoveAt(i);
         }
     }
@@ -47,13 +49,13 @@ public class WavesManager : MonoBehaviour
             spawnPosition.Normalize();
 
             Vector3 tempPosition = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
-            if (tempPosition.x > TopRight.transform.position.x ||
-                tempPosition.x < BottomLeft.transform.position.x)
+            if (tempPosition.x > _topRight.transform.position.x ||
+                tempPosition.x < _bottomLeft.transform.position.x)
             {
                 spawnPosition.x = -spawnPosition.x;
             }
-            if (tempPosition.y > TopRight.transform.position.y ||
-                tempPosition.y < BottomLeft.transform.position.y)
+            if (tempPosition.y > _topRight.transform.position.y ||
+                tempPosition.y < _bottomLeft.transform.position.y)
             {
                 spawnPosition.y = -spawnPosition.y;
             }

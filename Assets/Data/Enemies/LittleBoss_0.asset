@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e518678f9354641820becc1a90140a, type: 3}
-  m_Name: Gameplay
+  m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
+  m_Name: LittleBoss_0
   m_EditorClassIdentifier: 
-  TimerToWin: 300
+  _life: 120
+  _damagePerSeconds: 20
+  _moveSpeed: 2
+  _prefab: {fileID: 7654918703708801626, guid: bc63bbf30f2977e4d9ed2c16afa08b56, type: 3}
+  _spriteOverride: {fileID: 0}

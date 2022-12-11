@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Represents the main menu of the game
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
 

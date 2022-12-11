@@ -1,12 +1,16 @@
 using UnityEngine;
 
+/// <summary>
+/// Instance of a wave
+/// keeps the wave alive while there's still enemies to spawn
+/// </summary>
 public class WaveInstance
 {
-    public bool Done => _currentOccurence >= _data.NumberOfOccurence;
+    public bool IsDone => _currentOccurence >= _data.TimesToRepeat;
     
-    private WaveData _data;
-    private float _timer;
-    private int _currentOccurence;
+    WaveData _data;
+    float _timer;
+    int _currentOccurence;
 
     public WaveInstance(WaveData data)
     {
@@ -29,6 +33,4 @@ public class WaveInstance
         }
 
     }
-
-  
 }

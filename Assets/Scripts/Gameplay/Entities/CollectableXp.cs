@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class CollectibleXp : MonoBehaviour
+/// <summary>
+/// Represents the xp points the player has to collect to level up
+/// </summary>
+public class CollectableXp : MonoBehaviour
 {
     public int Value { get; private set; }
 
@@ -9,14 +12,13 @@ public class CollectibleXp : MonoBehaviour
         Value = value;
     }
     
-    
     void OnTriggerEnter2D(Collider2D col)
     {
         var other = HitWithParent.GetComponent<PlayerController>(col);
         
         if (other != null)
         {
-            other.GetXP(Value);
+            other.CollectXP(Value);
             GameObject.Destroy(gameObject);
         }
     }

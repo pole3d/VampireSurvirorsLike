@@ -1,21 +1,35 @@
 using System;
+using UnityEngine;
+using UnityEngine.Serialization;
 
-public enum MoveType
-{
-    Normal,
-    
-}
 
+/// <summary>
+/// Represents a wave a spawning enemies
+/// </summary>
 [Serializable]
 public class WaveData
 {
-    public int TimeToStart;
-    
-    
-    public int NumberOfOccurence = 1;
-    public float RepeatTimer = 0;
-    public int EnemyCount = 20;
-    public EnemyData Enemy;
-    public MoveType MoveType;
-    public float SpawnDistance = 15;
+    /// <summary>
+    /// Enemies can have different movement patterns
+    /// </summary>
+    public enum MoveType
+    {
+        Normal,
+    }
+
+    public int TimeToStart => _timeToStart;
+    public int TimesToRepeat => _timesToRepeat;
+    public float RepeatTimer => _repeatTimer;
+    public int EnemyCount => _enemyCount;
+    public EnemyData Enemy => _enemy;
+    public MoveType MovementType => _movementType;
+    public float SpawnDistance => _spawnDistance;
+
+    [SerializeField] int _timeToStart;
+    [SerializeField] int _timesToRepeat = 1;
+    [SerializeField] float _repeatTimer = 0;
+    [SerializeField] int _enemyCount = 20;
+    [SerializeField] EnemyData _enemy;
+    [SerializeField] MoveType _movementType;
+    [SerializeField] float _spawnDistance = 15;
 }

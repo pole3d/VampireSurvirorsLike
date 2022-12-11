@@ -7,27 +7,19 @@ using UnityEngine;
 /// </summary>
 public class CameraFollow : MonoBehaviour
 {
-    #region Inspector
-
     [Tooltip("The target to follow")] [SerializeField]
     GameObject _target;
-
+    
     [Tooltip("Time in seconds to catch the target")] [SerializeField]
     float _speed = 0.3f;
-
+    
     [Header("Limits")] [SerializeField] Transform _topRight;
     [SerializeField] Transform _bottomLeft;
-
-    #endregion
-
-    #region Fields
 
     Transform _transform;
     Vector3 _velocity;
     Camera _camera;
-
-    #endregion
-
+    
     void Awake()
     {
         _transform = transform;

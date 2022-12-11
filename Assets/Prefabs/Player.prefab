@@ -184,10 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1482f50dd94184b9a94dc0fb609185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabBullet: {fileID: 3633932044844237191, guid: 4660ac6ef21504147b176616fca71ee3, type: 3}
-  Speed: 5
-  LifeBar: {fileID: 347391273614035573}
-  CoolDown: 2
+  _playerData: {fileID: 11400000, guid: b490d34c1b70df546a5ecca04aaa0cf9, type: 2}
+  _levelUpData: {fileID: 11400000, guid: b53a9205d0857e44fb835c421f87f376, type: 2}
+  _lifeBar: {fileID: 347391273614035573}
+  _prefabBullet: {fileID: 3633932044844237191, guid: 4660ac6ef21504147b176616fca71ee3, type: 3}
+  _coolDown: 2
 --- !u!50 &401613624
 Rigidbody2D:
   serializedVersion: 4
