@@ -18,7 +18,6 @@ public class PlayerController : Unit
     public Action<int, int, int> OnXP { get; set; }
     public Action<int> OnLevelUp { get; set; }
 
-
     public Vector2 Direction => _lastDirection;
     public float DirectionX => _lastDirectionX;
 
@@ -122,6 +121,12 @@ public class PlayerController : Unit
         }
     }
 
+    internal void AddWeapon(WeaponBase weapon)
+    {
+        _weapons.Add(weapon);
+    }
+
+
     public void CollectXP(int value)
     {
         if (_levelUpData.IsLevelMax(_level))
@@ -150,10 +155,13 @@ public class PlayerController : Unit
         }
     }
 
+
     void OnDestroy()
     {
         OnDeath = null;
         OnXP = null;
         OnLevelUp = null;
     }
+
+
 }
