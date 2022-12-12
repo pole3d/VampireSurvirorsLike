@@ -9,9 +9,10 @@ namespace Gameplay.Weapons
     public class WeaponLasso : WeaponBase
     {
 
+        [SerializeField] GameObject _prefab;
+
         public WeaponLasso()
         {
-            _coolDown = 2.0f;
         }
 
         public override void Update(PlayerController player)
@@ -26,7 +27,7 @@ namespace Gameplay.Weapons
 
             Vector2 position = (Vector2)player.transform.position + Vector2.right * player.DirectionX * 2;
 
-            GameObject go = GameObject.Instantiate(MainGameplay.Instance.Player.PrefabLasso, position, Quaternion.identity,player.transform);
+            GameObject go = GameObject.Instantiate(_prefab, position, Quaternion.identity,player.transform);
 
             go.GetComponent<Bullet>().Initialize(new Vector3());
 

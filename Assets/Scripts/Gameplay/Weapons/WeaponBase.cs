@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public abstract class WeaponBase
 {
+    [SerializeField] protected float _damageMin;
+    [SerializeField] protected float _damageMax;
     [SerializeField] protected float _coolDown;
 
     protected float _timerCoolDown;

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Gameplay.Weapons;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// Represents the player
@@ -15,17 +14,10 @@ public class PlayerController : Unit
 
     [SerializeField] LifeBar _lifeBar;
 
-    [SerializeField] GameObject _prefabBullet;
-    [SerializeField] GameObject _prefabThunder;
-    [SerializeField] GameObject _prefabLasso;
-
     public Action OnDeath { get; set; }
     public Action<int, int, int> OnXP { get; set; }
     public Action<int> OnLevelUp { get; set; }
 
-    public GameObject PrefabBullet => _prefabBullet;
-    public GameObject PrefabThunder => _prefabThunder;
-    public GameObject PrefabLasso => _prefabLasso;
 
     public Vector2 Direction => _lastDirection;
     public float DirectionX => _lastDirectionX;
@@ -49,10 +41,11 @@ public class PlayerController : Unit
     {
         _lifeMax = _playerData.Life;
         _life = LifeMax;
-        
-        _weapons.Add(new WeaponBullet());
-        _weapons.Add(new WeaponThunder());
-        _weapons.Add(new WeaponLasso());
+
+        foreach (var weapon in _playerData.Weapons)
+        {
+            _weapons.Add(weapon.Weapon);
+        }
     }
 
     void Update()

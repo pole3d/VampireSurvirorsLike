@@ -8,10 +8,10 @@ namespace Gameplay.Weapons
     /// </summary>
     public class WeaponThunder : WeaponBase
     {
+        [SerializeField] GameObject _prefab;
 
         public WeaponThunder()
         {
-            _coolDown = 3.0f;
         }
 
         public override void Update(PlayerController player)
@@ -27,7 +27,7 @@ namespace Gameplay.Weapons
             if (enemy == null)
                 return;
 
-            GameObject go = GameObject.Instantiate(MainGameplay.Instance.Player.PrefabThunder, enemy.transform.position, Quaternion.identity);
+            GameObject go = GameObject.Instantiate(_prefab, enemy.transform.position, Quaternion.identity);
 
             go.GetComponent<Bullet>().Initialize(new Vector3());
 

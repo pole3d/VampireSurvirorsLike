@@ -9,9 +9,10 @@ namespace Gameplay.Weapons
     public class WeaponBullet : WeaponBase
     {
 
+        [SerializeField] GameObject _prefab;
+
         public WeaponBullet()
         {
-            _coolDown = 1.1f;
         }
         
         public override void Update( PlayerController player )
@@ -28,7 +29,7 @@ namespace Gameplay.Weapons
                 return;
 
             var playerPosition = player.transform.position;
-            GameObject go = GameObject.Instantiate(MainGameplay.Instance.Player.PrefabBullet, playerPosition, Quaternion.identity);
+            GameObject go = GameObject.Instantiate(_prefab, playerPosition, Quaternion.identity);
             Vector3 direction = enemy.transform.position - playerPosition;
             if (direction.sqrMagnitude > 0)
             {

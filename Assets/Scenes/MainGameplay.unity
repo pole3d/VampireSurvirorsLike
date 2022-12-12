@@ -1247,6 +1247,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: _weapon
+      value: Assembly-CSharp Gameplay.Weapons.WeaponLasso
+      objectReference: {fileID: 0}
+    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: CoolDown
       value: 0.5
       objectReference: {fileID: 0}
@@ -1262,6 +1266,10 @@ PrefabInstance:
       propertyPath: _prefabThunder
       value: 
       objectReference: {fileID: 3633932044844237191, guid: 8de1541038ce18044992068f7f0cac3b, type: 3}
+    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: _weapon._coolDown
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
 --- !u!1 &4098126190579216838
