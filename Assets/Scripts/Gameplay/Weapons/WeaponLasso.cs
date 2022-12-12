@@ -1,0 +1,35 @@
+﻿using UnityEngine;
+
+namespace Gameplay.Weapons
+{
+
+    /// <summary>
+    /// Represents a lasso with a large AOE
+    /// </summary>
+    public class WeaponLasso : WeaponBase
+    {
+
+        public WeaponLasso()
+        {
+            _coolDown = 2.0f;
+        }
+
+        public override void Update(PlayerController player)
+        {
+            _timerCoolDown += Time.deltaTime;
+
+            if (_timerCoolDown < _coolDown)
+                return;
+
+            _timerCoolDown -= _coolDown;
+
+
+            Vector2 position = (Vector2)player.transform.position + Vector2.right * player.DirectionX * 2;
+
+            GameObject go = GameObject.Instantiate(MainGameplay.Instance.Player.PrefabLasso, position, Quaternion.identity,player.transform);
+
+            go.GetComponent<Bullet>().Initialize(new Vector3());
+
+        }
+    }
+}

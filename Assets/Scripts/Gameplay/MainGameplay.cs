@@ -46,7 +46,7 @@ public class MainGameplay : MonoBehaviour
 
     #region Fields
 
-    readonly List<EnemyController> _enemies = new();
+    readonly List<EnemyController> _enemies = new List<EnemyController>();
     float _timerIncrement;
     int _timerSeconds;
 
@@ -142,6 +142,27 @@ public class MainGameplay : MonoBehaviour
         }
 
         return bestEnemy;
+    }
+
+    List<EnemyController> _enemiesOnScreen = new List<EnemyController>();
+
+    public EnemyController GetRandomEnemyOnScreen()
+    {
+        _enemiesOnScreen.Clear();
+
+        foreach (var enemy in _enemies)
+        {
+            Vector3 viewport = Camera.main.WorldToViewportPoint(enemy.transform.position);
+            if (viewport.x >= 0 && viewport.x <= 1 && viewport.y >= 0 && viewport.y <= 1)
+                _enemiesOnScreen.Add(enemy);
+        }
+
+        if (_enemiesOnScreen.Count == 0)
+            return null;
+
+        int rnd = Random.Range(0, _enemiesOnScreen.Count);
+
+        return _enemies[rnd];
     }
 
     #endregion

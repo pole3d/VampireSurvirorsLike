@@ -10,7 +10,7 @@ public class WavesManager : MonoBehaviour
     [SerializeField] Transform _topRight;
     [SerializeField] Transform _bottomLeft;
 
-    readonly List<WaveInstance> _wavesToPlay = new();
+    readonly List<WaveInstance> _wavesToPlay = new List<WaveInstance>();
     float _timer;
 
     void Awake()

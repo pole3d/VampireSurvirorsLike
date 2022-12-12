@@ -16,12 +16,19 @@ public class PlayerController : Unit
     [SerializeField] LifeBar _lifeBar;
 
     [SerializeField] GameObject _prefabBullet;
+    [SerializeField] GameObject _prefabThunder;
+    [SerializeField] GameObject _prefabLasso;
 
     public Action OnDeath { get; set; }
     public Action<int, int, int> OnXP { get; set; }
     public Action<int> OnLevelUp { get; set; }
 
     public GameObject PrefabBullet => _prefabBullet;
+    public GameObject PrefabThunder => _prefabThunder;
+    public GameObject PrefabLasso => _prefabLasso;
+
+    public Vector2 Direction => _lastDirection;
+    public float DirectionX => _lastDirectionX;
 
     int _level = 1;
     int _xp = 0;
@@ -29,7 +36,9 @@ public class PlayerController : Unit
     bool _isDead;
     Rigidbody2D _rb;
     Vector2 _inputs;
-    List<WeaponBase> _weapons = new();
+    Vector2 _lastDirection = Vector2.right;
+    float _lastDirectionX = 1;
+    List<WeaponBase> _weapons = new List<WeaponBase>();
 
     void Awake()
     {
@@ -42,6 +51,8 @@ public class PlayerController : Unit
         _life = LifeMax;
         
         _weapons.Add(new WeaponBullet());
+        _weapons.Add(new WeaponThunder());
+        _weapons.Add(new WeaponLasso());
     }
 
     void Update()
@@ -90,6 +101,11 @@ public class PlayerController : Unit
         {
             _inputs.Normalize();
             _rb.velocity = _inputs * _playerData.MoveSpeed;
+            
+            _lastDirection = _inputs;
+
+            if (Mathf.Abs(_lastDirection.x) > 0.1f)
+                _lastDirectionX = _inputs.x;
         }
         else
         {
