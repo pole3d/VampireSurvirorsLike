@@ -11,8 +11,10 @@ public class PlayerData : ScriptableObject
     public float Life => _life;
     public float MoveSpeed => _moveSpeed;
     public WeaponData[] Weapons => _weapons;
+    public UpgradeData[] Upgrades => _upgrades;
 
     [SerializeField] float _life;
     [SerializeField] float _moveSpeed;
     [SerializeField] WeaponData[] _weapons;
+    [SerializeField] UpgradeData[] _upgrades;
 }

@@ -17,12 +17,16 @@ public class PlayerController : Unit
     public Action OnDeath { get; set; }
     public Action<int, int, int> OnXP { get; set; }
     public Action<int> OnLevelUp { get; set; }
+    public List<UpgradeData> Upgrades { get; private set; }
+
 
     public Vector2 Direction => _lastDirection;
     public float DirectionX => _lastDirectionX;
+    public PlayerData PlayerData => _playerData;
 
     int _level = 1;
     int _xp = 0;
+
 
     bool _isDead;
     Rigidbody2D _rb;
@@ -34,6 +38,8 @@ public class PlayerController : Unit
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        Upgrades = new List<UpgradeData>();
     }
 
     void Start()
@@ -54,6 +60,11 @@ public class PlayerController : Unit
 
         ReadInputs();
         Shoot();
+
+        if ( Input.GetKeyDown(KeyCode.F5))
+        {
+            CollectXP(3);
+        }
     }
 
     void ReadInputs()
@@ -120,6 +131,12 @@ public class PlayerController : Unit
             OnDeath?.Invoke();
         }
     }
+
+    internal void AddUpgrade(UpgradeData data)
+    {
+        Upgrades.Add(data);
+    }
+
 
     internal void AddWeapon(WeaponBase weapon)
     {

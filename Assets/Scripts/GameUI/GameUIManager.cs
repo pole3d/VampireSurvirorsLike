@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,13 @@ public class GameUIManager : MonoBehaviour
 
     [SerializeField] TMP_Text _textTimer;
     [SerializeField] XPBar _xpBar;
+    [SerializeField] GameObject _panelUpgradesParent;
+    [SerializeField] PanelUpgrade[] _panelUpgrades;
+
+    internal void ClosePanelUpgrade()
+    {
+        _panelUpgradesParent.SetActive(false);
+    }
 
     public void Initialize(PlayerController player)
     {
@@ -28,6 +36,23 @@ public class GameUIManager : MonoBehaviour
     void OnXP(int currentXP, int levelXPMin, int levelXPMax)
     {
         _xpBar.SetValue(currentXP, levelXPMin, levelXPMax);
+    }
+
+
+    public void DisplayUpgrades(UpgradeData[] upgrades)
+    {
+        _panelUpgradesParent.SetActive(true);
+
+        for (int i = 0; i < _panelUpgrades.Length; i++)
+        {
+            _panelUpgrades[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < upgrades.Length; i++)
+        {
+            _panelUpgrades[i].gameObject.SetActive(true);
+            _panelUpgrades[i].Initialize(upgrades[i]);
+        }
     }
 
     public void DisplayGameOver()
@@ -46,4 +71,6 @@ public class GameUIManager : MonoBehaviour
         int minutes = timer / 60;
         _textTimer.text = $"{minutes:00}:{seconds:00}";
     }
+
+
 }

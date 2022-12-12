@@ -25,6 +25,7 @@ public class MainGameplay : MonoBehaviour
     }
 
 
+
     #region Inspector
 
     [SerializeField] PlayerController _player;
@@ -41,6 +42,7 @@ public class MainGameplay : MonoBehaviour
     public GameObject PrefabXP => _prefabXp;
     public GameState State { get; private set; }
     public List<EnemyController> Enemies => _enemies;
+    public GameUIManager GameUIManager => _gameUIManager;
 
     #endregion
 
@@ -70,7 +72,10 @@ public class MainGameplay : MonoBehaviour
 
         _gameUIManager.Initialize(_player);
         _player.OnDeath += OnPlayerDeath;
+        _player.OnLevelUp += OnLevelUp;
     }
+
+
 
     #endregion
 
@@ -101,6 +106,45 @@ public class MainGameplay : MonoBehaviour
     #endregion
 
     #region Game Events
+
+    internal void UnPause()
+    {
+        Time.timeScale = 1;
+    }
+
+    internal void Pause()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void OnLevelUp(int level)
+    {
+        Pause();
+
+        List<UpgradeData> upgrades = new List<UpgradeData>();
+        upgrades.AddRange(_player.PlayerData.Upgrades);
+
+        for (int i = upgrades.Count - 1; i >= 0; i--)
+        {
+            if (_player.Upgrades.Contains(upgrades[i]))
+                upgrades.RemoveAt(i);
+        }
+
+        List<UpgradeData> randomUpgrades = new List<UpgradeData>();
+        const int nbUpgrades = 3;
+        for (int i = 0; i < nbUpgrades; i++)
+        {
+            if (upgrades.Count == 0)
+                break;
+
+            int rnd = Random.Range(0, upgrades.Count);
+            UpgradeData upgrade = upgrades[rnd];
+            upgrades.RemoveAt(rnd);
+            randomUpgrades.Add(upgrade);
+        }
+
+        _gameUIManager.DisplayUpgrades(randomUpgrades.ToArray());
+    }
 
     void OnPlayerDeath()
     {
