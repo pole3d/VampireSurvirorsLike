@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Lasso
   m_EditorClassIdentifier: 
   _weapon:
-    id: 0
+    rid: 0
+  _slotIndex: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: WeaponLasso, ns: Gameplay.Weapons, asm: Assembly-CSharp}
       data:
         _damageMin: 12

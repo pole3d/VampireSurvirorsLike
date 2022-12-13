@@ -8,16 +8,18 @@ using UnityEngine.Serialization;
 /// </summary>
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float _speed = 10;
     [SerializeField] int _team;
-    [SerializeField] float _damage = 5;
     [SerializeField] float _timeToLive = 10.0f;
 
+    float _speed = 10;
+    float _damage = 5;
     Vector3 _direction;
 
-    public void Initialize(Vector3 direction)
+    public void Initialize(Vector3 direction , float damage , float speed )
     {
         _direction = direction;
+        _speed = speed;
+        _damage = damage;
     }
 
     // Start is called before the first frame update

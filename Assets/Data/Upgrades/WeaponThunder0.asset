@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: WeaponThunder0
   m_EditorClassIdentifier: 
-  _description: 
+  _description: Thunder !!
   _sprite: {fileID: 21300000, guid: 82176bcef51ab6b4583f29287edb1455, type: 3}
   _upgrade:
-    id: 0
+    rid: 0
   _nextUpgrades: []
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: WeaponUpgrade, ns: , asm: Assembly-CSharp}
       data:
         _data: {fileID: 11400000, guid: a575d7763fd3a834abff2b7481cf9cdc, type: 2}

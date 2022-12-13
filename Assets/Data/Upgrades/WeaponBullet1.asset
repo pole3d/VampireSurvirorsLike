@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: WeaponBullet1
   m_EditorClassIdentifier: 
-  _description: 
+  _description: Bullet level 1
   _sprite: {fileID: 21300000, guid: 82176bcef51ab6b4583f29287edb1455, type: 3}
   _upgrade:
-    id: 0
-  _nextUpgrades: []
+    rid: 0
+  _nextUpgrades:
+  - {fileID: 11400000, guid: 6b537eeaa4184334db919e6a09060bbf, type: 2}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: WeaponUpgrade, ns: , asm: Assembly-CSharp}
       data:
-        _data: {fileID: 11400000, guid: 7fc9e32731c831e46ba0de5e74790c60, type: 2}
+        _data: {fileID: 11400000, guid: a908fe6ac51997244bddceac73960146, type: 2}

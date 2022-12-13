@@ -10,8 +10,22 @@ public abstract class WeaponBase
     [SerializeField] protected float _damageMin;
     [SerializeField] protected float _damageMax;
     [SerializeField] protected float _coolDown;
-
+    
+    public int Slot { get; private set; }
+    
     protected float _timerCoolDown;
+    
+    
 
+    public void Initialize(int slot)
+    {
+        Slot = slot;
+    }
+
+    protected float GetDamage()
+    {
+        return Random.Range(_damageMin, _damageMax);
+    }
+    
     public abstract void Update(PlayerController player);
 }

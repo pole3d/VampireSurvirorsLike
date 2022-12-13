@@ -122,13 +122,7 @@ public class MainGameplay : MonoBehaviour
         Pause();
 
         List<UpgradeData> upgrades = new List<UpgradeData>();
-        upgrades.AddRange(_player.PlayerData.Upgrades);
-
-        for (int i = upgrades.Count - 1; i >= 0; i--)
-        {
-            if (_player.Upgrades.Contains(upgrades[i]))
-                upgrades.RemoveAt(i);
-        }
+        upgrades.AddRange(_player.UpgradesAvailable);
 
         List<UpgradeData> randomUpgrades = new List<UpgradeData>();
         const int nbUpgrades = 3;

@@ -10,6 +10,7 @@ namespace Gameplay.Weapons
     {
 
         [SerializeField] GameObject _prefab;
+        [SerializeField] float _speed;
 
         public WeaponBullet()
         {
@@ -35,7 +36,7 @@ namespace Gameplay.Weapons
             {
                 direction.Normalize();
 
-                go.GetComponent<Bullet>().Initialize(direction);
+                go.GetComponent<Bullet>().Initialize(direction, GetDamage(),_speed);
             }
         }
     }

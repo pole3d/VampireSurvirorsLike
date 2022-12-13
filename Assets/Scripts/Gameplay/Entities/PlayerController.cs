@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using Gameplay.Weapons;
 using UnityEngine;
 
@@ -17,12 +18,14 @@ public class PlayerController : Unit
     public Action OnDeath { get; set; }
     public Action<int, int, int> OnXP { get; set; }
     public Action<int> OnLevelUp { get; set; }
-    public List<UpgradeData> Upgrades { get; private set; }
+    public List<UpgradeData> UpgradesAvailable { get; private set; }
 
 
     public Vector2 Direction => _lastDirection;
     public float DirectionX => _lastDirectionX;
     public PlayerData PlayerData => _playerData;
+
+    public List<WeaponBase> Weapons => _weapons;
 
     int _level = 1;
     int _xp = 0;
@@ -39,7 +42,8 @@ public class PlayerController : Unit
     {
         _rb = GetComponent<Rigidbody2D>();
 
-        Upgrades = new List<UpgradeData>();
+        UpgradesAvailable = new List<UpgradeData>();
+        UpgradesAvailable.AddRange(_playerData.Upgrades);
     }
 
     void Start()
@@ -49,7 +53,7 @@ public class PlayerController : Unit
 
         foreach (var weapon in _playerData.Weapons)
         {
-            _weapons.Add(weapon.Weapon);
+            AddWeapon(weapon.Weapon,weapon.SlotIndex);
         }
     }
 
@@ -92,7 +96,7 @@ public class PlayerController : Unit
         if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
             return;
 
-        foreach (var weapon in _weapons)
+        foreach (var weapon in Weapons)
         {
             weapon.Update(this);
         }
@@ -132,15 +136,18 @@ public class PlayerController : Unit
         }
     }
 
-    internal void AddUpgrade(UpgradeData data)
+    internal void UnlockUpgrade(UpgradeData data)
     {
-        Upgrades.Add(data);
+        UpgradesAvailable.Remove(data);
+
+        UpgradesAvailable.AddRange(data.NextUpgrades);
     }
 
 
-    internal void AddWeapon(WeaponBase weapon)
+    internal void AddWeapon(WeaponBase weapon , int slot)
     {
-        _weapons.Add(weapon);
+        weapon.Initialize(slot);
+        Weapons.Add(weapon);
     }
 
 
@@ -181,4 +188,11 @@ public class PlayerController : Unit
     }
 
 
+    public void IncreaseLifeMax(float multiplier)
+    {
+        float valueToAdd = _lifeMax * (multiplier - 1.0f);
+        
+        _life += valueToAdd;
+        _lifeMax += valueToAdd;
+    }
 }

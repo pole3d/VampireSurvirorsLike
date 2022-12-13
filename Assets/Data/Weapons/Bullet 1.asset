@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Bullet 1
   m_EditorClassIdentifier: 
   _weapon:
-    id: 0
+    rid: 0
+  _slotIndex: 0
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: WeaponBullet, ns: Gameplay.Weapons, asm: Assembly-CSharp}
       data:
         _damageMin: 8
         _damageMax: 12
         _coolDown: 0.5
         _prefab: {fileID: 3633932044844237191, guid: 4660ac6ef21504147b176616fca71ee3, type: 3}
+        _speed: 5

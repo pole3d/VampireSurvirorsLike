@@ -14,5 +14,6 @@ public class UpgradeData : ScriptableObject
     public BaseUpgrade Upgrade => _upgrade;
     public string Description => _description;
     public Sprite Sprite => _sprite;
+    public UpgradeData[] NextUpgrades => _nextUpgrades;
 
 }

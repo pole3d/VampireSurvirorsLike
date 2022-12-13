@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +14,7 @@ public class EnemyController : Unit
     GameObject _player;
     Rigidbody2D _rb;
     EnemyData _data;
+    private List<PlayerController> _playersInTrigger = new List<PlayerController>();
 
     private void Awake()
     {
@@ -25,6 +28,18 @@ public class EnemyController : Unit
         _data = data;
         _life = data.Life;
         _team = 1;
+    }
+
+    private void Update()
+    {
+        if (_life <= 0)
+            return;
+
+
+        foreach (var player in _playersInTrigger)
+        {
+            player.Hit(Time.deltaTime * _data.DamagePerSeconds);
+        }
     }
 
     void FixedUpdate()
@@ -68,13 +83,25 @@ public class EnemyController : Unit
         xp.GetComponent<CollectableXp>().Initialize(1);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        var other = HitWithParent.GetComponent<PlayerController>(collision);
+        var other = HitWithParent.GetComponent<PlayerController>(col);
 
         if (other != null)
         {
-            other.Hit(Time.deltaTime * _data.DamagePerSeconds);
+            if (_playersInTrigger.Contains(other) == false)
+                _playersInTrigger.Add(other);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        var other = HitWithParent.GetComponent<PlayerController>(col);
+
+        if (other != null)
+        {
+            if (_playersInTrigger.Contains(other))
+                _playersInTrigger.Remove(other);
         }
     }
 }

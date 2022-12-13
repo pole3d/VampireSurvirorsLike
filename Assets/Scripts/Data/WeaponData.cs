@@ -6,7 +6,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class WeaponData : ScriptableObject
 {
-    [SerializeField] [SerializeReference] [Instantiable(  type: typeof(WeaponBase))] WeaponBase _weapon;
+    [SerializeReference] [Instantiable(  type: typeof(WeaponBase))] WeaponBase _weapon;
+    [SerializeField] private int _slotIndex;
 
     public WeaponBase Weapon => _weapon;
+    public int SlotIndex => _slotIndex;
 }
