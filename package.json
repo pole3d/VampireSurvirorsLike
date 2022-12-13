@@ -1,0 +1,10 @@
+{
+    "name": "com.pole3d.vampiresurvivors",
+    "displayName": "ParrelSync",
+    "version": "0.9.0",
+    "unity": "2021.3",
+    "description": "Template for a vampire survivors like",
+    "license": "pole3d",
+	"keywords": [ "pole3d", "template" ],
+    "dependencies": {}
+}
