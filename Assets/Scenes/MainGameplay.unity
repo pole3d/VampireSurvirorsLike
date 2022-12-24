@@ -809,6 +809,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5972753027238745607, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
   m_PrefabInstance: {fileID: 3376954567177747589}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &401613627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401613619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c9ac84110616149937c828ebcefd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentActor: {fileID: 0}
+  Actions: []
+  States:
+  - Name: idle
+    ID: 0
+  - Name: walk
+    ID: 0
+  AnimationsDatas: {fileID: 11400000, guid: 222b36d9353167542bf918604940955a, type: 2}
+  StateTimer: 0
 --- !u!1 &415217280
 GameObject:
   m_ObjectHideFlags: 0

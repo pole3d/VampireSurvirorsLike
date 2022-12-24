@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3333458057628905155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.362, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.308, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4496988910612091953}
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: fe9f1299fa3d90a47a2233b6129a7287, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2f305b2183fc1bc4f84597eb44a6b098, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 162830682666279144}
   - component: {fileID: 4727944546984906339}
   - component: {fileID: 7367387483162049212}
+  - component: {fileID: 4986965215502141282}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -250,6 +251,25 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.010154843, y: 0.18956006}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.58152497
+--- !u!114 &4986965215502141282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654918703708801626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c9ac84110616149937c828ebcefd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentActor: {fileID: 0}
+  Actions: []
+  States:
+  - Name: idle
+    ID: 0
+  AnimationsDatas: {fileID: 11400000, guid: c539777f275fffb41ae4e125e3591484, type: 2}
+  StateTimer: 0

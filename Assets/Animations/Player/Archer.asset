@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: Archer
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 47af53be153f84e4a976ce2d500b904f, type: 3}
+    - {fileID: 21300000, guid: d9d4aa4ea019a224f96ed7104cbdb3f8, type: 3}
+    - {fileID: 21300000, guid: 9d23a21bbbbb23b4e8074854cf1e54dc, type: 3}
+    - {fileID: 21300000, guid: 8c3f9dc8ca7f5054698c061705e77141, type: 3}
+    - {fileID: 21300000, guid: ee8a0ed2186dc5b4c81741c2da137747, type: 3}
+    - {fileID: 21300000, guid: 946e4318919544d4da3f6ba63e0e9c9a, type: 3}
+    - {fileID: 21300000, guid: 349286dac9826c849ad8399b7f604efe, type: 3}
+    - {fileID: 21300000, guid: 441add9f9bc5f6947a13f644e0178607, type: 3}
+  - Name: walk
+    FPS: 36
+    Sprites:
+    - {fileID: 21300000, guid: 47af53be153f84e4a976ce2d500b904f, type: 3}
+    - {fileID: 21300000, guid: d9d4aa4ea019a224f96ed7104cbdb3f8, type: 3}
+    - {fileID: 21300000, guid: 9d23a21bbbbb23b4e8074854cf1e54dc, type: 3}
+    - {fileID: 21300000, guid: 8c3f9dc8ca7f5054698c061705e77141, type: 3}
+    - {fileID: 21300000, guid: ee8a0ed2186dc5b4c81741c2da137747, type: 3}
+    - {fileID: 21300000, guid: 946e4318919544d4da3f6ba63e0e9c9a, type: 3}
+    - {fileID: 21300000, guid: 349286dac9826c849ad8399b7f604efe, type: 3}
+    - {fileID: 21300000, guid: 441add9f9bc5f6947a13f644e0178607, type: 3}

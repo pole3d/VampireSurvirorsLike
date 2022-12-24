@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Gameplay.Weapons;
+using UnityCommon.Graphics.Actors;
 using UnityEngine;
 
 /// <summary>
@@ -31,6 +32,7 @@ public class PlayerController : Unit
     int _xp = 0;
 
 
+    ActorView _actorView;
     bool _isDead;
     Rigidbody2D _rb;
     Vector2 _inputs;
@@ -41,6 +43,7 @@ public class PlayerController : Unit
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _actorView = GetComponent<ActorView>();
 
         UpgradesAvailable = new List<UpgradeData>();
         UpgradesAvailable.AddRange(_playerData.Upgrades);
@@ -113,10 +116,14 @@ public class PlayerController : Unit
 
             if (Mathf.Abs(_lastDirection.x) > 0.1f)
                 _lastDirectionX = _inputs.x;
+
+            _actorView.SetState("walk");
         }
         else
         {
             _rb.velocity = new Vector2();
+            _actorView.SetState("idle");
+
         }
     }
 
