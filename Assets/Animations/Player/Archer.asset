@@ -26,7 +26,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 349286dac9826c849ad8399b7f604efe, type: 3}
     - {fileID: 21300000, guid: 441add9f9bc5f6947a13f644e0178607, type: 3}
   - Name: walk
-    FPS: 36
+    FPS: 24
     Sprites:
     - {fileID: 21300000, guid: 47af53be153f84e4a976ce2d500b904f, type: 3}
     - {fileID: 21300000, guid: d9d4aa4ea019a224f96ed7104cbdb3f8, type: 3}
