@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,9 +12,13 @@ using UnityEngine;
 /// </summary>
 public class EnemyController : Unit
 {
+    [SerializeField] SpriteRenderer _renderer;
+    
     GameObject _player;
     Rigidbody2D _rb;
     EnemyData _data;
+    
+    
     private List<PlayerController> _playersInTrigger = new List<PlayerController>();
 
     private void Awake()
@@ -67,10 +72,16 @@ public class EnemyController : Unit
 
     public override void Hit(float damage)
     {
+        _renderer.color = Color.black;
+        _renderer.DOKill();
+        _renderer.DOColor(Color.grey, 0.1f).SetLoops(2, LoopType.Yoyo);
+        
         _life -= damage;
 
         if (Life <= 0)
         {
+            _renderer.DOKill();
+
             Die();
         }
     }

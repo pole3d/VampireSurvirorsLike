@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: 1_bat
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 93f813e2534421242b6c788ddf8d12fb, type: 3}
+    - {fileID: 21300000, guid: 552de41fc57d47947a87b9505df72634, type: 3}
+    - {fileID: 21300000, guid: aee2a10170019e64ea4a8916bf2d9a65, type: 3}
+    - {fileID: 21300000, guid: f4511a2cccb463647ac911eea28efe7e, type: 3}
+    - {fileID: 21300000, guid: bd7a3a19931898e4ea55a3832332ec26, type: 3}
+    - {fileID: 21300000, guid: 7cfb444020cc44b4c8c97158245ea41c, type: 3}
+    - {fileID: 21300000, guid: 653745b6ff4f9f942ab0a90efe2a8723, type: 3}
