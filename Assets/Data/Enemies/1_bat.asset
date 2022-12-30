@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1_bat
   m_EditorClassIdentifier: 
   _life: 26
-  _damagePerSeconds: 15
-  _moveSpeed: 1.1
+  _damagePerSeconds: 20
+  _moveSpeed: 1.3
   _prefab: {fileID: 7654918703708801626, guid: 3266e129ff2e2a04caa9d713dede7d5c, type: 3}
   _spriteOverride: {fileID: 0}

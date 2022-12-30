@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [Serializable]
-public class WeaponUpgrade : BaseUpgrade
+public class AddWeaponUpgrade : BaseUpgrade
 {
     [SerializeField] WeaponData _data;
 

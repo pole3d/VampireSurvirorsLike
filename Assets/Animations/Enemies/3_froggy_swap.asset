@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: 3_froggy_swap
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 7e11e3f93a878c54c807113f60d9d73a, type: 3}
+    - {fileID: 21300000, guid: 5792f6eb0c7ef7842ac4d030c4b9675f, type: 3}
+    - {fileID: 21300000, guid: e2f5396e30085274197bfdec1eec901d, type: 3}
+    - {fileID: 21300000, guid: 1e83d4112ae71614a96c05e23c6654ea, type: 3}
+    - {fileID: 21300000, guid: 281405961d5bc2748a53114254170458, type: 3}
+    - {fileID: 21300000, guid: f765f09195d316f4bb45fbdd84b8c327, type: 3}

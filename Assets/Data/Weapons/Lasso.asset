@@ -21,7 +21,7 @@ MonoBehaviour:
     - rid: 0
       type: {class: WeaponLasso, ns: Gameplay.Weapons, asm: Assembly-CSharp}
       data:
-        _damageMin: 3
-        _damageMax: 7
+        _damageMin: 5
+        _damageMax: 8
         _coolDown: 3
         _prefab: {fileID: 3633932044844237191, guid: a3d4fae4e5f31e046beeab4cc5595196, type: 3}

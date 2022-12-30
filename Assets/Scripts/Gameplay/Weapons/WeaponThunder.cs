@@ -11,7 +11,7 @@ namespace Gameplay.Weapons
         [SerializeField] GameObject _prefab;
 
         public WeaponThunder()
-        {
+        { 
         }
 
         public override void Update(PlayerController player)

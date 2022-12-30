@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -168,15 +168,21 @@ public class MainGameplay : MonoBehaviour
 
         foreach (var enemy in _enemies)
         {
-            Vector3 direction = enemy.transform.position - position;
-
-            float distance = direction.sqrMagnitude;
-
-            if (distance < bestDistance)
-            {
-                bestDistance = distance;
-                bestEnemy = enemy;
-            }
+        	
+	        Vector3 viewport = Camera.main.WorldToViewportPoint(enemy.transform.position);
+	        if (viewport.x >= 0 && viewport.x <= 1 && viewport.y >= 0 && viewport.y <= 1)
+	        {
+        	
+	            Vector3 direction = enemy.transform.position - position;
+	
+	            float distance = direction.sqrMagnitude;
+	
+	            if (distance < bestDistance)
+	            {
+	                bestDistance = distance;
+	                bestEnemy = enemy;
+	            }
+	        }
         }
 
         return bestEnemy;

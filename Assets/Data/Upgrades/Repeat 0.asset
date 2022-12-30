@@ -10,17 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
-  m_Name: WeaponBullet2
+  m_Name: Repeat 0
   m_EditorClassIdentifier: 
-  _description: Bullet level 2
-  _sprite: {fileID: 21300000, guid: 82176bcef51ab6b4583f29287edb1455, type: 3}
+  _description: Repeat the attack
+  _sprite: {fileID: 0}
   _upgrade:
-    rid: 443800975833038849
+    rid: 443800975833038852
   _nextUpgrades: []
   references:
     version: 2
     RefIds:
-    - rid: 443800975833038849
-      type: {class: AddWeaponUpgrade, ns: , asm: Assembly-CSharp}
+    - rid: 443800975833038852
+      type: {class: WeaponModifierUpgrade, ns: , asm: Assembly-CSharp}
       data:
-        _data: {fileID: 11400000, guid: 4526b650c7f3f4a4c9a5418d51ed5195, type: 2}
+        _modifier:
+          rid: 443800975833038853
+    - rid: 443800975833038853
+      type: {class: RepeatModifier, ns: , asm: Assembly-CSharp}
+      data:
+        _count: 1
+        _timeToWait: 0.5

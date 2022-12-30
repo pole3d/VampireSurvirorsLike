@@ -14,12 +14,20 @@ public abstract class WeaponBase
     public int Slot { get; private set; }
     
     protected float _timerCoolDown;
-    
+
+    [System.NonSerialized] 
+    protected List<BaseWeaponModifier> _modifiers = new List<BaseWeaponModifier>();
     
 
     public void Initialize(int slot)
-    {
+    { 
         Slot = slot;
+    }
+
+    public void AddModifier(PlayerController player, BaseWeaponModifier modifier)
+    {
+        modifier.Initialize(player, this);
+        _modifiers.Add(modifier);
     }
 
     protected float GetDamage()
@@ -28,4 +36,9 @@ public abstract class WeaponBase
     }
     
     public abstract void Update(PlayerController player);
+
+    internal virtual void Execute(PlayerController player, ModifierType type = ModifierType.None, params float[] values)
+    {
+        
+    }
 }
