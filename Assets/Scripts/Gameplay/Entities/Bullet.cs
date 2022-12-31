@@ -15,14 +15,19 @@ public class Bullet : MonoBehaviour
     float _speed = 10;
     float _damage = 5;
     Vector3 _direction;
+    bool _canMove = true;
 
     public void Initialize(Vector3 direction , float damage , float speed )
     {
-        float angle = Mathf.Atan2(direction.y, direction.x) - Mathf.PI/2.0f;
-        transform.rotation = Quaternion.Euler(0 , 0, Mathf.Rad2Deg * angle);
-        
-        
-        _direction = direction;
+        if (Mathf.Abs(direction.x) > 0.01f && Mathf.Abs(direction.y) > 0.01f)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) - Mathf.PI / 2.0f;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);
+            _direction = direction;
+        }
+        else
+            _canMove = false;
+
         _speed = speed;
         _damage = damage;
     }
@@ -35,6 +40,9 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        if (_canMove == false)
+            return;
+
         transform.position += _direction * _speed * Time.deltaTime;
     }
 

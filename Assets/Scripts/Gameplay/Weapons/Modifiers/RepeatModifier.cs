@@ -33,7 +33,7 @@ public class RepeatModifier : BaseWeaponModifier
 			if (_currentCount >= _count)
 				_isAttackDone = false;
 
-			_weapon.Execute(_player);
+			_weapon.GlobalAttack(_player);
 		}
 
 	}

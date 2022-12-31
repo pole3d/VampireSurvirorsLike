@@ -18,3 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fc9e32731c831e46ba0de5e74790c60, type: 2}
   _upgrades:
   - {fileID: 11400000, guid: e72cc2f64281aa74a9c64832d120d37b, type: 2}
+  - {fileID: 11400000, guid: cdf47b3a69fbfa54eab6906b13a604d2, type: 2}
+  - {fileID: 11400000, guid: 5329946bab0e7c24a9c269d6dee94120, type: 2}
+  - {fileID: 11400000, guid: 9afa27c61bd2b5646aab5720d9a0d9fb, type: 2}

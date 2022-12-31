@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public class BaseWeaponModifier
 {
+    public virtual  bool CancelAttack => false;
 
     protected WeaponBase _weapon;
     protected PlayerController _player;
@@ -14,6 +15,8 @@ public class BaseWeaponModifier
     {
         _player = player;
         _weapon = weapon;
+
+        InitializeInternal();   
     }
 
     protected virtual void InitializeInternal()
@@ -31,4 +34,7 @@ public class BaseWeaponModifier
 
     }
 
+    internal virtual void OnShoot()
+    {
+    }
 }

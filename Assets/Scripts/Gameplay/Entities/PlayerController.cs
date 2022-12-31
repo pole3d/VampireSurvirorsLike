@@ -56,7 +56,7 @@ public class PlayerController : Unit
 
         foreach (var weapon in _playerData.Weapons)
         {
-            AddWeapon(weapon.Weapon,weapon.SlotIndex);
+            AddWeapon(weapon,weapon.SlotIndex);
         }
     }
 
@@ -91,6 +91,9 @@ public class PlayerController : Unit
 
     void FixedUpdate()
     {
+        if (_isDead)
+            return;
+
         Move();
     }
 
@@ -138,6 +141,9 @@ public class PlayerController : Unit
 
         if (Life <= 0)
         {
+            _rb.velocity = new Vector2();
+
+            _inputs = new Vector2();
             _isDead = true;
             OnDeath?.Invoke();
         }
@@ -151,10 +157,12 @@ public class PlayerController : Unit
     }
 
 
-    internal void AddWeapon(WeaponBase weapon , int slot)
+    internal void AddWeapon(WeaponData weaponData , int slot)
     {
-        weapon.Initialize(slot);
-        Weapons.Add(weapon);
+        var data = Instantiate(weaponData);
+
+        data.Weapon.Initialize(slot);
+        Weapons.Add(data.Weapon);
     }
 
 

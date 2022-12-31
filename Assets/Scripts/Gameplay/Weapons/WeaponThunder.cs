@@ -8,6 +8,8 @@ namespace Gameplay.Weapons
     /// </summary>
     public class WeaponThunder : WeaponBase
     {
+        public virtual bool DoRotate => false;
+
         [SerializeField] GameObject _prefab;
 
         public WeaponThunder()

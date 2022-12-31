@@ -9,6 +9,7 @@ public class WavesManager : MonoBehaviour
     [SerializeField] WavesLevelData _wavesLevel;
     [SerializeField] Transform _topRight;
     [SerializeField] Transform _bottomLeft;
+    [SerializeField] LayerMask _noSpawn;
 
     readonly List<WaveInstance> _wavesToPlay = new List<WaveInstance>();
     float _timer;
@@ -42,29 +43,48 @@ public class WavesManager : MonoBehaviour
     {
         for (int i = 0; i < data.EnemyCount; i++)
         {
-            GameObject go = GameObject.Instantiate(data.Enemy.Prefab);
 
+            bool success = false;
             Vector3 spawnPosition = Random.insideUnitCircle;
-            spawnPosition.z = 0;
-            spawnPosition.Normalize();
 
-            Vector3 tempPosition = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
-            if (tempPosition.x > _topRight.transform.position.x ||
-                tempPosition.x < _bottomLeft.transform.position.x)
+            for (int tryIndex = 0; tryIndex < 8; tryIndex++)
             {
-                spawnPosition.x = -spawnPosition.x;
+                spawnPosition = Random.insideUnitCircle;
+                spawnPosition.z = 0;
+                spawnPosition.Normalize();
+
+                Vector3 tempPosition = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
+                if (tempPosition.x > _topRight.transform.position.x ||
+                    tempPosition.x < _bottomLeft.transform.position.x)
+                {
+                    spawnPosition.x = -spawnPosition.x;
+                }
+                if (tempPosition.y > _topRight.transform.position.y ||
+                    tempPosition.y < _bottomLeft.transform.position.y)
+                {
+                    spawnPosition.y = -spawnPosition.y;
+                }
+
+                tempPosition = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
+
+                RaycastHit2D hit = Physics2D.CircleCast(tempPosition, 0.4f, Vector2.zero, 0.0f, _noSpawn);
+                Debug.DrawLine(tempPosition, tempPosition + Vector3.right * 0.4f, Color.red, 5);
+                if ( hit.collider == null )
+                {
+                    success = true;
+                    break;
+                }
             }
-            if (tempPosition.y > _topRight.transform.position.y ||
-                tempPosition.y < _bottomLeft.transform.position.y)
+
+            if (success)
             {
-                spawnPosition.y = -spawnPosition.y;
+                GameObject go = GameObject.Instantiate(data.Enemy.Prefab);
+                go.transform.position = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
+
+                var enemy = go.GetComponent<EnemyController>();
+                enemy.Initialize(MainGameplay.Instance.Player.gameObject, data.Enemy);
+                MainGameplay.Instance.Enemies.Add(enemy);
             }
-            
-            go.transform.position = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
-            
-            var enemy = go.GetComponent<EnemyController>();
-            enemy.Initialize(MainGameplay.Instance.Player.gameObject , data.Enemy);
-            MainGameplay.Instance.Enemies.Add(enemy);
         }
     }
 }

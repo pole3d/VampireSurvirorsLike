@@ -12,7 +12,8 @@ public abstract class WeaponBase
     [SerializeField] protected float _coolDown;
     
     public int Slot { get; private set; }
-    
+    public virtual bool DoRotate => true;
+
     protected float _timerCoolDown;
 
     [System.NonSerialized] 
@@ -37,8 +38,19 @@ public abstract class WeaponBase
     
     public abstract void Update(PlayerController player);
 
-    internal virtual void Execute(PlayerController player, ModifierType type = ModifierType.None, params float[] values)
+    internal virtual void SimpleAttack(PlayerController player, ModifierType type = ModifierType.None, params float[] values)
     {
         
+    }
+
+    internal virtual void GlobalAttack(PlayerController player)
+    {
+
+    }
+
+    internal void ModifyDamage(float multiplier)
+    {
+        _damageMin *= multiplier;
+        _damageMax *= multiplier;
     }
 }

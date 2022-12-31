@@ -17,7 +17,7 @@ public class AddWeaponUpgrade : BaseUpgrade
             }
         }
         
-        player.AddWeapon(_data.Weapon , _data.SlotIndex);
+        player.AddWeapon(_data , _data.SlotIndex);
     }
 
 }

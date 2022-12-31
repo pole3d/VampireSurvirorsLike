@@ -13,12 +13,13 @@ using UnityEngine;
 public class EnemyController : Unit
 {
     [SerializeField] SpriteRenderer _renderer;
-    
+
     GameObject _player;
+    Rigidbody2D _playerRb;
     Rigidbody2D _rb;
     EnemyData _data;
-    
-    
+
+
     private List<PlayerController> _playersInTrigger = new List<PlayerController>();
 
     private void Awake()
@@ -30,6 +31,8 @@ public class EnemyController : Unit
     public void Initialize(GameObject player, EnemyData data)
     {
         _player = player;
+        _playerRb = _player.GetComponent<Rigidbody2D>();
+
         _data = data;
         _life = data.Life;
         _team = 1;
@@ -52,16 +55,40 @@ public class EnemyController : Unit
         MoveToPlayer();
     }
 
+
+    Vector3 GetFuturePlayerPosition()
+    {
+        float distance = Vector3.Distance(transform.position, _player.transform.position);
+        //if ( distance > 25 )
+        //{
+        //    GameObject.Destroy(gameObject);
+        //    MainGameplay.Instance.Enemies.Remove(this);
+
+        //    Debug.Log("destrou");
+        //}
+
+       // if (distance > 2)
+        {
+            float time = 0.2f;
+            return (Vector2)_player.transform.position + _playerRb.velocity * time;
+
+        }
+        //return _player.transform.position;
+
+
+    }
+
     private void MoveToPlayer()
     {
-        Vector3 direction = _player.transform.position - transform.position;
+
+        Vector3 direction = GetFuturePlayerPosition() - transform.position;
         direction.z = 0;
 
         float moveStep = _data.MoveSpeed * Time.deltaTime;
         if (moveStep >= direction.magnitude)
         {
             _rb.velocity = Vector2.zero;
-            transform.position = _player.transform.position;
+            // transform.position = _player.transform.position;
         }
         else
         {
@@ -75,7 +102,7 @@ public class EnemyController : Unit
         _renderer.color = Color.black;
         _renderer.DOKill();
         _renderer.DOColor(Color.grey, 0.1f).SetLoops(2, LoopType.Yoyo);
-        
+
         _life -= damage;
 
         if (Life <= 0)

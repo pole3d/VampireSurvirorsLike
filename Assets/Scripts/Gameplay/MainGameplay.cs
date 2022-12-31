@@ -119,6 +119,9 @@ public class MainGameplay : MonoBehaviour
 
     private void OnLevelUp(int level)
     {
+        if (_player.UpgradesAvailable.Count == 0)
+            return;
+
         Pause();
 
         List<UpgradeData> upgrades = new List<UpgradeData>();
