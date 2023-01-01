@@ -19,9 +19,11 @@ public abstract class WeaponBase
     [System.NonSerialized] 
     protected List<BaseWeaponModifier> _modifiers = new List<BaseWeaponModifier>();
     
+    PlayerController _player;
 
-    public void Initialize(int slot)
-    { 
+    public void Initialize(PlayerController player, int slot)
+    {
+        _player = player;
         Slot = slot;
     }
 
@@ -33,7 +35,7 @@ public abstract class WeaponBase
 
     protected float GetDamage()
     {
-        return Random.Range(_damageMin, _damageMax);
+        return Random.Range(_damageMin, _damageMax) * _player.DamageMultiplier;
     }
     
     public abstract void Update(PlayerController player);

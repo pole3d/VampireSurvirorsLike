@@ -12,15 +12,20 @@ using UnityEngine;
 /// </summary>
 public class EnemyController : Unit
 {
+    public EnemyData Data => _data;
+    public BaseMovement Movement => _movement;
+
     [SerializeField] SpriteRenderer _renderer;
 
     GameObject _player;
     Rigidbody2D _playerRb;
     Rigidbody2D _rb;
     EnemyData _data;
+    BaseMovement _movement;
 
 
     private List<PlayerController> _playersInTrigger = new List<PlayerController>();
+
 
     private void Awake()
     {
@@ -28,7 +33,7 @@ public class EnemyController : Unit
     }
 
 
-    public void Initialize(GameObject player, EnemyData data)
+    public void Initialize(GameObject player, EnemyData data, BaseMovement movement)
     {
         _player = player;
         _playerRb = _player.GetComponent<Rigidbody2D>();
@@ -36,6 +41,8 @@ public class EnemyController : Unit
         _data = data;
         _life = data.Life;
         _team = 1;
+
+        _movement = movement;
     }
 
     private void Update()
@@ -52,50 +59,16 @@ public class EnemyController : Unit
 
     void FixedUpdate()
     {
-        MoveToPlayer();
+        _movement.Update(this, _rb);
     }
 
 
-    Vector3 GetFuturePlayerPosition()
+    public Vector3 GetFuturePlayerPosition()
     {
-        float distance = Vector3.Distance(transform.position, _player.transform.position);
-        //if ( distance > 25 )
-        //{
-        //    GameObject.Destroy(gameObject);
-        //    MainGameplay.Instance.Enemies.Remove(this);
-
-        //    Debug.Log("destrou");
-        //}
-
-       // if (distance > 2)
-        {
-            float time = 0.2f;
-            return (Vector2)_player.transform.position + _playerRb.velocity * time;
-
-        }
-        //return _player.transform.position;
-
-
+        float time = 0.2f;
+        return (Vector2)_player.transform.position + _playerRb.velocity * time;
     }
 
-    private void MoveToPlayer()
-    {
-
-        Vector3 direction = GetFuturePlayerPosition() - transform.position;
-        direction.z = 0;
-
-        float moveStep = _data.MoveSpeed * Time.deltaTime;
-        if (moveStep >= direction.magnitude)
-        {
-            _rb.velocity = Vector2.zero;
-            // transform.position = _player.transform.position;
-        }
-        else
-        {
-            direction.Normalize();
-            _rb.velocity = direction * _data.MoveSpeed;
-        }
-    }
 
     public override void Hit(float damage)
     {

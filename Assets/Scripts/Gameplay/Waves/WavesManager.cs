@@ -27,20 +27,26 @@ public class WavesManager : MonoBehaviour
     {
         if (MainGameplay.Instance.State != MainGameplay.GameState.Gameplay)
             return;
-        
+
         _timer += Time.deltaTime;
 
         for (int i = _wavesToPlay.Count - 1; i >= 0; i--)
         {
-            _wavesToPlay[i].Update(this,_timer);
-            
-            if ( _wavesToPlay[i].IsDone)
+            _wavesToPlay[i].Update(this, _timer);
+
+            if (_wavesToPlay[i].IsDone)
                 _wavesToPlay.RemoveAt(i);
         }
     }
 
     public void Spawn(WaveData data)
     {
+        if (data.Movement is CircleMovement)
+        {
+            SpawnCircle(data);
+            return;
+        }
+
         for (int i = 0; i < data.EnemyCount; i++)
         {
 
@@ -69,7 +75,7 @@ public class WavesManager : MonoBehaviour
 
                 RaycastHit2D hit = Physics2D.CircleCast(tempPosition, 0.4f, Vector2.zero, 0.0f, _noSpawn);
                 Debug.DrawLine(tempPosition, tempPosition + Vector3.right * 0.4f, Color.red, 5);
-                if ( hit.collider == null )
+                if (hit.collider == null)
                 {
                     success = true;
                     break;
@@ -82,7 +88,55 @@ public class WavesManager : MonoBehaviour
                 go.transform.position = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
 
                 var enemy = go.GetComponent<EnemyController>();
-                enemy.Initialize(MainGameplay.Instance.Player.gameObject, data.Enemy);
+                enemy.Initialize(MainGameplay.Instance.Player.gameObject, Instantiate(data.Enemy) , new DefaultMovement());
+                MainGameplay.Instance.Enemies.Add(enemy);
+            }
+        }
+    }
+
+    private void SpawnCircle(WaveData data)
+    {
+        float angle = Mathf.PI * 2.0f / (float)data.EnemyCount;
+        CircleMovement circleDefault = data.Movement as CircleMovement;
+
+
+        for (int i = 0; i < data.EnemyCount; i++)
+        {
+
+            bool success = false;
+            Vector3 spawnPosition = new Vector2(Mathf.Cos(angle * i), Mathf.Sin(angle * i));
+
+
+            Vector3 tempPosition = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
+            if (tempPosition.x > _topRight.transform.position.x ||
+                tempPosition.x < _bottomLeft.transform.position.x)
+            {
+                continue;
+            }
+            if (tempPosition.y > _topRight.transform.position.y ||
+                tempPosition.y < _bottomLeft.transform.position.y)
+            {
+                continue;
+            }
+
+            RaycastHit2D hit = Physics2D.CircleCast(tempPosition, 0.4f, Vector2.zero, 0.0f, _noSpawn);
+            if (hit.collider == null)
+            {
+                success = true;
+            }
+
+            if (success)
+            {
+                GameObject go = GameObject.Instantiate(data.Enemy.Prefab);
+                go.transform.position = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
+
+                EnemyData enemyData = Instantiate(data.Enemy);
+
+                CircleMovement movement = new CircleMovement();
+
+                var enemy = go.GetComponent<EnemyController>();
+                movement.Initialize( enemy,  go.transform.position, MainGameplay.Instance.Player.transform.position);
+                enemy.Initialize(MainGameplay.Instance.Player.gameObject, enemyData ,movement );
                 MainGameplay.Instance.Enemies.Add(enemy);
             }
         }

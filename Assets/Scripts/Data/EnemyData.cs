@@ -1,3 +1,4 @@
+using Common.Tools;
 using UnityEngine;
 
 /// <summary>
@@ -17,4 +18,7 @@ public class EnemyData : ScriptableObject
     [SerializeField] float _moveSpeed;
     [SerializeField] GameObject _prefab;
     [SerializeField] Sprite _spriteOverride;
+
+
+
 }

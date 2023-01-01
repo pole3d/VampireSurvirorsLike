@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     public void Initialize(Vector3 direction , float damage , float speed )
     {
-        if (Mathf.Abs(direction.x) > 0.01f && Mathf.Abs(direction.y) > 0.01f)
+        if (Mathf.Abs(direction.x) > 0.001f || Mathf.Abs(direction.y) > 0.001f)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) - Mathf.PI / 2.0f;
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * angle);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Net.NetworkInformation;
 using Gameplay.Weapons;
 using UnityCommon.Graphics.Actors;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class PlayerController : Unit
     public Action<int> OnLevelUp { get; set; }
     public List<UpgradeData> UpgradesAvailable { get; private set; }
 
-
+    public float DamageMultiplier = 1.0f;
     public Vector2 Direction => _lastDirection;
     public float DirectionX => _lastDirectionX;
     public PlayerData PlayerData => _playerData;
@@ -161,7 +162,7 @@ public class PlayerController : Unit
     {
         var data = Instantiate(weaponData);
 
-        data.Weapon.Initialize(slot);
+        data.Weapon.Initialize(this,slot);
         Weapons.Add(data.Weapon);
     }
 
@@ -200,6 +201,11 @@ public class PlayerController : Unit
         OnDeath = null;
         OnXP = null;
         OnLevelUp = null;
+    }
+
+    public void AddDamageMultiplier(float multiplier)
+    {
+        DamageMultiplier *= multiplier;
     }
 
 

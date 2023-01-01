@@ -1,3 +1,4 @@
+using Common.Tools;
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,6 +16,7 @@ public class WaveData
     public enum MoveType
     {
         Normal,
+        Circle
     }
 
     public int TimeToStart => _timeToStart;
@@ -22,7 +24,7 @@ public class WaveData
     public float RepeatTimer => _repeatTimer;
     public int EnemyCount => _enemyCount;
     public EnemyData Enemy => _enemy;
-    public MoveType MovementType => _movementType;
+    public BaseMovement Movement => _movement;
     public float SpawnDistance => _spawnDistance;
 
     [SerializeField] int _timeToStart;
@@ -30,6 +32,6 @@ public class WaveData
     [SerializeField] float _repeatTimer = 0;
     [SerializeField] int _enemyCount = 20;
     [SerializeField] EnemyData _enemy;
-    [SerializeField] MoveType _movementType;
+    [SerializeReference][Instantiable(typeof(BaseMovement))] BaseMovement _movement;
     [SerializeField] float _spawnDistance = 15;
 }
