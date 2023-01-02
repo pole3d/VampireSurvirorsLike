@@ -80,7 +80,7 @@ namespace Gameplay.Weapons
 
                 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
 
-                go.GetComponent<Bullet>().Initialize(direction, GetDamage(), _speed);
+                go.GetComponent<Bullet>().Initialize(this,direction, GetDamage(), _speed);
             }
         }
 

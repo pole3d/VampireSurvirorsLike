@@ -8,7 +8,7 @@ namespace Gameplay.Weapons
     /// </summary>
     public class WeaponThunder : WeaponBase
     {
-        public virtual bool DoRotate => false;
+        public override bool DoRotate => false;
 
         [SerializeField] GameObject _prefab;
 
@@ -31,7 +31,7 @@ namespace Gameplay.Weapons
 
             GameObject go = GameObject.Instantiate(_prefab, enemy.transform.position, Quaternion.identity);
 
-            go.GetComponent<Bullet>().Initialize(new Vector3(),GetDamage(),0);
+            go.GetComponent<Bullet>().Initialize( this, new Vector3(),GetDamage(),0);
 
         }
     }

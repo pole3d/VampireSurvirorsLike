@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 internal class CircleMovement : BaseMovement
 {
@@ -14,7 +9,6 @@ internal class CircleMovement : BaseMovement
 
     float _timer;
     Vector3 _direction;
-
 
 
     public void Initialize(EnemyController enemy, Vector3 position, Vector3 center)
@@ -30,7 +24,7 @@ internal class CircleMovement : BaseMovement
 
         float sign = Mathf.Sign(Mathf.Sin((_timer / _timeYoyo) * Mathf.PI));
 
-        rb.velocity = sign * _direction * enemy.Data.MoveSpeed;
+        rb.velocity = sign * _direction * _speed;
 
 
     }

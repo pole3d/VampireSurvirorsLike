@@ -87,8 +87,13 @@ public class WavesManager : MonoBehaviour
                 GameObject go = GameObject.Instantiate(data.Enemy.Prefab);
                 go.transform.position = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
 
+                EnemyData enemyData = Instantiate(data.Enemy);
+
+                if (data.OverrideLife != -1)
+                    enemyData.OverrideLife(data.OverrideLife);
+
                 var enemy = go.GetComponent<EnemyController>();
-                enemy.Initialize(MainGameplay.Instance.Player.gameObject, Instantiate(data.Enemy) , new DefaultMovement());
+                enemy.Initialize(MainGameplay.Instance.Player.gameObject, enemyData, new DefaultMovement());
                 MainGameplay.Instance.Enemies.Add(enemy);
             }
         }
@@ -131,6 +136,9 @@ public class WavesManager : MonoBehaviour
                 go.transform.position = MainGameplay.Instance.Player.transform.position + spawnPosition * data.SpawnDistance;
 
                 EnemyData enemyData = Instantiate(data.Enemy);
+
+                if (data.OverrideLife != -1)
+                    enemyData.OverrideLife(data.OverrideLife);
 
                 CircleMovement movement = new CircleMovement();
 

@@ -1,3 +1,4 @@
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 /// <summary>
@@ -13,8 +14,18 @@ public class Unit : MonoBehaviour
     protected float _life;
     protected float _lifeMax;
 
+    protected Vector3? _push;
+    protected float _pushTimer;
+
+
     public virtual void Hit(float damage)
     {
    
+    }
+
+    internal void Push(float pushForce, Vector3 direction, float pushTimer)
+    {
+        _push = direction * pushForce;
+        _pushTimer = pushTimer;
     }
 }

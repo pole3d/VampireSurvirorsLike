@@ -55,4 +55,12 @@ public abstract class WeaponBase
         _damageMin *= multiplier;
         _damageMax *= multiplier;
     }
+
+    internal void OnHit(Unit other , Bullet bullet)
+    {
+        foreach (var item in _modifiers)
+        {
+            item.OnHit(other, bullet);
+        }
+    }
 }

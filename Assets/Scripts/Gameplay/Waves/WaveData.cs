@@ -26,12 +26,14 @@ public class WaveData
     public EnemyData Enemy => _enemy;
     public BaseMovement Movement => _movement;
     public float SpawnDistance => _spawnDistance;
+    public float OverrideLife => _overrideLife;
 
     [SerializeField] int _timeToStart;
     [SerializeField] int _timesToRepeat = 1;
     [SerializeField] float _repeatTimer = 0;
     [SerializeField] int _enemyCount = 20;
     [SerializeField] EnemyData _enemy;
-    [SerializeReference][Instantiable(typeof(BaseMovement))] BaseMovement _movement;
     [SerializeField] float _spawnDistance = 15;
+    [SerializeField] float _overrideLife = -1;
+    [SerializeReference][Instantiable(typeof(BaseMovement))] BaseMovement _movement;
 }

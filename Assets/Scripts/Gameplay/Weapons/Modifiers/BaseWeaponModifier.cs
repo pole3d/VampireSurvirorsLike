@@ -37,4 +37,9 @@ public class BaseWeaponModifier
     internal virtual void OnShoot()
     {
     }
+
+    public virtual void OnHit(Unit enemy, Bullet bullet)
+    {
+
+    }
 }

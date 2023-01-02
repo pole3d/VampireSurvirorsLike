@@ -16,9 +16,12 @@ public class Bullet : MonoBehaviour
     float _damage = 5;
     Vector3 _direction;
     bool _canMove = true;
+    WeaponBase _weapon;
 
-    public void Initialize(Vector3 direction , float damage , float speed )
+    public void Initialize(WeaponBase weapon,  Vector3 direction , float damage , float speed )
     {
+        _weapon = weapon;
+
         if (Mathf.Abs(direction.x) > 0.001f || Mathf.Abs(direction.y) > 0.001f)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) - Mathf.PI / 2.0f;
@@ -61,6 +64,7 @@ public class Bullet : MonoBehaviour
             
             GameObject.Destroy(gameObject);
 
+            _weapon.OnHit(other ,this);
             other.Hit(_damage);
         }
     }

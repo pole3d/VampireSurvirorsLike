@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 /// <summary>
 /// Represents an enemy who's moving toward the player
@@ -59,7 +60,21 @@ public class EnemyController : Unit
 
     void FixedUpdate()
     {
-        _movement.Update(this, _rb);
+        if (_push != null)
+        {
+            _pushTimer -= Time.deltaTime;
+            _rb.velocity = _push.Value;
+
+            if ( _pushTimer <= 0 )
+            {
+                _push = null;
+            }
+        }
+        else
+        {
+            _movement.Update(this, _rb);
+        }
+
     }
 
 
@@ -115,4 +130,6 @@ public class EnemyController : Unit
                 _playersInTrigger.Remove(other);
         }
     }
+
+
 }

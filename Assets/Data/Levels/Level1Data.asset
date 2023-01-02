@@ -18,57 +18,64 @@ MonoBehaviour:
     _repeatTimer: 3
     _enemyCount: 4
     _enemy: {fileID: 11400000, guid: de7771034e75ff04197edc11a666a0a1, type: 2}
+    _spawnDistance: 15
+    _overrideLife: -1
     _movement:
       rid: -2
-    _spawnDistance: 15
   - _timeToStart: 30
     _timesToRepeat: 1
     _repeatTimer: 0
     _enemyCount: 1
     _enemy: {fileID: 11400000, guid: fdb51e8dc444cc943ac974d7cfa9bab9, type: 2}
+    _spawnDistance: 15
+    _overrideLife: -1
     _movement:
       rid: -2
-    _spawnDistance: 15
   - _timeToStart: 20
-    _timesToRepeat: 16
+    _timesToRepeat: 24
     _repeatTimer: 4
     _enemyCount: 5
     _enemy: {fileID: 11400000, guid: de7771034e75ff04197edc11a666a0a1, type: 2}
+    _spawnDistance: 20
+    _overrideLife: -1
     _movement:
       rid: -2
-    _spawnDistance: 20
   - _timeToStart: 90
     _timesToRepeat: 1
     _repeatTimer: 3
     _enemyCount: 12
     _enemy: {fileID: 11400000, guid: 5b4201af98a4c6445b26bc76db8875f9, type: 2}
+    _spawnDistance: 8
+    _overrideLife: 100
     _movement:
       rid: 2299966161904730112
-    _spawnDistance: 8
   - _timeToStart: 90
     _timesToRepeat: 16
     _repeatTimer: 2
     _enemyCount: 5
     _enemy: {fileID: 11400000, guid: 5b4201af98a4c6445b26bc76db8875f9, type: 2}
+    _spawnDistance: 20
+    _overrideLife: -1
     _movement:
       rid: -2
-    _spawnDistance: 20
   - _timeToStart: 110
     _timesToRepeat: 30
     _repeatTimer: 3
     _enemyCount: 5
     _enemy: {fileID: 11400000, guid: 5b4201af98a4c6445b26bc76db8875f9, type: 2}
+    _spawnDistance: 20
+    _overrideLife: -1
     _movement:
       rid: -2
-    _spawnDistance: 20
   - _timeToStart: 120
     _timesToRepeat: 1
     _repeatTimer: 0
     _enemyCount: 2
     _enemy: {fileID: 11400000, guid: fdb51e8dc444cc943ac974d7cfa9bab9, type: 2}
+    _spawnDistance: 20
+    _overrideLife: -1
     _movement:
       rid: -2
-    _spawnDistance: 20
   references:
     version: 2
     RefIds:

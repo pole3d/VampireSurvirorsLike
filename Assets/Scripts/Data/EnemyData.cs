@@ -19,6 +19,11 @@ public class EnemyData : ScriptableObject
     [SerializeField] GameObject _prefab;
     [SerializeField] Sprite _spriteOverride;
 
+    public void OverrideLife(float newLife)
+    {
+        _life = newLife;
+    }
+
 
 
 }
