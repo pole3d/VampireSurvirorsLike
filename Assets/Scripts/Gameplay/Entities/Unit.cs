@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour
 
     protected Vector3? _push;
     protected float _pushTimer;
+    protected float _pushMassModifier;
 
 
     public virtual void Hit(float damage)
@@ -23,9 +24,12 @@ public class Unit : MonoBehaviour
    
     }
 
-    internal void Push(float pushForce, Vector3 direction, float pushTimer)
+    internal void Push(float pushForce, Vector3 direction, float pushTimer , float massModifier)
     {
         _push = direction * pushForce;
         _pushTimer = pushTimer;
+        _pushMassModifier = massModifier;
+
+        GetComponent<Rigidbody2D>().mass *= massModifier;
     }
 }

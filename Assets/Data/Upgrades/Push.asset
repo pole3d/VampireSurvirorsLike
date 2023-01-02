@@ -30,3 +30,4 @@ MonoBehaviour:
       data:
         _pushForce: 2
         _pushTimer: 0.2
+        _massmodifier: 10

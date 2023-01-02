@@ -68,6 +68,8 @@ public class EnemyController : Unit
             if ( _pushTimer <= 0 )
             {
                 _push = null;
+                _rb.mass /= _pushMassModifier;
+
             }
         }
         else
@@ -105,8 +107,14 @@ public class EnemyController : Unit
     {
         MainGameplay.Instance.Enemies.Remove(this);
         GameObject.Destroy(gameObject);
-        var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXP, transform.position, Quaternion.identity);
-        xp.GetComponent<CollectableXp>().Initialize(1);
+
+        int rnd = UnityEngine.Random.Range(0, 100);
+
+        if (rnd <= 60)
+        {
+            var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXP, transform.position, Quaternion.identity);
+            xp.GetComponent<CollectableXp>().Initialize(1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

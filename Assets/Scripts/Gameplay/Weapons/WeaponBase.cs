@@ -10,9 +10,11 @@ public abstract class WeaponBase
     [SerializeField] protected float _damageMin;
     [SerializeField] protected float _damageMax;
     [SerializeField] protected float _coolDown;
-    
+    [SerializeField] protected int _throughEnemyCount = 1;
+
     public int Slot { get; private set; }
     public virtual bool DoRotate => true;
+    public int ThroughEnemyCount => _throughEnemyCount;
 
     protected float _timerCoolDown;
 
@@ -56,6 +58,11 @@ public abstract class WeaponBase
         _damageMax *= multiplier;
     }
 
+    internal void SetThroughEnemy(int count)
+    {
+        _throughEnemyCount = count;
+    }
+
     internal void OnHit(Unit other , Bullet bullet)
     {
         foreach (var item in _modifiers)
@@ -63,4 +70,6 @@ public abstract class WeaponBase
             item.OnHit(other, bullet);
         }
     }
+
+
 }

@@ -10,6 +10,7 @@ internal class PushModifier : BaseWeaponModifier
 
     [SerializeField] float _pushForce = 2;
     [SerializeField] float _pushTimer = 0.2f;
+    [SerializeField] float _massmodifier = 10;
 
     protected override void InitializeInternal()
     {
@@ -20,7 +21,7 @@ internal class PushModifier : BaseWeaponModifier
     {
         Vector3 direction = enemy.transform.position - bullet.transform.position;
 
-        enemy.Push(_pushForce, direction, _pushTimer);
+        enemy.Push(_pushForce, direction, _pushTimer , _massmodifier);
     }
 }
 

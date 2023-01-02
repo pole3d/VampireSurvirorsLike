@@ -49,7 +49,7 @@ MonoBehaviour:
     _overrideLife: 100
     _movement:
       rid: 2299966161904730112
-  - _timeToStart: 90
+  - _timeToStart: 105
     _timesToRepeat: 16
     _repeatTimer: 2
     _enemyCount: 5
