@@ -76,6 +76,13 @@ MonoBehaviour:
     _overrideLife: -1
     _movement:
       rid: -2
+  _startUpgrades: []
+  _upgradesToAdd:
+  - _level: 2
+    _upgrades:
+    - {fileID: 11400000, guid: 5329946bab0e7c24a9c269d6dee94120, type: 2}
+    - {fileID: 11400000, guid: 9afa27c61bd2b5646aab5720d9a0d9fb, type: 2}
+    - {fileID: 0}
   references:
     version: 2
     RefIds:
