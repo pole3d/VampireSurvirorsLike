@@ -58,6 +58,11 @@ public abstract class WeaponBase
         _damageMax *= multiplier;
     }
 
+    internal void ModifyCooldown(float multiplier)
+    {
+        _coolDown *= multiplier;    
+    }
+
     internal void SetThroughEnemy(int count)
     {
         _throughEnemyCount = count;

@@ -17,6 +17,7 @@ MonoBehaviour:
   _upgrade:
     rid: 443800987303936001
   _nextUpgrades: []
+  _timesAllowed: 10
   references:
     version: 2
     RefIds:

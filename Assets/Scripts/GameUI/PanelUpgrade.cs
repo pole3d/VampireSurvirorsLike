@@ -24,7 +24,6 @@ public class PanelUpgrade : MonoBehaviour
     public void OnClick()
     {
         MainGameplay.Instance.Player.UnlockUpgrade(_data);
-        _data.Upgrade.Execute(MainGameplay.Instance.Player);
         MainGameplay.Instance.UnPause();
         MainGameplay.Instance.GameUIManager.ClosePanelUpgrade();
     }

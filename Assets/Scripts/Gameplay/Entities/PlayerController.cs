@@ -47,7 +47,11 @@ public class PlayerController : Unit
         _actorView = GetComponent<ActorView>();
 
         UpgradesAvailable = new List<UpgradeData>();
-        UpgradesAvailable.AddRange(_playerData.Upgrades);
+
+        foreach (var item in _playerData.Upgrades)
+        {
+            UpgradesAvailable.Add(Instantiate(item));
+        }
     }
 
     void Start()
@@ -57,7 +61,7 @@ public class PlayerController : Unit
 
         foreach (var weapon in _playerData.Weapons)
         {
-            AddWeapon(weapon,weapon.SlotIndex);
+            AddWeapon(weapon, weapon.SlotIndex);
         }
     }
 
@@ -69,7 +73,7 @@ public class PlayerController : Unit
         ReadInputs();
         Shoot();
 
-        if ( Input.GetKeyDown(KeyCode.F5))
+        if (Input.GetKeyDown(KeyCode.F5))
         {
             CollectXP(3);
         }
@@ -115,7 +119,7 @@ public class PlayerController : Unit
         {
             _inputs.Normalize();
             _rb.velocity = _inputs * _playerData.MoveSpeed;
-            
+
             _lastDirection = _inputs;
 
             if (Mathf.Abs(_lastDirection.x) > 0.1f)
@@ -152,17 +156,21 @@ public class PlayerController : Unit
 
     internal void UnlockUpgrade(UpgradeData data)
     {
-        UpgradesAvailable.Remove(data);
+        data.Upgrade.Execute(MainGameplay.Instance.Player);
+        data.Use();
+
+        if (data.TimesAllowed <= 0)
+            UpgradesAvailable.Remove(data);
 
         UpgradesAvailable.AddRange(data.NextUpgrades);
     }
 
 
-    internal void AddWeapon(WeaponData weaponData , int slot)
+    internal void AddWeapon(WeaponData weaponData, int slot)
     {
         var data = Instantiate(weaponData);
 
-        data.Weapon.Initialize(this,slot);
+        data.Weapon.Initialize(this, slot);
         Weapons.Add(data.Weapon);
     }
 
@@ -208,11 +216,16 @@ public class PlayerController : Unit
         DamageMultiplier *= multiplier;
     }
 
+    public void MultiplyCoolDown(float multiplier)
+    {
+        DamageMultiplier *= multiplier;
+    }
+
 
     public void IncreaseLifeMax(float multiplier)
     {
         float valueToAdd = _lifeMax * (multiplier - 1.0f);
-        
+
         _life += valueToAdd;
         _lifeMax += valueToAdd;
     }

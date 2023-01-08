@@ -6,14 +6,21 @@ using UnityEngine;
 [CreateAssetMenu]
 public class UpgradeData : ScriptableObject
 {
-    [SerializeField] [TextArea] string _description;
+    [SerializeField][TextArea] string _description;
     [SerializeField] Sprite _sprite;
-    [SerializeField] [SerializeReference] [Instantiable(type: typeof(BaseUpgrade))] BaseUpgrade _upgrade;
+    [SerializeField][SerializeReference][Instantiable(type: typeof(BaseUpgrade))] BaseUpgrade _upgrade;
     [SerializeField] UpgradeData[] _nextUpgrades;
+    [SerializeField] int _timesAllowed;
 
     public BaseUpgrade Upgrade => _upgrade;
     public string Description => _description;
     public Sprite Sprite => _sprite;
     public UpgradeData[] NextUpgrades => _nextUpgrades;
+    public int TimesAllowed => _timesAllowed;
+
+    public void Use()
+    {
+        _timesAllowed--;  
+    }
 
 }
