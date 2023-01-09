@@ -84,6 +84,11 @@ public class MainGameplay : MonoBehaviour
     void Update()
     {
         UpdateTimer();
+
+        if ( Input.GetKeyDown(KeyCode.F6))
+        {
+            Camera.main.GetComponent<ShakeCamera>().Shake(0.3f, 0.3f);
+        }
     }
 
     void UpdateTimer()

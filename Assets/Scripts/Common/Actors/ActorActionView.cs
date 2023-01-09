@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,11 @@ namespace UnityCommon.Graphics.Actors
     public class ActorActionView
     {
         public string Name;
-        //public SpriteAnimationView Animation;
-        public string Sound;
-        //public float AnimationSpeed;
         public string NextAction;
+
+        [SerializeReference]
+        [Instantiable(typeof(GameFeedback))]
+        public List<GameFeedback> Feedbacks = new List<GameFeedback>();
 
 
         [HideInInspector]

@@ -202,6 +202,9 @@ namespace UnityCommon.Graphics.Actors
                 return;
             }
 
+            if (action.Feedbacks != null && action.Feedbacks.Count > 0)
+                GameEventsManager.PlayEvents(action.Feedbacks, gameObject);
+
             SpritesAnimationDatas.AnimationDatas animation = GetAnimation(action.Name);
 
             if ( animation == null )
@@ -214,6 +217,28 @@ namespace UnityCommon.Graphics.Actors
             m_currentAction.CurrentTimer = 0;
         }
 
+        public void PlayActionIfExists(string actionName)
+        {
+            ActorActionView action = GetAction(actionName);
+            if (action == null)
+            {
+                return;
+            }
+
+            if (action.Feedbacks != null && action.Feedbacks.Count > 0)
+                GameEventsManager.PlayEvents(action.Feedbacks, gameObject);
+
+            SpritesAnimationDatas.AnimationDatas animation = GetAnimation(action.Name);
+
+            if (animation == null)
+            {
+                Debug.LogError("can't find animation " + actionName);
+                return;
+            }
+
+            m_currentAction = action;
+            m_currentAction.CurrentTimer = 0;
+        }
 
 
         ActorActionView GetAction(int index)

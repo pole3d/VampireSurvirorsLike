@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: 4_froggy_snow
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 5beae64d78ba3a644be7b9a181df9220, type: 3}
+    - {fileID: 21300000, guid: 062b50ff4d1a60546b1210748c249204, type: 3}
+    - {fileID: 21300000, guid: 0dcfd4ff210f6914ab212b9984eda00c, type: 3}
+    - {fileID: 21300000, guid: 847ff8a0cb02c434bb81c445f83d5920, type: 3}
+    - {fileID: 21300000, guid: 64a683641dd9ea54b8e3456a8c077774, type: 3}
+    - {fileID: 21300000, guid: 9e816829a715f564d8911dd089ab17c6, type: 3}
+    - {fileID: 21300000, guid: 6d924dfcdca5b524bb229267227ed10b, type: 3}
+    - {fileID: 21300000, guid: c8ee5df665322014dafe831662d3cc0c, type: 3}
+    - {fileID: 21300000, guid: aa01c5681f7a7ee47914e807b3d9564a, type: 3}
+    - {fileID: 21300000, guid: 47f355d27e3fa9445b62fb464d56b0ba, type: 3}
+    - {fileID: 21300000, guid: f972989df723de8429ae9e453ec988b4, type: 3}
+    - {fileID: 21300000, guid: d37fb26c6daf41142acbfa9aaa9ac64a, type: 3}
+    - {fileID: 21300000, guid: 013bd399f83c7034eac0f615e8e94e66, type: 3}
+    - {fileID: 21300000, guid: 311e8fb9297885948bc4405bbd271e34, type: 3}
+    - {fileID: 21300000, guid: 5f5e4e0863b82684a8e326ff752ef8bb, type: 3}
+    - {fileID: 21300000, guid: 67271180a4c0571438aada417620ee35, type: 3}
+    - {fileID: 21300000, guid: 52d03f241fcdfdd42af902d070db087b, type: 3}
+  - Name: attack
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 0c956aebbc3be09478d4708cb1ddce94, type: 3}
+    - {fileID: 21300000, guid: 1b124d2c148b1624a897436c1754981d, type: 3}
+    - {fileID: 21300000, guid: eedc85cf3ab2e234890afdd5ef285d51, type: 3}
+    - {fileID: 21300000, guid: e3373ed6a836dc5439f3c923e1e6737f, type: 3}
+    - {fileID: 21300000, guid: ba61c0b971a759a4eab63c652c21cc62, type: 3}
+    - {fileID: 21300000, guid: a7b8048f1cf8f7b489f1e1b46a996f7e, type: 3}
+    - {fileID: 21300000, guid: a32445d2a013d4b48bc981388489bd12, type: 3}
+    - {fileID: 21300000, guid: f2abadf24fe23094db604e31da21418d, type: 3}
+    - {fileID: 21300000, guid: 1694ed74f24c86847b4f8c56c047a24a, type: 3}
+    - {fileID: 21300000, guid: 69ff42f6427ae2c4ca42cb45594e797e, type: 3}
+    - {fileID: 21300000, guid: 63e18d8510c276343a83ac980fe49cb2, type: 3}
+    - {fileID: 21300000, guid: 05e7c78f5f01fb649b4fb1ece2c2498d, type: 3}
+    - {fileID: 21300000, guid: 031f90252886eb94fb5a3327dbecc68b, type: 3}
+    - {fileID: 21300000, guid: 2cf1545c3335cff40b4e3a3c56722467, type: 3}
+    - {fileID: 21300000, guid: cfd3857787ac37f4db02502295c99fa5, type: 3}
+    - {fileID: 21300000, guid: 63a672a088a60dc4f811703bc2291b6b, type: 3}
+    - {fileID: 21300000, guid: a0a43cd5bd6ff5644b6d6294e9203a4f, type: 3}
+    - {fileID: 21300000, guid: 2ac70fc31db3ff742a55d2b904a3ce06, type: 3}
+    - {fileID: 21300000, guid: 44e828063e0a1004bb1b858fc4fd91ff, type: 3}
+    - {fileID: 21300000, guid: 08798e6e7cb838a4c889161fc31670b0, type: 3}
+  - Name: spawn
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 5beae64d78ba3a644be7b9a181df9220, type: 3}

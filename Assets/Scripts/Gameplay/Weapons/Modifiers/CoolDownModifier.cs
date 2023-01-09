@@ -12,7 +12,7 @@ internal class CoolDownModifier : BaseWeaponModifier
 
     protected override void InitializeInternal()
     {
-        _weapon.ModifyDamage
+        _weapon.ModifyCooldown(_multiplier);
     }
 
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityCommon.Graphics.Actors;
 using UnityEngine;
 
 /// <summary>
@@ -95,6 +96,9 @@ public class WavesManager : MonoBehaviour
                 var enemy = go.GetComponent<EnemyController>();
                 enemy.Initialize(MainGameplay.Instance.Player.gameObject, enemyData, new DefaultMovement());
                 MainGameplay.Instance.Enemies.Add(enemy);
+
+                ActorView view = enemy.GetComponent<ActorView>();
+                view.PlayActionIfExists("spawn");
             }
         }
     }
