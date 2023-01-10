@@ -8,9 +8,11 @@ public class GameEventsManager : MonoBehaviour
 
     public static GameEventsManager Instance => s_instance;
     public List<GameEvent> GameEvents;
+    public List<GameObject> Parameters;
     public HashSet<string> Triggers = new HashSet<string>();
 
-    Dictionary<string,GameEvent> _events;
+    Dictionary<string, GameObject> _gameObjectParameters = new Dictionary<string, GameObject>();
+    Dictionary<string, GameEvent> _events;
     List<GameEventInstance> _currentEvents = new List<GameEventInstance>();
 
     private void Awake()
@@ -22,6 +24,28 @@ public class GameEventsManager : MonoBehaviour
         foreach (var gameEvent in GameEvents)
         {
             _events.Add(gameEvent.name.ToLower(), gameEvent);
+        }
+
+        foreach (var parameter in Parameters)
+        {
+            AddParameter(parameter);
+        }
+    }
+
+    public static bool TryGetParameter(string name , out GameObject go)
+    {
+        s_instance._gameObjectParameters.TryGetValue(name, out go);
+        
+        return go != null;
+    }
+
+    public static void AddParameter(GameObject go)
+    {
+        if (s_instance._gameObjectParameters.ContainsKey(go.name) == false)
+            s_instance._gameObjectParameters.Add(go.name, go);
+        else
+        {
+            s_instance._gameObjectParameters[go.name] = go;
         }
     }
 
@@ -35,9 +59,9 @@ public class GameEventsManager : MonoBehaviour
 
     public static void PlayEvent(string eventName)
     {
-        PlayEvent(eventName, null , null);
+        PlayEvent(eventName, null, null);
     }
-    
+
     public static void PlayEvent(string eventName, MonoBehaviour behavior)
     {
         PlayEvent(eventName, behavior.gameObject);
@@ -64,11 +88,11 @@ public class GameEventsManager : MonoBehaviour
         return false;
     }
 
-    public static GameEventInstance PlayEvent(string eventName , GameObject gameObject , params GameObject[] parameters)
+    public static GameEventInstance PlayEvent(string eventName, GameObject gameObject, params GameObject[] parameters)
     {
         if (s_instance._events.TryGetValue(eventName.ToLower(), out GameEvent gameEvent))
         {
-            return PlayEvent( gameEvent, gameObject , parameters);
+            return PlayEvent(gameEvent, gameObject, parameters);
         }
         else
         {
@@ -86,12 +110,13 @@ public class GameEventsManager : MonoBehaviour
         }
     }
 
-    public static GameEventInstance PlayEvent(GameEvent @event, GameObject gameObject , params GameObject[] parameters)
+    public static GameEventInstance PlayEvent(GameEvent @event, GameObject gameObject, params GameObject[] parameters)
     {
-        return PlayEvents(@event.Feedbacks,gameObject,parameters);
+        return PlayEvents(@event.Feedbacks, gameObject, parameters);
     }
-    
-    public static GameEventInstance PlayEvents(List<GameFeedback> feedbacks, GameObject gameObject , params GameObject[] parameters)
+
+    public static GameEventInstance PlayEvents(List<GameFeedback> feedbacks, GameObject gameObject,
+        params GameObject[] parameters)
     {
         GameEventInstance instance = new GameEventInstance(@feedbacks);
 
@@ -104,10 +129,10 @@ public class GameEventsManager : MonoBehaviour
             }
         }
 
-        if ( gameObject != null )
+        if (gameObject != null)
             instance.PushGameObject(gameObject);
 
-        if ( instance.Execute() == false )
+        if (instance.Execute() == false)
         {
             s_instance._currentEvents.Add(instance);
         }
@@ -122,8 +147,5 @@ public class GameEventsManager : MonoBehaviour
             if (_currentEvents[i].Execute())
                 _currentEvents.RemoveAt(i);
         }
-
     }
-
-
 }

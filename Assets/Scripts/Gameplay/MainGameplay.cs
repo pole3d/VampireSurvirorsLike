@@ -176,6 +176,8 @@ public class MainGameplay : MonoBehaviour
 
         foreach (var enemy in _enemies)
         {
+            if ( enemy.IsStopped)
+                continue;
         	
 	        Vector3 viewport = Camera.main.WorldToViewportPoint(enemy.transform.position);
 	        if (viewport.x >= 0 && viewport.x <= 1 && viewport.y >= 0 && viewport.y <= 1)

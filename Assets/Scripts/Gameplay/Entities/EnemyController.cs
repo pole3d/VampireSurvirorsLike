@@ -11,7 +11,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 /// data bout the enemy are stored in the EnemyData class
 /// CAUTION : don't forget to call Initialize when you create an enemy
 /// </summary>
-public class EnemyController : Unit
+public class EnemyController : Unit, IStoppable
 {
     public EnemyData Data => _data;
     public BaseMovement Movement => _movement;
@@ -24,15 +24,12 @@ public class EnemyController : Unit
     EnemyData _data;
     BaseMovement _movement;
 
-
     private List<PlayerController> _playersInTrigger = new List<PlayerController>();
-
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
 
     public void Initialize(GameObject player, EnemyData data, BaseMovement movement)
     {
@@ -48,9 +45,8 @@ public class EnemyController : Unit
 
     private void Update()
     {
-        if (_life <= 0)
+        if (IsStopped || _life <= 0)
             return;
-
 
         foreach (var player in _playersInTrigger)
         {
@@ -60,23 +56,24 @@ public class EnemyController : Unit
 
     void FixedUpdate()
     {
+        if (IsStopped)
+            return;
+        
         if (_push != null)
         {
             _pushTimer -= Time.deltaTime;
             _rb.velocity = _push.Value;
 
-            if ( _pushTimer <= 0 )
+            if (_pushTimer <= 0)
             {
                 _push = null;
                 _rb.mass /= _pushMassModifier;
-
             }
         }
         else
         {
             _movement.Update(this, _rb);
         }
-
     }
 
 
@@ -140,4 +137,5 @@ public class EnemyController : Unit
     }
 
 
+    public bool IsStopped { get; set; }
 }

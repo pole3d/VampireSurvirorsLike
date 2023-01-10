@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4_BOSS_froggysnow
   m_EditorClassIdentifier: 
   _life: 1000
-  _damagePerSeconds: 30
+  _damagePerSeconds: 22
   _moveSpeed: 1
   _prefab: {fileID: 7654918703708801626, guid: 181933b1db24c724882e93d251dbd944, type: 3}
   _spriteOverride: {fileID: 0}

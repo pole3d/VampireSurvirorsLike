@@ -47,6 +47,10 @@ public class GameEventInstance
         {
             _gameobjects.Push(value);
         }
+        else if (GameEventsManager.TryGetParameter(name, out value))
+        {
+            _gameobjects.Push(value);
+        }
         else
         {
             GameObject go = GameObject;

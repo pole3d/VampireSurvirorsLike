@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3333458057628905155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.012, y: -0.253, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalPosition: {x: -0.012, y: -0.267, z: 0}
+  m_LocalScale: {x: 2, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4496988910612091953}
@@ -272,10 +272,15 @@ MonoBehaviour:
   - Name: spawn
     NextAction: 
     Feedbacks:
+    - rid: 3864089820490104840
+    - rid: 3864089820490104832
     - rid: 2299966339488415746
     - rid: 2299966339488415751
     - rid: 2299966339488415752
     - rid: 2299966339488415754
+    - rid: 3864089820490104841
+    - rid: 3864089820490104835
+    - rid: 3864089820490104834
     CurrentTimer: 0
   States:
   - Name: idle
@@ -292,15 +297,34 @@ MonoBehaviour:
     - rid: 2299966339488415751
       type: {class: DoArrival, ns: , asm: Assembly-CSharp}
       data:
-        StartOffset: {x: 0, y: 12, z: 0}
+        StartOffset: {x: 0, y: 17, z: 0}
         Duration: 1
         Local: 1
+        Delay: 2
     - rid: 2299966339488415752
       type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
       data:
-        Timer: 1
+        Timer: 3
     - rid: 2299966339488415754
       type: {class: CameraShake, ns: , asm: Assembly-CSharp}
       data:
         Duration: 0.2
         Magnitude: 0.2
+    - rid: 3864089820490104832
+      type: {class: StopGameObject, ns: , asm: Assembly-CSharp}
+      data:
+        IsStopped: 1
+    - rid: 3864089820490104834
+      type: {class: StopGameObject, ns: , asm: Assembly-CSharp}
+      data:
+        IsStopped: 0
+    - rid: 3864089820490104835
+      type: {class: PopGameObject, ns: UnityCommon.GameEvent, asm: Assembly-CSharp}
+    - rid: 3864089820490104840
+      type: {class: ExecuteGameEvent, ns: , asm: Assembly-CSharp}
+      data:
+        Event: {fileID: 11400000, guid: e75e3e0940535d14687020bf61c723f6, type: 2}
+    - rid: 3864089820490104841
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 0.5

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e29e13f7186bff43a88b15003ed1111, type: 3}
+  m_Name: BossComing
+  m_EditorClassIdentifier: 
+  Comments: 
+  Feedbacks:
+  - rid: 3864089820490104836
+  - rid: 3864089820490104838
+  - rid: 3864089820490104837
+  - rid: 3864089820490104839
+  references:
+    version: 2
+    RefIds:
+    - rid: 3864089820490104836
+      type: {class: PushGameObject, ns: UnityCommon.GameEvent, asm: Assembly-CSharp}
+      data:
+        Name: PanelWarning
+    - rid: 3864089820490104837
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 5
+    - rid: 3864089820490104838
+      type: {class: ActivateFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Activate: 1
+    - rid: 3864089820490104839
+      type: {class: ActivateFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Activate: 0
