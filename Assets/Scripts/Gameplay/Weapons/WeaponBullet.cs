@@ -17,7 +17,7 @@ namespace Gameplay.Weapons
         {
         }
         
-        public override void Update( PlayerController player )
+        public override void Update(IShooter shooter)
         {
             foreach (var item in _modifiers)
             {
@@ -36,10 +36,10 @@ namespace Gameplay.Weapons
 
             _timerCoolDown -= _coolDown;
 
-            GlobalAttack(player); 
+            GlobalAttack(shooter); 
         }
 
-        internal override void GlobalAttack(PlayerController player)
+        internal override void GlobalAttack(IShooter shooter)
         {
             bool shoot = true;
             foreach (var item in _modifiers)
@@ -49,7 +49,7 @@ namespace Gameplay.Weapons
             }
             if (shoot)
             {
-                SimpleAttack(player);
+                SimpleAttack(shooter);
             }
 
             foreach (var item in _modifiers)
@@ -58,15 +58,15 @@ namespace Gameplay.Weapons
             }
         }
 
-        internal override void SimpleAttack(PlayerController player , ModifierType type =  ModifierType.None , params float[] values )
+        internal override void SimpleAttack(IShooter shooter, ModifierType type = ModifierType.None, params float[] values)
         {
-            EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(player.transform.position);
-            if (enemy == null)
+            GameObject target = shooter.GetTarget();
+            if (target == null)
                 return;
 
-            var playerPosition = player.transform.position;
+            var playerPosition = shooter.Position;
             GameObject go = GameObject.Instantiate(_prefab, playerPosition, Quaternion.identity);
-            Vector3 direction = enemy.transform.position - playerPosition;
+            Vector3 direction = target.transform.position - playerPosition;
 
             if (direction.sqrMagnitude > 0)
             {
@@ -80,7 +80,7 @@ namespace Gameplay.Weapons
 
                 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
 
-                go.GetComponent<Bullet>().Initialize(this,direction, GetDamage(), _speed);
+                go.GetComponent<Bullet>().Initialize(this, shooter.Team, direction, GetDamage(), _speed);
             }
         }
 

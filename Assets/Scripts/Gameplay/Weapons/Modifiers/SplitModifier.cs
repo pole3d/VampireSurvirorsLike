@@ -24,7 +24,7 @@ public class SplitModifier : BaseWeaponModifier
         for (int i = 0; i < _count; i++)
         {
             float angle = -totalAngle / 2.0f + i * _angle;
-            _weapon.SimpleAttack(_player, ModifierType.Split, angle);
+            _weapon.SimpleAttack(_shooter, ModifierType.Split, angle);
         }
     }
 

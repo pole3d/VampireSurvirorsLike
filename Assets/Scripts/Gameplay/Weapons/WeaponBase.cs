@@ -21,33 +21,33 @@ public abstract class WeaponBase
     [System.NonSerialized] 
     protected List<BaseWeaponModifier> _modifiers = new List<BaseWeaponModifier>();
     
-    PlayerController _player;
+    IShooter _shooter;
 
-    public void Initialize(PlayerController player, int slot)
+    public void Initialize(IShooter shooter, int slot)
     {
-        _player = player;
+        _shooter = shooter;
         Slot = slot;
     }
 
-    public void AddModifier(PlayerController player, BaseWeaponModifier modifier)
+    public void AddModifier(BaseWeaponModifier modifier, IShooter shooter)
     {
-        modifier.Initialize(player, this);
+        modifier.Initialize(shooter, this);
         _modifiers.Add(modifier);
     }
 
     protected float GetDamage()
     {
-        return Random.Range(_damageMin, _damageMax) * _player.DamageMultiplier;
+        return Random.Range(_damageMin, _damageMax) * _shooter.DamageMultiplier;
     }
     
-    public abstract void Update(PlayerController player);
+    public abstract void Update(IShooter shooter);
 
-    internal virtual void SimpleAttack(PlayerController player, ModifierType type = ModifierType.None, params float[] values)
+    internal virtual void SimpleAttack(IShooter shooter, ModifierType type = ModifierType.None, params float[] values)
     {
         
     }
 
-    internal virtual void GlobalAttack(PlayerController player)
+    internal virtual void GlobalAttack(IShooter shooter)
     {
 
     }

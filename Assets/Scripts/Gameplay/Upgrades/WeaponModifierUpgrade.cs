@@ -10,7 +10,7 @@ public class WeaponModifierUpgrade : BaseUpgrade
 	
     public override void Execute( PlayerController player )
     {
-        player.Weapons[0].AddModifier( player, _modifier );
+        player.Weapons[0].AddModifier(_modifier, player);
     }
 
 }

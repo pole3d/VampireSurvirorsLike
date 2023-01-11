@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level1Data
   m_EditorClassIdentifier: 
   _waves:
-  - _timeToStart: 5
+  - _timeToStart: 2
     _timesToRepeat: 1
     _repeatTimer: 0
     _enemyCount: 1

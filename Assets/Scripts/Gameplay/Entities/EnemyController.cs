@@ -11,10 +11,19 @@ using static UnityEngine.EventSystems.EventTrigger;
 /// data bout the enemy are stored in the EnemyData class
 /// CAUTION : don't forget to call Initialize when you create an enemy
 /// </summary>
-public class EnemyController : Unit, IStoppable
+public class EnemyController : Unit, IStoppable , IShooter
 {
     public EnemyData Data => _data;
     public BaseMovement Movement => _movement;
+    public bool IsStopped { get; set; }
+
+    public float DamageMultiplier => 1;
+
+    public Vector3 Position => transform.position;
+
+    public int DirectionX => 1;
+
+    public Transform Transform => transform;
 
     [SerializeField] SpriteRenderer _renderer;
 
@@ -77,6 +86,11 @@ public class EnemyController : Unit, IStoppable
     }
 
 
+    public GameObject GetTarget()
+    {
+        return _player;
+    }
+
     public Vector3 GetFuturePlayerPosition()
     {
         float time = 0.2f;
@@ -137,5 +151,4 @@ public class EnemyController : Unit, IStoppable
     }
 
 
-    public bool IsStopped { get; set; }
 }

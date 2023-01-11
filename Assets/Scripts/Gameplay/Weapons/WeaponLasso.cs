@@ -15,7 +15,7 @@ namespace Gameplay.Weapons
         {
         }
 
-        public override void Update(PlayerController player)
+        public override void Update(IShooter shooter)
         {
             _timerCoolDown += Time.deltaTime;
 
@@ -25,11 +25,11 @@ namespace Gameplay.Weapons
             _timerCoolDown -= _coolDown;
 
 
-            Vector2 position = (Vector2)player.transform.position + Vector2.right * player.DirectionX * 2;
+            Vector2 position = (Vector2)shooter.Position + Vector2.right * shooter.DirectionX * 2;
 
-            GameObject go = GameObject.Instantiate(_prefab, position, Quaternion.identity,player.transform);
+            GameObject go = GameObject.Instantiate(_prefab, position, Quaternion.identity, shooter.Transform);
 
-            go.GetComponent<Bullet>().Initialize(this, new Vector3(),GetDamage(),0);
+            go.GetComponent<Bullet>().Initialize(this, shooter.Team, new Vector3(),GetDamage(),0);
 
         }
     }

@@ -278,8 +278,9 @@ MonoBehaviour:
     - rid: 2299966339488415751
     - rid: 2299966339488415752
     - rid: 2299966339488415754
-    - rid: 3864089820490104841
     - rid: 3864089820490104835
+    - rid: 2299966388522450945
+    - rid: 3864089820490104841
     - rid: 3864089820490104834
     CurrentTimer: 0
   States:
@@ -310,6 +311,10 @@ MonoBehaviour:
       data:
         Duration: 0.2
         Magnitude: 0.2
+    - rid: 2299966388522450945
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: 100ea4238196ef04db86168950238e8a, type: 2}
     - rid: 3864089820490104832
       type: {class: StopGameObject, ns: , asm: Assembly-CSharp}
       data:

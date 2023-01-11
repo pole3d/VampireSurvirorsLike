@@ -10,7 +10,8 @@ using UnityEngine.Serialization;
 /// </summary>
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] int _team;
+    public int Team;
+
     [SerializeField] float _timeToLive = 10.0f;
     [SerializeField] GameObject _prefabHit;
     [SerializeField] GameObject _prefabTextHit;
@@ -22,10 +23,11 @@ public class Bullet : MonoBehaviour
     WeaponBase _weapon;
     int _troughEnemyCount;
 
-    public void Initialize(WeaponBase weapon,  Vector3 direction , float damage , float speed )
+    public void Initialize(WeaponBase weapon, int team,  Vector3 direction , float damage , float speed )
     {
         _weapon = weapon;
         _troughEnemyCount = _weapon.ThroughEnemyCount;
+        Team = team;
 
         if (Mathf.Abs(direction.x) > 0.001f || Mathf.Abs(direction.y) > 0.001f)
         {
@@ -62,7 +64,7 @@ public class Bullet : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
-        else if (other.Team != _team)
+        else if (other.Team != Team)
         {
             _troughEnemyCount--;
 

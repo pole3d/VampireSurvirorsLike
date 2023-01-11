@@ -9,11 +9,11 @@ public class BaseWeaponModifier
     public virtual  bool CancelAttack => false;
 
     protected WeaponBase _weapon;
-    protected PlayerController _player;
+    protected IShooter _shooter;
 
-    public void Initialize(PlayerController player , WeaponBase weapon)
+    public void Initialize(IShooter player , WeaponBase weapon)
     {
-        _player = player;
+        _shooter = player;
         _weapon = weapon;
 
         InitializeInternal();   

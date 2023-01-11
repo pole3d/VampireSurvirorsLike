@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Net.NetworkInformation;
 using Gameplay.Weapons;
+using TMPro;
 using UnityCommon.Graphics.Actors;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ using UnityEngine;
 /// Represents the player
 /// manages the controller, the weapons, the in game lifebar and the level up
 /// </summary>
-public class PlayerController : Unit
+public class PlayerController : Unit , IShooter
 {
     [SerializeField] PlayerData _playerData;
     [SerializeField] LevelUpData _levelUpData;
@@ -22,12 +23,17 @@ public class PlayerController : Unit
     public Action<int> OnLevelUp { get; set; }
     public List<UpgradeData> UpgradesAvailable { get; private set; }
 
-    public float DamageMultiplier = 1.0f;
+    public float DamageMultiplier { get; set; } = 1.0f;
     public Vector2 Direction => _lastDirection;
-    public float DirectionX => _lastDirectionX;
+    public int DirectionX => _lastDirectionX;
     public PlayerData PlayerData => _playerData;
 
     public List<WeaponBase> Weapons => _weapons;
+
+    public Vector3 Position => transform.position;
+
+
+    public Transform Transform => transform;
 
     int _level = 1;
     int _xp = 0;
@@ -38,7 +44,7 @@ public class PlayerController : Unit
     Rigidbody2D _rb;
     Vector2 _inputs;
     Vector2 _lastDirection = Vector2.right;
-    float _lastDirectionX = 1;
+    int _lastDirectionX = 1;
     List<WeaponBase> _weapons = new List<WeaponBase>();
 
     void Awake()
@@ -123,7 +129,7 @@ public class PlayerController : Unit
             _lastDirection = _inputs;
 
             if (Mathf.Abs(_lastDirection.x) > 0.1f)
-                _lastDirectionX = _inputs.x;
+                _lastDirectionX = (int)_inputs.x;
 
             _actorView.SetState("walk");
         }
@@ -228,5 +234,14 @@ public class PlayerController : Unit
 
         _life += valueToAdd;
         _lifeMax += valueToAdd;
+    }
+
+    public GameObject GetTarget()
+    {
+        EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
+        if (enemy == null)
+            return null;
+
+        return enemy.gameObject;
     }
 }
