@@ -10,6 +10,7 @@ public class GameEventInstance
     public Dictionary<string, float> Values = new Dictionary<string, float>();
     public Dictionary<string, GameObject> _gameObjectParameters = new Dictionary<string, GameObject>();
     public string Tag => _tag;
+    public bool IsDone => _currentIndex >= Feedbacks.Count;
 
     Stack<GameObject> _gameobjects = new Stack<GameObject>();
     int _currentIndex;

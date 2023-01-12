@@ -2,7 +2,7 @@
 
 namespace Gameplay.Weapons
 {
-    
+
     /// <summary>
     /// Represents a weapon that shot one bullet at a time to the closest enemy
     /// </summary>
@@ -12,11 +12,12 @@ namespace Gameplay.Weapons
 
         [SerializeField] GameObject _prefab;
         [SerializeField] float _speed;
+        [SerializeField] bool _needTarget;
 
         public WeaponBullet()
         {
         }
-        
+
         public override void Update(IShooter shooter)
         {
             foreach (var item in _modifiers)
@@ -36,7 +37,7 @@ namespace Gameplay.Weapons
 
             _timerCoolDown -= _coolDown;
 
-            GlobalAttack(shooter); 
+            GlobalAttack(shooter);
         }
 
         internal override void GlobalAttack(IShooter shooter)
@@ -61,19 +62,26 @@ namespace Gameplay.Weapons
         internal override void SimpleAttack(IShooter shooter, ModifierType type = ModifierType.None, params float[] values)
         {
             GameObject target = shooter.GetTarget();
-            if (target == null)
-                return;
 
-            var playerPosition = shooter.Position;
-            GameObject go = GameObject.Instantiate(_prefab, playerPosition, Quaternion.identity);
-            Vector3 direction = target.transform.position - playerPosition;
+            if ( _needTarget && target == null ) 
+            {
+                return;
+            }
+
+            Vector3 direction = Vector3.right;
+            var shooterPosition = shooter.Position;
+
+            if (target != null)
+                direction = target.transform.position - shooterPosition;
+
+            GameObject go = GameObject.Instantiate(_prefab, shooterPosition, Quaternion.identity);
 
             if (direction.sqrMagnitude > 0)
             {
                 direction.Normalize();
                 float angle = Mathf.Atan2(direction.y, direction.x);
 
-                if ( type == ModifierType.Split)
+                if (type == ModifierType.Split)
                 {
                     angle += values[0];
                 }

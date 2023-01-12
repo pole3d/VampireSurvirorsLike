@@ -17,3 +17,4 @@ MonoBehaviour:
   _moveSpeed: 1
   _prefab: {fileID: 7654918703708801626, guid: 181933b1db24c724882e93d251dbd944, type: 3}
   _spriteOverride: {fileID: 0}
+  _ai: {fileID: 11400000, guid: 00e2a1fd94523f2408c9dc2e315d4969, type: 2}

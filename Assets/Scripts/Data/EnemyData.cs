@@ -12,12 +12,14 @@ public class EnemyData : ScriptableObject
     public float MoveSpeed => _moveSpeed;
     public GameObject Prefab => _prefab;
     public Sprite SpriteOverride => _spriteOverride;
+    public AIData AI => _ai;
 
     [SerializeField] float _life;
     [SerializeField] float _damagePerSeconds;
     [SerializeField] float _moveSpeed;
     [SerializeField] GameObject _prefab;
     [SerializeField] Sprite _spriteOverride;
+    [SerializeField] AIData _ai;
 
     public void OverrideLife(float newLife)
     {

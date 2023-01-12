@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using static AIData;
 using static UnityEngine.EventSystems.EventTrigger;
 
 /// <summary>
@@ -11,7 +12,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 /// data bout the enemy are stored in the EnemyData class
 /// CAUTION : don't forget to call Initialize when you create an enemy
 /// </summary>
-public class EnemyController : Unit, IStoppable , IShooter
+public class EnemyController : Unit, IStoppable, IShooter
 {
     public EnemyData Data => _data;
     public BaseMovement Movement => _movement;
@@ -32,6 +33,9 @@ public class EnemyController : Unit, IStoppable , IShooter
     Rigidbody2D _rb;
     EnemyData _data;
     BaseMovement _movement;
+    AIData _ai;
+    GameEventInstance _currentAI;
+
 
     private List<PlayerController> _playersInTrigger = new List<PlayerController>();
 
@@ -50,12 +54,19 @@ public class EnemyController : Unit, IStoppable , IShooter
         _team = 1;
 
         _movement = movement;
+        _ai = data.AI;
+
     }
 
     private void Update()
     {
         if (IsStopped || _life <= 0)
             return;
+
+        if ( _ai != null && ( _currentAI == null || _currentAI.IsDone))
+        {
+            _currentAI = GameEventsManager.PlayEvents(_ai.Sequences[0].Feedbacks, gameObject);
+        }
 
         foreach (var player in _playersInTrigger)
         {
@@ -67,7 +78,7 @@ public class EnemyController : Unit, IStoppable , IShooter
     {
         if (IsStopped)
             return;
-        
+
         if (_push != null)
         {
             _pushTimer -= Time.deltaTime;
@@ -81,7 +92,7 @@ public class EnemyController : Unit, IStoppable , IShooter
         }
         else
         {
-            _movement.Update(this, _rb);
+            _movement?.Update(this, _rb);
         }
     }
 
