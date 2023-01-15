@@ -50,6 +50,7 @@ public class EnemyController : Unit, IStoppable, IShooter
         _playerRb = _player.GetComponent<Rigidbody2D>();
 
         _data = data;
+        _lifeMax = data.Life;
         _life = data.Life;
         _team = 1;
 

@@ -7,15 +7,20 @@ using UnityEngine;
 /// <summary>
 /// Manages all the UI of the main Gameplay
 /// </summary>
-public class GameUIManager : MonoBehaviour
+public class GameUIManager : MonoBehaviour , IContainer
 {
     [SerializeField] GameObject _panelGameOver;
     [SerializeField] GameObject _panelVictory;
 
     [SerializeField] TMP_Text _textTimer;
     [SerializeField] XPBar _xpBar;
+    [SerializeField] FillBar _bossBar;
     [SerializeField] GameObject _panelUpgradesParent;
     [SerializeField] PanelUpgrade[] _panelUpgrades;
+
+    public GameObject Content { get => _boss.gameObject; set => _boss = value.GetComponent<EnemyController>(); }
+
+    EnemyController _boss;
 
     internal void ClosePanelUpgrade()
     {
@@ -72,5 +77,13 @@ public class GameUIManager : MonoBehaviour
         _textTimer.text = $"{minutes:00}:{seconds:00}";
     }
 
+    private void Update()
+    {
+        if (_boss == null)
+            return;
+
+        _bossBar.SetText($"{_boss.Life:0.} / {_boss.LifeMax:0.}");
+        _bossBar.SetValue(_boss.Life , 0 , _boss.LifeMax);
+    }
 
 }

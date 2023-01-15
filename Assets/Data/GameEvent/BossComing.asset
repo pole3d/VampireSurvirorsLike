@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Comments: 
   Feedbacks:
+  - rid: 2299966458268483584
+  - rid: 2299966458268483586
+  - rid: 2299966458268483585
   - rid: 3864089820490104836
   - rid: 3864089820490104838
   - rid: 3864089820490104837
@@ -21,6 +24,18 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 2299966458268483584
+      type: {class: SetContainer, ns: , asm: Assembly-CSharp}
+      data:
+        Container: UIManager
+    - rid: 2299966458268483585
+      type: {class: ActivateFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Activate: 1
+    - rid: 2299966458268483586
+      type: {class: PushGameObject, ns: UnityCommon.GameEvent, asm: Assembly-CSharp}
+      data:
+        Name: BossBar
     - rid: 3864089820490104836
       type: {class: PushGameObject, ns: UnityCommon.GameEvent, asm: Assembly-CSharp}
       data:
