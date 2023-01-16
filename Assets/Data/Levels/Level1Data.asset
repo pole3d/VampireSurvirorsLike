@@ -85,6 +85,15 @@ MonoBehaviour:
     _overrideLife: -1
     _movement:
       rid: -2
+  - _timeToStart: 110
+    _timesToRepeat: 45
+    _repeatTimer: 3
+    _enemyCount: 5
+    _enemy: {fileID: 11400000, guid: 5b4201af98a4c6445b26bc76db8875f9, type: 2}
+    _spawnDistance: 20
+    _overrideLife: -1
+    _movement:
+      rid: -2
   _startUpgrades: []
   _upgradesToAdd:
   - _level: 2

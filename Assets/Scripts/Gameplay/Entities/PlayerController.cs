@@ -128,8 +128,8 @@ public class PlayerController : Unit , IShooter
 
             _lastDirection = _inputs;
 
-            if (Mathf.Abs(_lastDirection.x) > 0.1f)
-                _lastDirectionX = (int)_inputs.x;
+            if (Mathf.Abs(_inputs.x) > 0.1f)
+                _lastDirectionX = (int)Mathf.Sign(_inputs.x);
 
             _actorView.SetState("walk");
         }
