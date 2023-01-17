@@ -16,19 +16,18 @@ public class GameUIManager : MonoBehaviour , IContainer
     [SerializeField] XPBar _xpBar;
     [SerializeField] FillBar _bossBar;
     [SerializeField] GameObject _panelUpgradesParent;
-    [SerializeField] PanelUpgrade[] _panelUpgrades;
+    [SerializeField] UpgradeUI[] _panelUpgrades;
+    [SerializeField] PanelWeapons _panelWeapons;
 
     public GameObject Content { get => _boss.gameObject; set => _boss = value.GetComponent<EnemyController>(); }
 
+    PlayerController _player;
     EnemyController _boss;
 
-    internal void ClosePanelUpgrade()
-    {
-        _panelUpgradesParent.SetActive(false);
-    }
 
     public void Initialize(PlayerController player)
     {
+        _player = player;
         player.OnXP += OnXP;
         player.OnLevelUp += OnLevelUp;
     }
@@ -43,6 +42,16 @@ public class GameUIManager : MonoBehaviour , IContainer
         _xpBar.SetValue(currentXP, levelXPMin, levelXPMax);
     }
 
+    public void DisplayWeapons(UpgradeData data)
+    {
+        _panelWeapons.gameObject.SetActive(true);
+        _panelWeapons.Initialize(_player , data);
+    }
+
+    internal void CloseWeapons()
+    {
+        _panelWeapons.gameObject.SetActive(false);
+    }
 
     public void DisplayUpgrades(UpgradeData[] upgrades)
     {
@@ -58,6 +67,11 @@ public class GameUIManager : MonoBehaviour , IContainer
             _panelUpgrades[i].gameObject.SetActive(true);
             _panelUpgrades[i].Initialize(upgrades[i]);
         }
+    }
+
+    internal void ClosePanelUpgrade()
+    {
+        _panelUpgradesParent.SetActive(false);
     }
 
     public void DisplayGameOver()

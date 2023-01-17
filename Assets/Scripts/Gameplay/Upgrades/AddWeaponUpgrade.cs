@@ -7,7 +7,7 @@ public class AddWeaponUpgrade : BaseUpgrade
 {
     [SerializeField] WeaponData _data;
 
-    public override void Execute( PlayerController player )
+    public override void Execute( PlayerController player , WeaponBase weapon )
     {
         for (int i = player.Weapons.Count - 1; i >= 0; i--)
         {

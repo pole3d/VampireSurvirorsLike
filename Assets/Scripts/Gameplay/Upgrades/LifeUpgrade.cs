@@ -8,7 +8,7 @@ public class LifeUpgrade : BaseUpgrade
     [Tooltip("Life max multiplier")]
     [SerializeField] private float _multiplier = 1.1f;
     
-    public override void Execute(PlayerController player)
+    public override void Execute(PlayerController player , WeaponBase weapon)
     {
         player.IncreaseLifeMax(_multiplier);
     }

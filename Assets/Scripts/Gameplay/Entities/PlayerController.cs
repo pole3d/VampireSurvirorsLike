@@ -160,9 +160,9 @@ public class PlayerController : Unit , IShooter
         }
     }
 
-    internal void UnlockUpgrade(UpgradeData data)
+    internal void UnlockUpgrade(UpgradeData data , WeaponBase weapon )
     {
-        data.Upgrade.Execute(MainGameplay.Instance.Player);
+        data.Upgrade.Execute(this, weapon);
         data.Use();
 
         if (data.TimesAllowed <= 0)
@@ -176,7 +176,7 @@ public class PlayerController : Unit , IShooter
     {
         var data = Instantiate(weaponData);
 
-        data.Weapon.Initialize(this, slot);
+        data.Weapon.Initialize(this,data, slot);
         Weapons.Add(data.Weapon);
     }
 

@@ -8,9 +8,9 @@ public class WeaponModifierUpgrade : BaseUpgrade
 {
 	[SerializeReference] [Instantiable(  type: typeof(BaseWeaponModifier))] BaseWeaponModifier _modifier;
 	
-    public override void Execute( PlayerController player )
+    public override void Execute( PlayerController player, WeaponBase weapon)
     {
-        player.Weapons[0].AddModifier(_modifier, player);
+        weapon.AddModifier(_modifier, player);
     }
 
 }

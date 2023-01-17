@@ -17,6 +17,8 @@ MonoBehaviour:
   _upgrade:
     rid: 443800975833038852
   _nextUpgrades: []
+  _timesAllowed: 0
+  _targetWeapon: 1
   references:
     version: 2
     RefIds:

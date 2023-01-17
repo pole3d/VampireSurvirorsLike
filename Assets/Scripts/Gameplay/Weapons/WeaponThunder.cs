@@ -11,6 +11,7 @@ namespace Gameplay.Weapons
         public override bool DoRotate => false;
 
         [SerializeField] GameObject _prefab;
+        [SerializeField] float _range = 10;
 
         public WeaponThunder()
         { 
@@ -25,7 +26,7 @@ namespace Gameplay.Weapons
 
             _timerCoolDown -= _coolDown;
 
-            EnemyController enemy = MainGameplay.Instance.GetRandomEnemyOnScreen();
+            EnemyController enemy = MainGameplay.Instance.GetRandomEnemyInRange(shooter.Position, _range);
             if (enemy == null)
                 return;
 

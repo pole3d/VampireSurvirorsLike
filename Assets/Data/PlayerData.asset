@@ -15,7 +15,7 @@ MonoBehaviour:
   _life: 50
   _moveSpeed: 3
   _weapons:
-  - {fileID: 11400000, guid: 7fc9e32731c831e46ba0de5e74790c60, type: 2}
+  - {fileID: 11400000, guid: 5cb579dd5e88c8841be7f39d296088b3, type: 2}
   _upgrades:
   - {fileID: 11400000, guid: e72cc2f64281aa74a9c64832d120d37b, type: 2}
   - {fileID: 11400000, guid: cdf47b3a69fbfa54eab6906b13a604d2, type: 2}

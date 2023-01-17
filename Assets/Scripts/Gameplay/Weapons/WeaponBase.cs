@@ -15,6 +15,7 @@ public abstract class WeaponBase
     public int Slot { get; private set; }
     public virtual bool DoRotate => true;
     public int ThroughEnemyCount => _throughEnemyCount;
+    public WeaponData Data => _data;
 
     protected float _timerCoolDown;
 
@@ -22,10 +23,12 @@ public abstract class WeaponBase
     protected List<BaseWeaponModifier> _modifiers = new List<BaseWeaponModifier>();
     
     IShooter _shooter;
+    WeaponData _data;
 
-    public void Initialize(IShooter shooter, int slot)
+    public void Initialize(IShooter shooter, WeaponData data, int slot)
     {
         _shooter = shooter;
+        _data = data;
         Slot = slot;
     }
 

@@ -228,5 +228,29 @@ public class MainGameplay : MonoBehaviour
         return _enemies[rnd];
     }
 
+    public EnemyController GetRandomEnemyInRange( Vector3 position, float range)
+    {
+        _enemiesOnScreen.Clear();
+
+        foreach (var enemy in _enemies)
+        {
+            Vector3 viewport = Camera.main.WorldToViewportPoint(enemy.transform.position);
+            if (viewport.x >= 0 && viewport.x <= 1 && viewport.y >= 0 && viewport.y <= 1)
+            {
+                float distanceSq = Vector3.SqrMagnitude(enemy.transform.position - position);
+
+                if ( distanceSq < range * range )
+                    _enemiesOnScreen.Add(enemy);
+            }
+        }
+
+        if (_enemiesOnScreen.Count == 0)
+            return null;
+
+        int rnd = Random.Range(0, _enemiesOnScreen.Count);
+
+        return _enemies[rnd];
+    }
+
     #endregion
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PanelUpgrade : MonoBehaviour
+public class UpgradeUI : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Text TextName;
     [SerializeField] TMPro.TMP_Text TextDescription;
@@ -20,11 +20,20 @@ public class PanelUpgrade : MonoBehaviour
         ImageIcon.sprite = data.Sprite;
     }
 
-    
+
     public void OnClick()
     {
-        MainGameplay.Instance.Player.UnlockUpgrade(_data);
-        MainGameplay.Instance.UnPause();
+        
+        if (_data.TargetWeapon == false)
+        {
+            MainGameplay.Instance.Player.UnlockUpgrade(_data , null);
+            MainGameplay.Instance.UnPause();
+        }
+        else
+        {
+            MainGameplay.Instance.GameUIManager.DisplayWeapons(_data);
+        }
+
         MainGameplay.Instance.GameUIManager.ClosePanelUpgrade();
     }
 }

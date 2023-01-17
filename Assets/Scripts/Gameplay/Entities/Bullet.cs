@@ -73,7 +73,7 @@ public class Bullet : MonoBehaviour
             if (_prefabTextHit != null)
             {
                 GameObject go =   GameObject.Instantiate(_prefabTextHit, transform.position, Quaternion.identity);
-                go.transform.DOLocalMoveY(transform.localPosition.y + 1,1).SetEase( Ease.OutCubic);
+                go.transform.DOMoveY(transform.position.y + 1,1).SetEase( Ease.OutCubic);
                 go.GetComponent<TMP_Text>().text = $"-{(int)_damage}";
 
                 go.transform.DOShakeScale(0.4f, 0.5f);

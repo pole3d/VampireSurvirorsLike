@@ -11,12 +11,14 @@ public class UpgradeData : ScriptableObject
     [SerializeField][SerializeReference][Instantiable(type: typeof(BaseUpgrade))] BaseUpgrade _upgrade;
     [SerializeField] UpgradeData[] _nextUpgrades;
     [SerializeField] int _timesAllowed;
+    [SerializeField] bool _targetWeapon;
 
     public BaseUpgrade Upgrade => _upgrade;
     public string Description => _description;
     public Sprite Sprite => _sprite;
     public UpgradeData[] NextUpgrades => _nextUpgrades;
     public int TimesAllowed => _timesAllowed;
+    public bool TargetWeapon => _targetWeapon;
 
     public void Use()
     {

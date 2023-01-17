@@ -28,7 +28,7 @@ public class ShootWeapon : GameFeedback
             }
         }
 
-        _data.Weapon.Initialize(shooter, 0);
+        _data.Weapon.Initialize(shooter,_data, 0);
         _data.Weapon.GlobalAttack(shooter);
 
         return base.Execute(gameEvent);
