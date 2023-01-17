@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: ThroughEnemy
   m_EditorClassIdentifier: 
-  _description: TroughEnemy
-  _sprite: {fileID: 0}
+  _name: Ring of penetration
+  _description: The weapon can nw go through 2 enemies
+  _sprite: {fileID: 21300000, guid: 675c19e80e11e9b408fa49df2de6befc, type: 3}
   _upgrade:
     rid: 2299966180077338626
   _nextUpgrades: []

@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: WeaponThunder0
   m_EditorClassIdentifier: 
+  _name: 'Weapon : Thunder'
   _description: Thunder !!
-  _sprite: {fileID: 21300000, guid: 82176bcef51ab6b4583f29287edb1455, type: 3}
+  _sprite: {fileID: 21300000, guid: 4794d75423cb4714095daadb2608592c, type: 3}
   _upgrade:
     rid: 443800975833038851
   _nextUpgrades: []
+  _timesAllowed: 0
+  _targetWeapon: 0
   references:
     version: 2
     RefIds:

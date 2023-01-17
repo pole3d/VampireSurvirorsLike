@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: Repeat 0
   m_EditorClassIdentifier: 
-  _description: Repeat the attack
-  _sprite: {fileID: 0}
+  _name: Hourglass of repetition
+  _description: Repeat the attack 0.5s after
+  _sprite: {fileID: 21300000, guid: 0c2abcd09b5ca3a46ad40692fccb8592, type: 3}
   _upgrade:
     rid: 443800975833038852
   _nextUpgrades: []

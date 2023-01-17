@@ -16,6 +16,7 @@ MonoBehaviour:
     rid: 0
   _slotIndex: 0
   _modifiers: []
+  _sprite: {fileID: 21300000, guid: 87956995b7cbe37459c3871aaa74ef2b, type: 3}
   references:
     version: 2
     RefIds:

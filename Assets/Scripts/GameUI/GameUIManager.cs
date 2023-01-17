@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages all the UI of the main Gameplay
@@ -18,6 +19,7 @@ public class GameUIManager : MonoBehaviour , IContainer
     [SerializeField] GameObject _panelUpgradesParent;
     [SerializeField] UpgradeUI[] _panelUpgrades;
     [SerializeField] PanelWeapons _panelWeapons;
+    [SerializeField] Image _background;
 
     public GameObject Content { get => _boss.gameObject; set => _boss = value.GetComponent<EnemyController>(); }
 
@@ -44,17 +46,23 @@ public class GameUIManager : MonoBehaviour , IContainer
 
     public void DisplayWeapons(UpgradeData data)
     {
+        _background.gameObject.SetActive(true);
+
         _panelWeapons.gameObject.SetActive(true);
         _panelWeapons.Initialize(_player , data);
     }
 
     internal void CloseWeapons()
     {
+        _background.gameObject.SetActive(false);
+
         _panelWeapons.gameObject.SetActive(false);
     }
 
     public void DisplayUpgrades(UpgradeData[] upgrades)
     {
+        _background.gameObject.SetActive(true);
+
         _panelUpgradesParent.SetActive(true);
 
         for (int i = 0; i < _panelUpgrades.Length; i++)
@@ -71,6 +79,8 @@ public class GameUIManager : MonoBehaviour , IContainer
 
     internal void ClosePanelUpgrade()
     {
+        _background.gameObject.SetActive(false);
+
         _panelUpgradesParent.SetActive(false);
     }
 

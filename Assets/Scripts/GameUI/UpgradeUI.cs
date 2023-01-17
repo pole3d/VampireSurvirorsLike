@@ -15,7 +15,7 @@ public class UpgradeUI : MonoBehaviour
     {
         _data = data;
 
-        TextName.text = data.name;
+        TextName.text = data.Name;
         TextDescription.text = data.Description;
         ImageIcon.sprite = data.Sprite;
     }

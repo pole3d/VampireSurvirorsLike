@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: Push
   m_EditorClassIdentifier: 
-  _description: Push Upgrade
+  _name: Flail of push
+  _description: Add a push effect to the weapon
   _sprite: {fileID: 21300000, guid: 1b945a5969d40f748b3db5cdcf0c607e, type: 3}
   _upgrade:
     rid: 2299966180077338624

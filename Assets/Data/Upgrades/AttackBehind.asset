@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: AttackBehind
   m_EditorClassIdentifier: 
-  _description: AttackBehind
+  _name: Amulet of behind
+  _description: Attack backward
   _sprite: {fileID: 21300000, guid: 37a195fc2b4697c4e863d0d496088a17, type: 3}
   _upgrade:
     rid: 443800975833038852

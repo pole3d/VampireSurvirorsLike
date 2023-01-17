@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
   m_Name: Split 0
   m_EditorClassIdentifier: 
-  _description: Split the attack
-  _sprite: {fileID: 0}
+  _name: Staff of split
+  _description: 'Split the attack in 3 attacks
+
+    Damage -50%'
+  _sprite: {fileID: 21300000, guid: 58119f9d9d8dec8428346e41de4098ba, type: 3}
   _upgrade:
     rid: 443800975833038852
   _nextUpgrades: []
