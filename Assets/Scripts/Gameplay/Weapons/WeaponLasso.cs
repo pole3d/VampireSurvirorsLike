@@ -15,20 +15,27 @@ namespace Gameplay.Weapons
         {
         }
 
-        internal override void GlobalAttack(IShooter shooter)
-        {
-            SimpleAttack(shooter, null);
-
-        }
 
 
         internal override void SimpleAttack(IShooter shooter, Vector3? target,  ModifierType type = ModifierType.None, params float[] values)
         {
-            Vector2 position = (Vector2)shooter.Position + Vector2.right * shooter.DirectionX * 2;
+            Vector3 direction = Vector2.right * shooter.DirectionX;
+
+            float angle = Mathf.Atan2(direction.y, direction.x);
+
+            if (type == ModifierType.Split)
+            {
+                angle += values[0];
+            }
+
+            direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
+
+
+            Vector2 position = (Vector2)shooter.Position + (Vector2)direction * 2;
 
             GameObject go = GameObject.Instantiate(_prefab, position, Quaternion.identity, shooter.Transform);
 
-            go.GetComponent<Bullet>().Initialize(this, shooter.Team, new Vector3(), GetDamage(), 0);
+            go.GetComponent<Bullet>().Initialize (shooter, this, shooter.Team, direction, GetDamage(), 0);
         }
     }
 }

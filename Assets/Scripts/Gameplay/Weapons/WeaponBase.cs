@@ -74,7 +74,21 @@ public abstract class WeaponBase
 
     internal virtual void GlobalAttack(IShooter shooter)
     {
+        bool shoot = true;
+        foreach (var item in _modifiers)
+        {
+            if (item.CancelAttack)
+                shoot = false;
+        }
+        if (shoot)
+        {
+            SimpleAttack(shooter, null);
+        }
 
+        foreach (var item in _modifiers)
+        {
+            item.OnShoot(null);
+        }
     }
 
     internal void ModifyDamage(float multiplier)

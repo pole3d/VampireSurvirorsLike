@@ -15,6 +15,8 @@ MonoBehaviour:
   _weapon:
     rid: 0
   _slotIndex: 1
+  _modifiers: []
+  _sprite: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -24,4 +26,5 @@ MonoBehaviour:
         _damageMin: 10
         _damageMax: 14
         _coolDown: 3
+        _throughEnemyCount: 9999
         _prefab: {fileID: 3633932044844237191, guid: a3d4fae4e5f31e046beeab4cc5595196, type: 3}

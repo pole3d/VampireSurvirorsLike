@@ -19,27 +19,6 @@ namespace Gameplay.Weapons
         }
 
 
-        internal override void GlobalAttack(IShooter shooter)
-        {
-            bool shoot = true;
-            foreach (var item in _modifiers)
-            {
-                if (item.CancelAttack)
-                    shoot = false;
-            }
-            if (shoot)
-            {
-
-
-                SimpleAttack(shooter, null);
-
-            }
-
-            foreach (var item in _modifiers)
-            {
-                item.OnShoot();
-            }
-        }
 
         internal override void SimpleAttack(IShooter shooter, Vector3? targetPosition, ModifierType type = ModifierType.None, params float[] values)
         {
@@ -70,7 +49,7 @@ namespace Gameplay.Weapons
 
                 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle));
 
-                go.GetComponent<Bullet>().Initialize(this, shooter.Team, direction, GetDamage(), _speed);
+                go.GetComponent<Bullet>().Initialize(shooter, this, shooter.Team, direction, GetDamage(), _speed);
             }
         }
 

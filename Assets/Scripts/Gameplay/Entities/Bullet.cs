@@ -11,10 +11,12 @@ using UnityEngine.Serialization;
 public class Bullet : MonoBehaviour
 {
     public int Team;
+    public IShooter Shooter => _shooter;
 
     [SerializeField] float _timeToLive = 10.0f;
     [SerializeField] GameObject _prefabHit;
     [SerializeField] GameObject _prefabTextHit;
+    [SerializeField] bool _hitObstacle;
 
     float _speed = 10;
     float _damage = 5;
@@ -22,9 +24,11 @@ public class Bullet : MonoBehaviour
     bool _canMove = true;
     WeaponBase _weapon;
     int _troughEnemyCount;
+    IShooter _shooter;
 
-    public void Initialize(WeaponBase weapon, int team,  Vector3 direction , float damage , float speed )
+    public void Initialize( IShooter shooter, WeaponBase weapon, int team,  Vector3 direction , float damage , float speed )
     {
+        _shooter = shooter;
         _weapon = weapon;
         _troughEnemyCount = _weapon.ThroughEnemyCount;
         Team = team;
@@ -60,9 +64,10 @@ public class Bullet : MonoBehaviour
     {
         var other = HitWithParent.GetComponent<Unit>(col);
 
-        if (other == null)
+        if (other == null )
         {
-            GameObject.Destroy(gameObject);
+            if ( _hitObstacle)
+                GameObject.Destroy(gameObject);
         }
         else if (other.Team != Team)
         {

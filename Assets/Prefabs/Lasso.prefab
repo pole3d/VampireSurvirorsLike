@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3633932044844237191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.08, y: -0.04, z: 0}
-  m_LocalScale: {x: 4.5, y: 3, z: 1}
+  m_LocalScale: {x: 3, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 914700257581644947}
@@ -51,6 +51,7 @@ MonoBehaviour:
   _timeToLive: 0.2
   _prefabHit: {fileID: 823392064445550621, guid: af632934c8cd77b419ff63a7f2be672a, type: 3}
   _prefabTextHit: {fileID: 1270660368350708304, guid: 440e45976bcc89f4d961a4e3ee81cd85, type: 3}
+  _hitObstacle: 0
 --- !u!50 &8980172895944532839
 Rigidbody2D:
   serializedVersion: 4
@@ -85,9 +86,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02371375, y: -0.000000008480697}
-  m_Size: {x: 0.9810471, y: 1.000011}
-  m_Direction: 1
+  m_Offset: {x: 0.023713512, y: -0.0000000018845805}
+  m_Size: {x: 1.04, y: 1.000017}
+  m_Direction: 0
 --- !u!1 &6585815197233570944
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,8 +159,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1538352033
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 82176bcef51ab6b4583f29287edb1455, type: 3}
   m_Color: {r: 0.78418493, g: 0.54509807, b: 0.99215686, a: 1}

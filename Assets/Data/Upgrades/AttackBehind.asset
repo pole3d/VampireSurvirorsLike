@@ -10,24 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
-  m_Name: CoolDownUpgrade
+  m_Name: AttackBehind
   m_EditorClassIdentifier: 
-  _description: 
-  _sprite: {fileID: 21300000, guid: 9ee489a732bacf54b9fb1dcaf4c0e264, type: 3}
+  _description: AttackBehind
+  _sprite: {fileID: 21300000, guid: 37a195fc2b4697c4e863d0d496088a17, type: 3}
   _upgrade:
-    rid: 2299966339488415744
+    rid: 443800975833038852
   _nextUpgrades: []
-  _timesAllowed: 5
+  _timesAllowed: 0
   _targetWeapon: 1
   references:
     version: 2
     RefIds:
-    - rid: 2299966339488415744
+    - rid: 443800975833038852
       type: {class: WeaponModifierUpgrade, ns: , asm: Assembly-CSharp}
       data:
         _modifier:
-          rid: 2299966339488415745
-    - rid: 2299966339488415745
-      type: {class: CoolDownModifier, ns: , asm: Assembly-CSharp}
+          rid: 443800987303936000
+    - rid: 443800987303936000
+      type: {class: SplitModifier, ns: , asm: Assembly-CSharp}
       data:
-        _multiplier: 0.9
+        _count: 1
+        _angle: 3.1415
+        _damageMultiplier: 1

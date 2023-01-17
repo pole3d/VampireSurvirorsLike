@@ -17,14 +17,17 @@ public class SplitModifier : BaseWeaponModifier
 	}
 
 
-	internal override void OnShoot()
+	internal override void OnShoot(Vector3? target)
 	{
         float totalAngle = (_count - 1) * _angle;
+
+		if (_count == 1)
+			totalAngle = _angle * 2;
 
         for (int i = 0; i < _count; i++)
         {
             float angle = -totalAngle / 2.0f + i * _angle;
-            _weapon.SimpleAttack(_shooter,null, ModifierType.Split, angle);
+            _weapon.SimpleAttack(_shooter, target, ModifierType.Split, angle);
         }
     }
 

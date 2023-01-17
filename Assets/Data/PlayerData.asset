@@ -15,13 +15,8 @@ MonoBehaviour:
   _life: 50
   _moveSpeed: 3
   _weapons:
-  - {fileID: 11400000, guid: 7fc9e32731c831e46ba0de5e74790c60, type: 2}
+  - {fileID: 11400000, guid: 5cb579dd5e88c8841be7f39d296088b3, type: 2}
   _upgrades:
   - {fileID: 11400000, guid: e72cc2f64281aa74a9c64832d120d37b, type: 2}
   - {fileID: 11400000, guid: cdf47b3a69fbfa54eab6906b13a604d2, type: 2}
-  - {fileID: 11400000, guid: 87ee2e170eabe8f4a84938ea06925a52, type: 2}
-  - {fileID: 11400000, guid: fa77e2ad79f51194cb4ceff5ebf848b6, type: 2}
-  - {fileID: 11400000, guid: 82b1c567f8902bc43a21694daf89daf2, type: 2}
-  - {fileID: 11400000, guid: 5329946bab0e7c24a9c269d6dee94120, type: 2}
-  - {fileID: 11400000, guid: 9afa27c61bd2b5646aab5720d9a0d9fb, type: 2}
-  - {fileID: 11400000, guid: 74b12d3a02cd00642bd5630191846456, type: 2}
+  - {fileID: 11400000, guid: dec14c2d3ae7b0147bb4c21158abc861, type: 2}

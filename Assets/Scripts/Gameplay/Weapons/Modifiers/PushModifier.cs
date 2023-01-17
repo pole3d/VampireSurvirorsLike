@@ -19,7 +19,8 @@ internal class PushModifier : BaseWeaponModifier
 
     public override void OnHit(Unit enemy , Bullet bullet)
     {
-        Vector3 direction = enemy.transform.position - bullet.transform.position;
+        Vector3 direction = enemy.transform.position - bullet.Shooter.Position;
+        direction.Normalize();
 
         enemy.Push(_pushForce, direction, _pushTimer , _massmodifier);
     }

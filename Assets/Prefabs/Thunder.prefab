@@ -51,6 +51,7 @@ MonoBehaviour:
   _timeToLive: 0.3
   _prefabHit: {fileID: 823392064445550621, guid: af632934c8cd77b419ff63a7f2be672a, type: 3}
   _prefabTextHit: {fileID: 1270660368350708304, guid: 440e45976bcc89f4d961a4e3ee81cd85, type: 3}
+  _hitObstacle: 0
 --- !u!58 &4817246090734637744
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49999997
+  m_Radius: 1.6450369
 --- !u!50 &8980172895944532839
 Rigidbody2D:
   serializedVersion: 4
@@ -162,7 +163,7 @@ SpriteRenderer:
   m_SortingLayerID: 1538352033
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 306e0d08bfa422b4a91917cc29790b42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0ca510ed2d8bec4aab67406d0dda2b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

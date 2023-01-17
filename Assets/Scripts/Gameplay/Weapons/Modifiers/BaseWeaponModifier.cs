@@ -34,7 +34,7 @@ public class BaseWeaponModifier
 
     }
 
-    internal virtual void OnShoot()
+    internal virtual void OnShoot(Vector3? target)
     {
     }
 
