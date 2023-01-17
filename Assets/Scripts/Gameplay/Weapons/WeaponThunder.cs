@@ -17,23 +17,23 @@ namespace Gameplay.Weapons
         { 
         }
 
-        public override void Update(IShooter shooter)
+   
+
+        internal override void GlobalAttack(IShooter shooter)
         {
-            _timerCoolDown += Time.deltaTime;
-
-            if (_timerCoolDown < _coolDown)
-                return;
-
-            _timerCoolDown -= _coolDown;
-
             EnemyController enemy = MainGameplay.Instance.GetRandomEnemyInRange(shooter.Position, _range);
             if (enemy == null)
                 return;
 
-            GameObject go = GameObject.Instantiate(_prefab, enemy.transform.position, Quaternion.identity);
+            SimpleAttack(shooter, enemy.transform.position);
 
-            go.GetComponent<Bullet>().Initialize( this, shooter.Team, new Vector3(),GetDamage(),0);
+        }
 
+        internal override void SimpleAttack(IShooter shooter, Vector3? target, ModifierType type = ModifierType.None, params float[] values)
+        {
+            GameObject go = GameObject.Instantiate(_prefab, target.Value, Quaternion.identity);
+
+            go.GetComponent<Bullet>().Initialize(this, shooter.Team, new Vector3(), GetDamage(), 0);
         }
     }
 }

@@ -18,27 +18,6 @@ namespace Gameplay.Weapons
         {
         }
 
-        public override void Update(IShooter shooter)
-        {
-            foreach (var item in _modifiers)
-            {
-                item.Update();
-            }
-
-            _timerCoolDown += Time.deltaTime;
-
-            if (_timerCoolDown < _coolDown)
-                return;
-
-            foreach (var item in _modifiers)
-            {
-                item.OnCoolDownStarted();
-            }
-
-            _timerCoolDown -= _coolDown;
-
-            GlobalAttack(shooter);
-        }
 
         internal override void GlobalAttack(IShooter shooter)
         {
@@ -50,7 +29,10 @@ namespace Gameplay.Weapons
             }
             if (shoot)
             {
-                SimpleAttack(shooter);
+
+
+                SimpleAttack(shooter, null);
+
             }
 
             foreach (var item in _modifiers)
@@ -59,11 +41,11 @@ namespace Gameplay.Weapons
             }
         }
 
-        internal override void SimpleAttack(IShooter shooter, ModifierType type = ModifierType.None, params float[] values)
+        internal override void SimpleAttack(IShooter shooter, Vector3? targetPosition, ModifierType type = ModifierType.None, params float[] values)
         {
             GameObject target = shooter.GetTarget();
 
-            if ( _needTarget && target == null ) 
+            if (_needTarget && target == null)
             {
                 return;
             }

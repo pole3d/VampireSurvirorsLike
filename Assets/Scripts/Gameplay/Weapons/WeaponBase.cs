@@ -43,9 +43,31 @@ public abstract class WeaponBase
         return Random.Range(_damageMin, _damageMax) * _shooter.DamageMultiplier;
     }
     
-    public abstract void Update(IShooter shooter);
+    public void Update(IShooter shooter)
+    {
+        foreach (var item in _modifiers)
+        {
+            item.Update();
+        }
 
-    internal virtual void SimpleAttack(IShooter shooter, ModifierType type = ModifierType.None, params float[] values)
+        _timerCoolDown += Time.deltaTime;
+
+        if (_timerCoolDown < _coolDown)
+            return;
+
+        _timerCoolDown -= _coolDown;
+
+        foreach (var item in _modifiers)
+        {
+            item.OnCoolDownStarted();
+        }
+
+        GlobalAttack(shooter);
+    }
+
+
+
+    internal virtual void SimpleAttack(IShooter shooter, Vector3? target, ModifierType type = ModifierType.None, params float[] values)
     {
         
     }
