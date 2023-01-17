@@ -528,7 +528,9 @@ MonoBehaviour:
   _player: {fileID: 401613622}
   _data: {fileID: 11400000, guid: 28b16b29f0fb36643b646547ec2f7958, type: 2}
   _gameUIManager: {fileID: 820587570}
+  _wavesManager: {fileID: 133957341}
   _prefabXp: {fileID: 3633932044844237191, guid: aa92c9dfc5a3f9646b9d2671a9841506, type: 3}
+  _debugTimer: 0
 --- !u!4 &133957340
 Transform:
   m_ObjectHideFlags: 0

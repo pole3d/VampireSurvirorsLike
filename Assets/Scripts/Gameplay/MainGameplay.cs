@@ -31,11 +31,13 @@ public class MainGameplay : MonoBehaviour
     [SerializeField] PlayerController _player;
     [SerializeField] GameplayData _data;
     [SerializeField] GameUIManager _gameUIManager;
+    [SerializeField] WavesManager _wavesManager;
 
     [SerializeField] GameObject _prefabXp;
+    [SerializeField] int _debugTimer = -1;
 
     #endregion
-    
+
     #region Properties
 
     public PlayerController Player => _player;
@@ -68,6 +70,13 @@ public class MainGameplay : MonoBehaviour
 
     void Start()
     {
+        if ( _debugTimer > 0)
+        {
+            _timerSeconds = _debugTimer;
+            _wavesManager.DebugTimer(_debugTimer);
+        }
+
+
         _gameUIManager.RefreshTimer(_timerSeconds);
 
         _gameUIManager.Initialize(_player);

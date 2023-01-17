@@ -40,6 +40,17 @@ public class WavesManager : MonoBehaviour
         }
     }
 
+    public void DebugTimer(int timer)
+    {
+        _timer = timer;
+
+        for (int i = _wavesToPlay.Count - 1; i >= 0; i--)
+        {
+            if (_wavesToPlay[i].TimeToStart < timer)
+                _wavesToPlay.RemoveAt(i);
+        }
+    }
+
     public void Spawn(WaveData data)
     {
         if (data.Movement is CircleMovement)

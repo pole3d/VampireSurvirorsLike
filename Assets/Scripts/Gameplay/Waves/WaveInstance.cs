@@ -7,6 +7,7 @@ using UnityEngine;
 public class WaveInstance
 {
     public bool IsDone => _currentOccurence >= _data.TimesToRepeat;
+    public float TimeToStart => _data.TimeToStart;
     
     WaveData _data;
     float _timer;
