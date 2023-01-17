@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 public class PanelWeapons : MonoBehaviour
 {
-    [SerializeField] Image _imageUpgrade;
+    [SerializeField] UpgradeUI _upgradeUI;
     [SerializeField] WeaponUI[] _weaponsUI;
 
     public void Initialize(PlayerController controller, UpgradeData data)
     {
-        _imageUpgrade.sprite = data.Sprite;
+        _upgradeUI.Initialize(data);
 
         foreach (var item in _weaponsUI)
         {

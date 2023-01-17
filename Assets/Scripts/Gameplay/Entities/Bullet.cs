@@ -73,12 +73,14 @@ public class Bullet : MonoBehaviour
         {
             _troughEnemyCount--;
 
+            Vector3 hitPosition = col.ClosestPoint(transform.position);
+
             if ( _prefabHit != null)
-                GameObject.Instantiate(_prefabHit, transform.position,Quaternion.identity);
+                GameObject.Instantiate(_prefabHit, hitPosition, Quaternion.identity);
             if (_prefabTextHit != null)
             {
-                GameObject go =   GameObject.Instantiate(_prefabTextHit, transform.position, Quaternion.identity);
-                go.transform.DOMoveY(transform.position.y + 1,1).SetEase( Ease.OutCubic);
+                GameObject go =   GameObject.Instantiate(_prefabTextHit, hitPosition, Quaternion.identity);
+                go.transform.DOMoveY(hitPosition.y + 1,1).SetEase( Ease.OutCubic);
                 go.GetComponent<TMP_Text>().text = $"-{(int)_damage}";
 
                 go.transform.DOShakeScale(0.4f, 0.5f);
