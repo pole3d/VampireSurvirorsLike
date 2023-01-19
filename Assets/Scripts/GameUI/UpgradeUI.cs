@@ -23,7 +23,9 @@ public class UpgradeUI : MonoBehaviour
 
     public void OnClick()
     {
-        
+        MainGameplay.Instance.GameUIManager.ClosePanelUpgrade();
+
+
         if (_data.TargetWeapon == false)
         {
             MainGameplay.Instance.Player.UnlockUpgrade(_data , null);
@@ -34,6 +36,5 @@ public class UpgradeUI : MonoBehaviour
             MainGameplay.Instance.GameUIManager.DisplayWeapons(_data);
         }
 
-        MainGameplay.Instance.GameUIManager.ClosePanelUpgrade();
     }
 }
