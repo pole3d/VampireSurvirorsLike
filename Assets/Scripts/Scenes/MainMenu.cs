@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickAdventure()
     {
-        SceneManager.LoadScene("MainGameplay");
+        SceneManager.LoadScene("GameMap");
     }
 
     public void OnClickBack()
