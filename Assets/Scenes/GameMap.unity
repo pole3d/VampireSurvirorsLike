@@ -2425,7 +2425,6 @@ MonoBehaviour:
   - {fileID: 1012117931}
   - {fileID: 1569200778}
   - {fileID: 1771369403}
-  - {fileID: 759414710}
   ParentAdventures: {fileID: 917836277}
 --- !u!4 &1898010041
 Transform:
