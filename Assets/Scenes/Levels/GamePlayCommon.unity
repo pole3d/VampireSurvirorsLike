@@ -159,6 +159,7 @@ MonoBehaviour:
   _wavesManager: {fileID: 133957341}
   _prefabXp: {fileID: 3633932044844237191, guid: aa92c9dfc5a3f9646b9d2671a9841506, type: 3}
   _debugTimer: 0
+  _debugXP: 110
 --- !u!4 &133957340
 Transform:
   m_ObjectHideFlags: 0

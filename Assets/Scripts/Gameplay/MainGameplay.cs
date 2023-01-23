@@ -35,6 +35,7 @@ public class MainGameplay : MonoBehaviour
 
     [SerializeField] GameObject _prefabXp;
     [SerializeField] int _debugTimer = -1;
+    [SerializeField] int _debugXP = -1;
 
     #endregion
 
@@ -86,7 +87,10 @@ public class MainGameplay : MonoBehaviour
         _player.OnDeath += OnPlayerDeath;
         _player.OnLevelUp += OnLevelUp;
 
-
+        if ( _debugXP > 0)
+        {
+            _player.CollectXP(_debugXP);
+        }
 
     }
 
@@ -125,6 +129,9 @@ public class MainGameplay : MonoBehaviour
     internal void UnPause()
     {
         Time.timeScale = 1;
+
+        _player.CheckLevelUp();
+
     }
 
     internal void Pause()

@@ -71,11 +71,7 @@ public class PlayerController : Unit , IShooter
             AddWeapon(weapon, weapon.SlotIndex);
         }
 
-        foreach (var item in _playerData.Upgrades)
-        {
-            if (item.Upgrade is WeaponModifierUpgrade)
-                UnlockUpgrade(item, Weapons[0]);
-        }
+ 
     }
 
     void Update()
@@ -194,6 +190,14 @@ public class PlayerController : Unit , IShooter
             return;
 
         _xp += value;
+
+        CheckLevelUp();
+    }
+
+    public void CheckLevelUp()
+    {
+        if (_levelUpData.IsLevelMax(_level))
+            return;
 
         int nextLevel = _level + 1;
         int currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
