@@ -6,6 +6,7 @@ using Gameplay.Weapons;
 using TMPro;
 using UnityCommon.Graphics.Actors;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Represents the player
@@ -68,6 +69,12 @@ public class PlayerController : Unit , IShooter
         foreach (var weapon in _playerData.Weapons)
         {
             AddWeapon(weapon, weapon.SlotIndex);
+        }
+
+        foreach (var item in _playerData.Upgrades)
+        {
+            if (item.Upgrade is WeaponModifierUpgrade)
+                UnlockUpgrade(item, Weapons[0]);
         }
     }
 

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c800c2e66b018419c40ccaf776a819, type: 3}
+  m_Name: Level2
+  m_EditorClassIdentifier: 
+  _waves:
+  - _timeToStart: 2
+    _timesToRepeat: 3
+    _repeatTimer: 3
+    _enemyCount: 1
+    _enemy: {fileID: 11400000, guid: 729b0a93fb302db40b12c157d0be17f7, type: 2}
+    _spawnDistance: 15
+    _overrideLife: 0
+    _movement:
+      rid: -2
+  - _timeToStart: 20
+    _timesToRepeat: 60
+    _repeatTimer: 1
+    _enemyCount: 3
+    _enemy: {fileID: 11400000, guid: 7eb6e88c2a7bb60408b12cc4e94a37c7, type: 2}
+    _spawnDistance: 15
+    _overrideLife: 0
+    _movement:
+      rid: -2
+  - _timeToStart: 50
+    _timesToRepeat: 8
+    _repeatTimer: 4
+    _enemyCount: 12
+    _enemy: {fileID: 11400000, guid: 5b4201af98a4c6445b26bc76db8875f9, type: 2}
+    _spawnDistance: 8
+    _overrideLife: 100
+    _movement:
+      rid: 2299966650246758400
+  _startUpgrades: []
+  _upgradesToAdd: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2299966650246758400
+      type: {class: CircleMovement, ns: , asm: Assembly-CSharp}
+      data:
+        _speed: 1.5
+        _timeYoyo: 5
+        _overrideMass: 5

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: 6_zombie
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: f9a30e3612ecd6746afbbd00aa0f2937, type: 3}
+    - {fileID: 21300000, guid: aaedf0a710311a0418b08c3fbf69d58c, type: 3}
+    - {fileID: 21300000, guid: 697d25c5110beac43975a21b58e27df0, type: 3}
+    - {fileID: 21300000, guid: 18b8a41a5a9e4a14f9d3ced54cf47520, type: 3}
+    - {fileID: 21300000, guid: db2810f08c61a7e4ba773978377d0998, type: 3}
+    - {fileID: 21300000, guid: 252e8e10f6227da43ac755234f4f6063, type: 3}
+    - {fileID: 21300000, guid: 9330d0d642de8b641a0880040c42285c, type: 3}

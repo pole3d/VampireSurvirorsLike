@@ -45,6 +45,7 @@ public class MainGameplay : MonoBehaviour
     public GameState State { get; private set; }
     public List<EnemyController> Enemies => _enemies;
     public GameUIManager GameUIManager => _gameUIManager;
+    public WavesManager WavesManager => _wavesManager;
 
     #endregion
 
@@ -66,6 +67,8 @@ public class MainGameplay : MonoBehaviour
         }
 
         Instance = this;
+
+        SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
     }
 
     void Start()
@@ -82,6 +85,9 @@ public class MainGameplay : MonoBehaviour
         _gameUIManager.Initialize(_player);
         _player.OnDeath += OnPlayerDeath;
         _player.OnLevelUp += OnLevelUp;
+
+
+
     }
 
 
@@ -93,11 +99,6 @@ public class MainGameplay : MonoBehaviour
     void Update()
     {
         UpdateTimer();
-
-        if ( Input.GetKeyDown(KeyCode.F6))
-        {
-            Camera.main.GetComponent<ShakeCamera>().Shake(0.3f, 0.3f);
-        }
     }
 
     void UpdateTimer()

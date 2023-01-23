@@ -7,22 +7,30 @@ using UnityEngine;
 /// </summary>
 public class WavesManager : MonoBehaviour
 {
-    [SerializeField] WavesLevelData _wavesLevel;
     [SerializeField] Transform _topRight;
     [SerializeField] Transform _bottomLeft;
     [SerializeField] LayerMask _noSpawn;
 
+    WavesLevelData _wavesLevel;
     readonly List<WaveInstance> _wavesToPlay = new List<WaveInstance>();
     float _timer;
 
     void Awake()
     {
-        foreach (var data in _wavesLevel.Waves)
+
+    }
+
+    public void Initialize( WavesLevelData data )
+    {
+        _wavesLevel = data;
+
+        foreach (var waves in _wavesLevel.Waves)
         {
-            WaveInstance instance = new WaveInstance(data);
+            WaveInstance instance = new WaveInstance(waves);
             _wavesToPlay.Add(instance);
         }
     }
+
 
     void Update()
     {
@@ -101,7 +109,7 @@ public class WavesManager : MonoBehaviour
 
                 EnemyData enemyData = Instantiate(data.Enemy);
 
-                if (data.OverrideLife != -1)
+                if (data.OverrideLife > 0)
                     enemyData.OverrideLife(data.OverrideLife);
 
                 var enemy = go.GetComponent<EnemyController>();
@@ -152,7 +160,7 @@ public class WavesManager : MonoBehaviour
 
                 EnemyData enemyData = Instantiate(data.Enemy);
 
-                if (data.OverrideLife != -1)
+                if (data.OverrideLife > 0)
                     enemyData.OverrideLife(data.OverrideLife);
 
                 CircleMovement movement = new CircleMovement();

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: 5_carrot
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: 4696a0310029fe34bbb8536c5e8a9b1e, type: 3}
+    - {fileID: 21300000, guid: 4567e6be86f7d9e40aa22a69c77aecb2, type: 3}
+    - {fileID: 21300000, guid: 3fcb698c9fd9df444b640aad21f30365, type: 3}
+    - {fileID: 21300000, guid: 49eddfcc4040d8c4395035e185a6a388, type: 3}
+    - {fileID: 21300000, guid: 93532b9600acd7f41bf085a5b0c70803, type: 3}
+    - {fileID: 21300000, guid: 2e7355c77c8b0d043a1afb518fe011d1, type: 3}
+    - {fileID: 21300000, guid: d1f76efab0ffba64c97630879186e331, type: 3}
+    - {fileID: 21300000, guid: ff8f70ee55146fe46869002de749c47b, type: 3}
+    - {fileID: 21300000, guid: 73f581ce6e50bfa4cb1da49cb00cc9dc, type: 3}
