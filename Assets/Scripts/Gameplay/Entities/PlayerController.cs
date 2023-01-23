@@ -300,12 +300,6 @@ public class PlayerController : Unit , IShooter
         DamageMultiplier *= multiplier;
     }
 
-    public void MultiplyCoolDown(float multiplier)
-    {
-        DamageMultiplier *= multiplier;
-    }
-
-
     public void IncreaseLifeMax(float multiplier)
     {
         float valueToAdd = _lifeMax * (multiplier - 1.0f);

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c800c2e66b018419c40ccaf776a819, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  _waves:
+  - _timeToStart: 2
+    _timesToRepeat: 3
+    _repeatTimer: 3
+    _enemyCount: 1
+    _enemy: {fileID: 11400000, guid: 729b0a93fb302db40b12c157d0be17f7, type: 2}
+    _spawnDistance: 15
+    _overrideLife: 0
+    _movement:
+      rid: -2
+  _startUpgrades: []
+  _upgradesToAdd: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
