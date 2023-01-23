@@ -22,6 +22,8 @@ public class UpgradeData : ScriptableObject
     public int TimesAllowed => _timesAllowed;
     public bool TargetWeapon => _targetWeapon;
 
+    public int Index{ get; set; }
+
     public void Use()
     {
         _timesAllowed--;

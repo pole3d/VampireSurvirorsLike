@@ -7,7 +7,8 @@ public class WeaponUI : MonoBehaviour
 {
     [SerializeField] TMPro.TMP_Text _textName;
     [SerializeField] Image _imageIcon;
-    [SerializeField] Button[] _slots;
+    [SerializeField] Image[] _slots;
+    [SerializeField] Button _buttonValidate;
 
     WeaponData _data;
     PanelWeapons _panel;
@@ -25,10 +26,24 @@ public class WeaponUI : MonoBehaviour
 
         _textName.text = data.name;
         _imageIcon.sprite = data.Sprite;
+
+        int i = 0;
+        foreach (var item in _player.Weapons[_weaponIndex].Upgrades)
+        {
+            _slots[i].gameObject.SetActive(true);
+            _slots[i].sprite = item.Sprite;
+            i++;
+        }
+
+        if (_player.Weapons[_weaponIndex].Upgrades.Count >= _slots.Length)
+        {
+            _buttonValidate.interactable = false;
+        }
     }
 
-    public void OnClickSlot(int index)
+    public void OnClickSlot()
     {
+        _player.Weapons[_weaponIndex].Upgrades.Add(_upgradeData);
         _player.UnlockUpgrade(_upgradeData ,_player.Weapons[_weaponIndex]);
 
         _panel.Close();

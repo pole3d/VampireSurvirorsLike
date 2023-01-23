@@ -36,10 +36,13 @@ public class MainGameplay : MonoBehaviour
     [SerializeField] GameObject _prefabXp;
     [SerializeField] int _debugTimer = -1;
     [SerializeField] int _debugXP = -1;
+    [SerializeField] int _debugLevel = -1;
+
 
     #endregion
 
     #region Properties
+
 
     public PlayerController Player => _player;
     public GameObject PrefabXP => _prefabXp;
@@ -47,6 +50,9 @@ public class MainGameplay : MonoBehaviour
     public List<EnemyController> Enemies => _enemies;
     public GameUIManager GameUIManager => _gameUIManager;
     public WavesManager WavesManager => _wavesManager;
+
+    [field:SerializeField]
+    public GameObject PrefabLife { get; private set; }
 
     #endregion
 
@@ -69,12 +75,24 @@ public class MainGameplay : MonoBehaviour
 
         Instance = this;
 
-        SceneManager.LoadScene("Level2", LoadSceneMode.Additive);
+
+        if ( ScenesManagement.Instance.HasValue("Level"))
+        {
+            int level = ScenesManagement.Instance.GetIntValue("Level");
+            SceneManager.LoadScene($"Level{level}" , LoadSceneMode.Additive);
+        }
+        else if ( _debugLevel > 0 )
+        {
+            SceneManager.LoadScene($"Level{_debugLevel}", LoadSceneMode.Additive);
+        }
+        else
+            SceneManager.LoadScene($"Level1", LoadSceneMode.Additive);
+
     }
 
     void Start()
     {
-        if ( _debugTimer > 0)
+        if (_debugTimer > 0)
         {
             _timerSeconds = _debugTimer;
             _wavesManager.DebugTimer(_debugTimer);
@@ -86,10 +104,11 @@ public class MainGameplay : MonoBehaviour
         _gameUIManager.Initialize(_player);
         _player.OnDeath += OnPlayerDeath;
         _player.OnLevelUp += OnLevelUp;
+        _player.Initialize();
 
-        if ( _debugXP > 0)
+        if (_debugXP > 0)
         {
-            _player.CollectXP(_debugXP);
+            _player.DebugUpgrade(_debugXP);
         }
 
     }
@@ -176,14 +195,14 @@ public class MainGameplay : MonoBehaviour
         State = GameState.GameOver;
         _gameUIManager.DisplayVictory();
     }
-    
+
     public void OnClickQuit()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
     #endregion
-    
+
     #region Tools
 
     public EnemyController GetClosestEnemy(Vector3 position)
@@ -193,23 +212,23 @@ public class MainGameplay : MonoBehaviour
 
         foreach (var enemy in _enemies)
         {
-            if ( enemy.IsStopped)
+            if (enemy.IsStopped)
                 continue;
-        	
-	        Vector3 viewport = Camera.main.WorldToViewportPoint(enemy.transform.position);
-	        if (viewport.x >= 0 && viewport.x <= 1 && viewport.y >= 0 && viewport.y <= 1)
-	        {
-        	
-	            Vector3 direction = enemy.transform.position - position;
-	
-	            float distance = direction.sqrMagnitude;
-	
-	            if (distance < bestDistance)
-	            {
-	                bestDistance = distance;
-	                bestEnemy = enemy;
-	            }
-	        }
+
+            Vector3 viewport = Camera.main.WorldToViewportPoint(enemy.transform.position);
+            if (viewport.x >= 0 && viewport.x <= 1 && viewport.y >= 0 && viewport.y <= 1)
+            {
+
+                Vector3 direction = enemy.transform.position - position;
+
+                float distance = direction.sqrMagnitude;
+
+                if (distance < bestDistance)
+                {
+                    bestDistance = distance;
+                    bestEnemy = enemy;
+                }
+            }
         }
 
         return bestEnemy;
@@ -236,7 +255,7 @@ public class MainGameplay : MonoBehaviour
         return _enemies[rnd];
     }
 
-    public EnemyController GetRandomEnemyInRange( Vector3 position, float range)
+    public EnemyController GetRandomEnemyInRange(Vector3 position, float range)
     {
         _enemiesOnScreen.Clear();
 
@@ -247,7 +266,7 @@ public class MainGameplay : MonoBehaviour
             {
                 float distanceSq = Vector3.SqrMagnitude(enemy.transform.position - position);
 
-                if ( distanceSq < range * range )
+                if (distanceSq < range * range)
                     _enemiesOnScreen.Add(enemy);
             }
         }

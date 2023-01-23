@@ -7,6 +7,8 @@ public class GameMap : MonoBehaviour
 {
     public void OnPlayLevel(int level)
     {
-        SceneManager.LoadScene("MainGameplay");
+        ScenesManagement.Instance.SetValue("Level", level);
+
+        SceneManager.LoadScene("GamePlayCommon");
     }
 }

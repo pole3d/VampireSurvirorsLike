@@ -13,6 +13,7 @@ public abstract class WeaponBase
     [SerializeField] protected int _throughEnemyCount = 1;
 
     public int Slot { get; private set; }
+    public List<UpgradeData> Upgrades { get; set; } = new List<UpgradeData>();
     public virtual bool DoRotate => true;
     public int ThroughEnemyCount => _throughEnemyCount;
     public WeaponData Data => _data;

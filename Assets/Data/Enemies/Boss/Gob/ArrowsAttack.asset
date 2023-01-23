@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e29e13f7186bff43a88b15003ed1111, type: 3}
+  m_Name: ArrowsAttack
+  m_EditorClassIdentifier: 
+  Comments: 
+  Feedbacks:
+  - rid: 2299966411207081996
+  - rid: 2299966411207081984
+  - rid: 2299966411207081985
+  - rid: 2299966411207081988
+  - rid: 2299966411207081986
+  - rid: 2299966411207081989
+  - rid: 2299966411207081993
+  - rid: 2299966411207081990
+  - rid: 2299966411207081991
+  - rid: 2299966411207081992
+  - rid: 2299966411207081994
+  - rid: 2299966411207081995
+  - rid: 2299966411207081997
+  references:
+    version: 2
+    RefIds:
+    - rid: 2299966411207081984
+      type: {class: PushGameObject, ns: UnityCommon.GameEvent, asm: Assembly-CSharp}
+      data:
+        Name: Visual
+    - rid: 2299966411207081985
+      type: {class: DoJump, ns: , asm: Assembly-CSharp}
+      data:
+        Position: {x: 0, y: 0, z: 0}
+        Type: 1
+        Duration: 0.5
+        JumpPower: 4
+        Local: 1
+    - rid: 2299966411207081986
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: bd76f3021354e4140b30507ca30a970b, type: 2}
+    - rid: 2299966411207081988
+      type: {class: PopGameObject, ns: UnityCommon.GameEvent, asm: Assembly-CSharp}
+    - rid: 2299966411207081989
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 0.5
+    - rid: 2299966411207081990
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: bd76f3021354e4140b30507ca30a970b, type: 2}
+    - rid: 2299966411207081991
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 0.2
+    - rid: 2299966411207081992
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: bd76f3021354e4140b30507ca30a970b, type: 2}
+    - rid: 2299966411207081993
+      type: {class: CameraShake, ns: , asm: Assembly-CSharp}
+      data:
+        Duration: 0.2
+        Magnitude: 0.2
+    - rid: 2299966411207081994
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 0.2
+    - rid: 2299966411207081995
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: bd76f3021354e4140b30507ca30a970b, type: 2}
+    - rid: 2299966411207081996
+      type: {class: StopGameObject, ns: , asm: Assembly-CSharp}
+      data:
+        IsStopped: 1
+    - rid: 2299966411207081997
+      type: {class: StopGameObject, ns: , asm: Assembly-CSharp}
+      data:
+        IsStopped: 0

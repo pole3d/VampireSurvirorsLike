@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Net.NetworkInformation;
 using Gameplay.Weapons;
 using TMPro;
@@ -27,9 +28,11 @@ public class PlayerController : Unit , IShooter
     public float DamageMultiplier { get; set; } = 1.0f;
     public Vector2 Direction => _lastDirection;
     public int DirectionX => _lastDirectionX;
+    public int Level => _level;
     public PlayerData PlayerData => _playerData;
 
     public List<WeaponBase> Weapons => _weapons;
+    public List<UpgradeDoneInfo> UpgradesDone => _upgradesDone;
 
     public Vector3 Position => transform.position;
 
@@ -47,6 +50,8 @@ public class PlayerController : Unit , IShooter
     Vector2 _lastDirection = Vector2.right;
     int _lastDirectionX = 1;
     List<WeaponBase> _weapons = new List<WeaponBase>();
+    List<UpgradeDoneInfo> _upgradesDone = new();
+
 
     void Awake()
     {
@@ -66,12 +71,18 @@ public class PlayerController : Unit , IShooter
         _lifeMax = _playerData.Life;
         _life = LifeMax;
 
+
+
+    }
+
+    public void Initialize()
+    {
         foreach (var weapon in _playerData.Weapons)
         {
             AddWeapon(weapon, weapon.SlotIndex);
         }
 
- 
+
     }
 
     void Update()
@@ -163,8 +174,21 @@ public class PlayerController : Unit , IShooter
         }
     }
 
+    internal void Heal(int value)
+    {
+        _life += value;
+        if (_life > _lifeMax)
+            _life = _lifeMax;
+
+        _lifeBar.SetValue(Life, LifeMax);
+
+    }
+
     internal void UnlockUpgrade(UpgradeData data , WeaponBase weapon )
     {
+        var info = new UpgradeDoneInfo(data.name,GetWeaponIndex(weapon));
+        _upgradesDone.Add(info);
+
         data.Upgrade.Execute(this, weapon);
         data.Use();
 
@@ -172,6 +196,16 @@ public class PlayerController : Unit , IShooter
             UpgradesAvailable.Remove(data);
 
         UpgradesAvailable.AddRange(data.NextUpgrades);
+    }
+
+    int GetWeaponIndex(WeaponBase weapon)
+    {
+        for (int i = 0; i < _weapons.Count; i++)
+        {
+            if (_weapons[i] == weapon) return i;
+        }
+
+        return -1;
     }
 
 
@@ -201,6 +235,8 @@ public class PlayerController : Unit , IShooter
 
         int nextLevel = _level + 1;
         int currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
+        int currentLevelMinXP = _levelUpData.GetXpForLevel(_level);
+
         if (_xp >= currentLevelMaxXP)
         {
             _level++;
@@ -208,7 +244,6 @@ public class PlayerController : Unit , IShooter
             currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
         }
 
-        int currentLevelMinXP = _levelUpData.GetXpForLevel(_level);
 
         if (_levelUpData.IsLevelMax(_level))
         {
@@ -218,6 +253,38 @@ public class PlayerController : Unit , IShooter
         {
             OnXP?.Invoke(_xp, currentLevelMinXP, currentLevelMaxXP);
         }
+    }
+
+    internal void DebugUpgrade(int debugXP)
+    {
+        int currentLevelMaxXP = 0;
+        int currentLevelMinXP = 0;
+        _xp += debugXP;
+
+
+        do
+        {
+            int nextLevel = _level + 1;
+            currentLevelMinXP = _levelUpData.GetXpForLevel(_level);
+            currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
+
+            int rnd = UnityEngine.Random.Range(0, UpgradesAvailable.Count);
+            var upgrade = UpgradesAvailable[rnd];
+
+            UnlockUpgrade(upgrade, _weapons[UnityEngine.Random.Range(0, _weapons.Count)]);
+
+            if (_xp >= currentLevelMaxXP)
+            {
+                _level++;
+            }
+
+            if (_levelUpData.IsLevelMax(_level))
+                return;
+
+
+        } while (_xp >= currentLevelMaxXP);
+
+        OnXP?.Invoke(_xp, currentLevelMinXP, currentLevelMaxXP);
     }
 
 
@@ -255,4 +322,6 @@ public class PlayerController : Unit , IShooter
 
         return enemy.gameObject;
     }
+
+
 }

@@ -17,7 +17,7 @@ namespace Gameplay.Weapons
         { 
         }
 
-   
+
 
         internal override void GlobalAttack(IShooter shooter)
         {

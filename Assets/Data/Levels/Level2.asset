@@ -24,8 +24,8 @@ MonoBehaviour:
       rid: -2
   - _timeToStart: 20
     _timesToRepeat: 60
-    _repeatTimer: 1
-    _enemyCount: 3
+    _repeatTimer: 1.5
+    _enemyCount: 2
     _enemy: {fileID: 11400000, guid: 7eb6e88c2a7bb60408b12cc4e94a37c7, type: 2}
     _spawnDistance: 15
     _overrideLife: 0
@@ -40,6 +40,24 @@ MonoBehaviour:
     _overrideLife: 100
     _movement:
       rid: 2299966650246758400
+  - _timeToStart: 130
+    _timesToRepeat: 8
+    _repeatTimer: 10
+    _enemyCount: 20
+    _enemy: {fileID: 11400000, guid: 7eb6e88c2a7bb60408b12cc4e94a37c7, type: 2}
+    _spawnDistance: 15
+    _overrideLife: 0
+    _movement:
+      rid: 2299966650246758401
+  - _timeToStart: 200
+    _timesToRepeat: 1
+    _repeatTimer: 0
+    _enemyCount: 1
+    _enemy: {fileID: 11400000, guid: 22f4d45e455719741b464ebbc2dfdd1d, type: 2}
+    _spawnDistance: 5
+    _overrideLife: 0
+    _movement:
+      rid: 2299966650246758401
   _startUpgrades: []
   _upgradesToAdd: []
   references:
@@ -53,3 +71,5 @@ MonoBehaviour:
         _speed: 1.5
         _timeYoyo: 5
         _overrideMass: 5
+    - rid: 2299966650246758401
+      type: {class: DefaultMovement, ns: , asm: Assembly-CSharp}

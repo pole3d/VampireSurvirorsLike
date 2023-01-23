@@ -133,7 +133,11 @@ public class EnemyController : Unit, IStoppable, IShooter
 
         int rnd = UnityEngine.Random.Range(0, 100);
 
-        if (rnd <= 60)
+        if ( rnd <= 1)
+        {
+            GameObject.Instantiate(MainGameplay.Instance.PrefabLife, transform.position, Quaternion.identity);
+        }
+        else if (rnd <= 60)
         {
             var xp = GameObject.Instantiate(MainGameplay.Instance.PrefabXP, transform.position, Quaternion.identity);
             xp.GetComponent<CollectableXp>().Initialize(1);

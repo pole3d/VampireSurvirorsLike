@@ -42,6 +42,7 @@ public class GameUIManager : MonoBehaviour , IContainer
     void OnXP(int currentXP, int levelXPMin, int levelXPMax)
     {
         _xpBar.SetValue(currentXP, levelXPMin, levelXPMax);
+        _xpBar.SetLevel(_player.Level);
     }
 
     public void DisplayWeapons(UpgradeData data)

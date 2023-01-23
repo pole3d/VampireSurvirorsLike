@@ -10,7 +10,7 @@ public class XPBar : MonoBehaviour
     [SerializeField] TMP_Text _textLevel;
     [SerializeField] Image _imageXP;
 
-    void Start()
+    void Awake()
     {
         _imageXP.fillAmount = 0;
         _textLevel.text = 1.ToString();
@@ -25,5 +25,6 @@ public class XPBar : MonoBehaviour
     public void SetLevel(int level)
     {
         _textLevel.text = level.ToString();
+        Debug.Log(level);
     }
 }

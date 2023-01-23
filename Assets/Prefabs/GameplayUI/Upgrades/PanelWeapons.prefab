@@ -772,9 +772,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5383676264741609213}
     m_Modifications:
+    - target: {fileID: 68327028578983525, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68327028578983525, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a712804aaeb08054ea3b0b418537232c, type: 3}
+    - target: {fileID: 68327028578983525, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3916289866747286257, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
       propertyPath: m_Name
       value: PanelUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585680313275581148, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5585680313275581148, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743212984359405912, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7632058624957989308, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
       propertyPath: m_Pivot.x
@@ -860,7 +884,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6743212984359405912, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7eec6e8989e039d428d6613ac2c6b463, type: 3}
 --- !u!224 &3256235567751265793 stripped
 RectTransform:

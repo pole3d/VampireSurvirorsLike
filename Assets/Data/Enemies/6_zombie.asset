@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 8
   _damagePerSeconds: 5
-  _moveSpeed: 3
+  _moveSpeed: 2
   _prefab: {fileID: 7654918703708801626, guid: c8ebb4cad255c3b4a8e1d8ff38f1161f, type: 3}
   _spriteOverride: {fileID: 0}
   _ai: {fileID: 0}
