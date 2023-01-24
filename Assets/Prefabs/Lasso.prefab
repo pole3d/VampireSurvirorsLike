@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: 0
-  _timeToLive: 0.2
+  _timeToLive: 0.25
   _prefabHit: {fileID: 823392064445550621, guid: af632934c8cd77b419ff63a7f2be672a, type: 3}
   _prefabTextHit: {fileID: 1270660368350708304, guid: 440e45976bcc89f4d961a4e3ee81cd85, type: 3}
   _hitObstacle: 0
@@ -99,6 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 914700257581644947}
   - component: {fileID: 5669559191768392378}
+  - component: {fileID: 232176673279466917}
   m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
@@ -113,14 +114,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6585815197233570944}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5972753027238745607}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &5669559191768392378
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,8 +163,8 @@ SpriteRenderer:
   m_SortingLayerID: 1538352033
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 82176bcef51ab6b4583f29287edb1455, type: 3}
-  m_Color: {r: 0.78418493, g: 0.54509807, b: 0.99215686, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 06007272ef1e86441820463350cae25d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -173,3 +174,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &232176673279466917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6585815197233570944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a3ecf22748ca9468390d2339246562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlaying: 1
+  Manual: 0
+  Sprites:
+  - {fileID: 21300000, guid: 06007272ef1e86441820463350cae25d, type: 3}
+  - {fileID: 21300000, guid: e11941010e5c6be41b682b9e6e034112, type: 3}
+  - {fileID: 21300000, guid: e8104bd0c56105041b0de047b462453a, type: 3}
+  - {fileID: 21300000, guid: 35434fad57680e949b93083acb9c2e0b, type: 3}
+  - {fileID: 21300000, guid: e19c1b6350bbaef4f936351ec3bed0bb, type: 3}
+  Timer: 0.05
+  Loop: 0
+  ObjectToDestroyAtEnd: {fileID: 0}
+  RealTime: 0

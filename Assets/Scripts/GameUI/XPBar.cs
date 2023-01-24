@@ -25,6 +25,5 @@ public class XPBar : MonoBehaviour
     public void SetLevel(int level)
     {
         _textLevel.text = level.ToString();
-        Debug.Log(level);
     }
 }
