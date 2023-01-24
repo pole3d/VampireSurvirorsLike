@@ -20,10 +20,6 @@ public class GameMap : MonoBehaviour
 
         _slots[levelDone].interactable = true;
         _arrow.transform.position = _slots[levelDone].transform.position;
-
-
-        Debug.Log(levelDone);
-
     }
 
     public void OnPlayLevel(int level)

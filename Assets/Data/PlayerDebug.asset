@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abf730199d69e9438dd07125b6d3c8a, type: 3}
+  m_Name: PlayerDebug
+  m_EditorClassIdentifier: 
+  _life: 50
+  _moveSpeed: 3
+  _weapons:
+  - {fileID: 11400000, guid: 7fc9e32731c831e46ba0de5e74790c60, type: 2}
+  _upgrades:
+  - {fileID: 11400000, guid: 620d4a118f7aa63419ce86a4a9855685, type: 2}
+  - {fileID: 11400000, guid: cdf47b3a69fbfa54eab6906b13a604d2, type: 2}

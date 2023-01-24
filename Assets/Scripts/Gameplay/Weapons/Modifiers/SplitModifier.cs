@@ -11,6 +11,15 @@ public class SplitModifier : BaseWeaponModifier
 	[SerializeField] float _damageMultiplier = 0.5f;
 
 
+	public override object Clone()
+	{
+		SplitModifier modifier = new SplitModifier();
+		modifier._count = _count;
+		modifier._angle = _angle;
+		modifier._damageMultiplier = _damageMultiplier;
+		return modifier;
+	}
+
 	protected override void InitializeInternal()
 	{
 		_weapon.ModifyDamage(_damageMultiplier);

@@ -32,6 +32,11 @@ namespace Gameplay.Weapons
             Vector3 direction = Vector3.right;
             var shooterPosition = shooter.Position;
 
+            if ( type == ModifierType.AddProjectile)
+            {
+                shooterPosition += (Vector3)Random.insideUnitCircle;
+            }
+
             if (target != null)
                 direction = target.transform.position - shooterPosition;
 

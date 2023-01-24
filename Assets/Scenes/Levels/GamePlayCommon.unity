@@ -160,7 +160,7 @@ MonoBehaviour:
   _prefabXp: {fileID: 3633932044844237191, guid: aa92c9dfc5a3f9646b9d2671a9841506, type: 3}
   _debugTimer: 0
   _debugXP: 0
-  _debugLevel: 3
+  _debugLevel: 0
   <PrefabLife>k__BackingField: {fileID: 3633932044844237191, guid: f06857a0a8108394d9345eb01f55e288, type: 3}
 --- !u!4 &133957340
 Transform:
@@ -2331,6 +2331,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: _playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: b70d2a566b1dd244abf3c6d6e4006ba1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
 --- !u!224 &4049348147365695385 stripped

@@ -11,6 +11,15 @@ public class RepeatModifier : BaseWeaponModifier
 	float _timer;
 	int _currentCount = 0;
 
+
+	public override object Clone()
+	{
+		RepeatModifier modifier = new RepeatModifier();
+		modifier._count = _count;
+		modifier._timeToWait = _timeToWait;
+		return modifier;
+	}
+
 	public override void OnCoolDownStarted()
 	{
 		_isAttackDone = true;

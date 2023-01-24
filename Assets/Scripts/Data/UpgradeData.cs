@@ -29,4 +29,9 @@ public class UpgradeData : ScriptableObject
         _timesAllowed--;
     }
 
+
+    private void Awake()
+    {
+
+    }
 }

@@ -11,6 +11,7 @@ public enum ModifierType
 	Effect,
 	UpgradeDamage,
 	UpgradeCooldown,
-	UpgradeRange
+	UpgradeRange,
+	AddProjectile
 	
 }

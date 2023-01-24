@@ -35,8 +35,9 @@ public abstract class WeaponBase
 
     public void AddModifier(BaseWeaponModifier modifier, IShooter shooter)
     {
-        modifier.Initialize(shooter, this);
-        _modifiers.Add(modifier);
+        BaseWeaponModifier newModifier = modifier.Clone() as BaseWeaponModifier;
+        newModifier.Initialize(shooter, this);
+        _modifiers.Add(newModifier);
     }
 
     protected float GetDamage()

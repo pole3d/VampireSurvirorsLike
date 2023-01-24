@@ -24,5 +24,14 @@ internal class PushModifier : BaseWeaponModifier
 
         enemy.Push(_pushForce, direction, _pushTimer , _massmodifier);
     }
+
+    public override object Clone()
+    {
+        PushModifier modifier = new PushModifier();
+        modifier._pushForce = _pushForce;
+        modifier._pushTimer = _pushTimer;
+        modifier._massmodifier = _massmodifier;
+        return modifier;
+    }
 }
 

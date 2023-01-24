@@ -15,5 +15,12 @@ internal class CoolDownModifier : BaseWeaponModifier
         _weapon.ModifyCooldown(_multiplier);
     }
 
+
+    public override object Clone()
+    {
+        CoolDownModifier modifier = new CoolDownModifier();
+        modifier._multiplier = _multiplier;
+        return modifier;
+    }
 }
 

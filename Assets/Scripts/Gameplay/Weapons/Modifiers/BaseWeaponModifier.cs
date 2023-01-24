@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class BaseWeaponModifier
+public class BaseWeaponModifier : ICloneable
 {
     public virtual  bool CancelAttack => false;
 
@@ -41,5 +41,10 @@ public class BaseWeaponModifier
     public virtual void OnHit(Unit enemy, Bullet bullet)
     {
 
+    }
+
+    public virtual object Clone()
+    {
+        return null;
     }
 }
