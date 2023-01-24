@@ -159,8 +159,8 @@ MonoBehaviour:
   _wavesManager: {fileID: 133957341}
   _prefabXp: {fileID: 3633932044844237191, guid: aa92c9dfc5a3f9646b9d2671a9841506, type: 3}
   _debugTimer: 0
-  _debugXP: 110
-  _debugLevel: -1
+  _debugXP: 0
+  _debugLevel: 3
   <PrefabLife>k__BackingField: {fileID: 3633932044844237191, guid: f06857a0a8108394d9345eb01f55e288, type: 3}
 --- !u!4 &133957340
 Transform:
@@ -2847,6 +2847,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 133957339}
+    - target: {fileID: 7718245244147128975, guid: cae4d37c021d385429ef7a34e7079b5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 133957339}
+    - target: {fileID: 7718245244147128975, guid: cae4d37c021d385429ef7a34e7079b5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickNextLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cae4d37c021d385429ef7a34e7079b5f, type: 3}
 --- !u!1001 &7567324226662591013

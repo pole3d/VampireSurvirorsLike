@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - _timeToStart: 2
-    _timesToRepeat: 3
-    _repeatTimer: 3
+    _timesToRepeat: 1
+    _repeatTimer: 0
     _enemyCount: 1
-    _enemy: {fileID: 11400000, guid: 729b0a93fb302db40b12c157d0be17f7, type: 2}
-    _spawnDistance: 15
+    _enemy: {fileID: 11400000, guid: ca756d8b753ea9a43834bd4c93a37ef0, type: 2}
+    _spawnDistance: 8
     _overrideLife: 0
     _movement:
       rid: -2

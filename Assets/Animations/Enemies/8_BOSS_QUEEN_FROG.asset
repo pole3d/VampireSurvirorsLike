@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23a36da363c7744787c17fb7325848d, type: 3}
+  m_Name: 8_BOSS_QUEEN_FROG
+  m_EditorClassIdentifier: 
+  EntityIndex: 0
+  Animations:
+  - Name: idle
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: cd27d1fc8c1dd82468bfd7be4564d1fb, type: 3}
+    - {fileID: 21300000, guid: f763e721015de70428fe1ee09ca2992c, type: 3}
+    - {fileID: 21300000, guid: e593f9dafac304e45958bb0d1751657c, type: 3}
+    - {fileID: 21300000, guid: 2c4bb4d5039ef2e40884accc1485de1d, type: 3}
+    - {fileID: 21300000, guid: 6b980831b3502b14692b71110908b3d1, type: 3}
+    - {fileID: 21300000, guid: 1cb4f546accf90e47ad869cfde084d25, type: 3}
+    - {fileID: 21300000, guid: f790fb3a31625ad4e85fb0cd3e832b57, type: 3}
+    - {fileID: 21300000, guid: 60975bb36a43c8e4ab9f4e2952bbcbad, type: 3}
+  - Name: attack
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: c91696a4c87e0884eb886a2fde92b165, type: 3}
+    - {fileID: 21300000, guid: c8d9c682aab883b4ebe4d740b14fd756, type: 3}
+    - {fileID: 21300000, guid: e01cd41bbb9918c4a8a4dea71b9a0923, type: 3}
+    - {fileID: 21300000, guid: dd837c1ef13b3bf4eb47b5cfe60c4c2c, type: 3}
+    - {fileID: 21300000, guid: 735badc3ce1af754d8583cfda0ebaa67, type: 3}
+    - {fileID: 21300000, guid: 1b613ac58cb4cb94a9def8e86ec6b3f9, type: 3}
+    - {fileID: 21300000, guid: 1ba43e25edcda92448640d00290a2929, type: 3}
+    - {fileID: 21300000, guid: 0f0f81220d573f442ad44028826ef694, type: 3}
+    - {fileID: 21300000, guid: 01631f4ba4e6ac34291214af92966395, type: 3}
+  - Name: spawn
+    FPS: 12
+    Sprites:
+    - {fileID: 21300000, guid: cd27d1fc8c1dd82468bfd7be4564d1fb, type: 3}

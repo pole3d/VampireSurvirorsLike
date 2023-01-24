@@ -20,13 +20,12 @@ public class ScenesManagement : MonoBehaviour
             return s_instance;
         }
     }
+
+
+
     static ScenesManagement s_instance;
 
-    //public Dictionary<string, StoredData> _dataContainer = new Dictionary<string, StoredData>();
     public Dictionary<string, object> _dataContainer = new Dictionary<string, object>();
-    
-    
-    
     
     Stack<string> _scenesStack = new Stack<string>();
 
@@ -253,6 +252,11 @@ public class ScenesManagement : MonoBehaviour
         }
 
         return data;
+    }
+
+    internal void ClearData()
+    {
+        _dataContainer.Clear();
     }
 
 

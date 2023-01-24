@@ -12,6 +12,11 @@ public class MainMenu : MonoBehaviour
 
     public Transform ParentAdventures;
 
+    private void Start()
+    {
+        ScenesManagement.Instance.ClearData();
+    }
+
     public void OnClickPlay()
     {
         foreach (var item in MainMenuButtons)

@@ -76,13 +76,15 @@ public class MainGameplay : MonoBehaviour
         Instance = this;
 
 
-        if ( ScenesManagement.Instance.HasValue("Level"))
+        if (ScenesManagement.Instance.HasValue("Level"))
         {
             int level = ScenesManagement.Instance.GetIntValue("Level");
-            SceneManager.LoadScene($"Level{level}" , LoadSceneMode.Additive);
+            SceneManager.LoadScene($"Level{level}", LoadSceneMode.Additive);
         }
-        else if ( _debugLevel > 0 )
+        else if (_debugLevel > 0)
         {
+            ScenesManagement.Instance.SetValue("Level",_debugLevel);
+
             SceneManager.LoadScene($"Level{_debugLevel}", LoadSceneMode.Additive);
         }
         else
@@ -98,7 +100,6 @@ public class MainGameplay : MonoBehaviour
             _wavesManager.DebugTimer(_debugTimer);
         }
 
-
         _gameUIManager.RefreshTimer(_timerSeconds);
 
         _gameUIManager.Initialize(_player);
@@ -106,10 +107,25 @@ public class MainGameplay : MonoBehaviour
         _player.OnLevelUp += OnLevelUp;
         _player.Initialize();
 
-        if (_debugXP > 0)
+        if (ScenesManagement.Instance.HasValue("upgrades"))
         {
-            _player.DebugUpgrade(_debugXP);
+            var upgrades = ScenesManagement.Instance.GetData<List<UpgradeDoneInfo>>("upgrades");
+
+            if (upgrades != null)
+            {
+                _player.ForceUpgrades(upgrades);
+                ScenesManagement.Instance.SetValue("upgrades", null);
+            }
         }
+#if UNITY_EDITOR
+        else
+        {
+            if (_debugXP > 0)
+            {
+                _player.DebugUpgrade(_debugXP);
+            }
+        }
+#endif
 
     }
 
@@ -122,6 +138,13 @@ public class MainGameplay : MonoBehaviour
     void Update()
     {
         UpdateTimer();
+
+#if UNITY_EDITOR
+        if ( Input.GetKeyDown(KeyCode.F9))
+        {
+            SetVictory();
+        }
+#endif
     }
 
     void UpdateTimer()
@@ -186,19 +209,45 @@ public class MainGameplay : MonoBehaviour
 
     void OnPlayerDeath()
     {
+        Pause();
+
         State = GameState.GameOver;
         _gameUIManager.DisplayGameOver();
     }
 
     void SetVictory()
     {
+        Pause();
         State = GameState.GameOver;
         _gameUIManager.DisplayVictory();
     }
 
+    public void OnClickNextLevel()
+    {
+        Time.timeScale = 1;
+
+        int currentLevel = ScenesManagement.Instance.GetIntValue("Level");
+
+        ScenesManagement.Instance.SetValue("LevelDone",currentLevel);
+
+        if (ScenesManagement.Instance.GetIntValue("Level") == 3 )
+        {
+            SceneManager.LoadScene("Mainmenu");
+        }
+        else
+        {
+            ScenesManagement.Instance.SetValue("upgrades", _player.UpgradesDone);
+            SceneManager.LoadScene("GameMap");
+        }
+
+
+    }
+
     public void OnClickQuit()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene("Mainmenu");
     }
 
     #endregion

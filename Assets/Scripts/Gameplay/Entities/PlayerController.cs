@@ -13,7 +13,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 /// Represents the player
 /// manages the controller, the weapons, the in game lifebar and the level up
 /// </summary>
-public class PlayerController : Unit , IShooter
+public class PlayerController : Unit, IShooter
 {
     [SerializeField] PlayerData _playerData;
     [SerializeField] LevelUpData _levelUpData;
@@ -62,7 +62,10 @@ public class PlayerController : Unit , IShooter
 
         foreach (var item in _playerData.Upgrades)
         {
-            UpgradesAvailable.Add(Instantiate(item));
+            var upgrade = Instantiate(item);
+            upgrade.name = item.name;
+
+            UpgradesAvailable.Add(upgrade);
         }
     }
 
@@ -71,8 +74,42 @@ public class PlayerController : Unit , IShooter
         _lifeMax = _playerData.Life;
         _life = LifeMax;
 
+    }
+
+    public void ForceUpgrades(List<UpgradeDoneInfo> upgradesDone)
+    {
+
+        for (int i = 0; i < upgradesDone.Count; i++)
+        {
+            UpgradeDoneInfo upgrade = upgradesDone[i];
+            WeaponBase weapon = null;
+            if (upgrade.WeaponIndex >= 0)
+                weapon = _weapons[upgrade.WeaponIndex];
+
+            UpgradeData data = GetUpgrade(upgrade.UpgradeName);
+
+            if (data == null)
+            {
+                Debug.LogError("ERROR");
+                break;
+            }
+
+            UnlockUpgrade(data, weapon);
+        }
 
 
+    }
+
+
+    UpgradeData GetUpgrade(string name)
+    {
+        foreach (var item in UpgradesAvailable)
+        {
+            if (item.name == name)
+                return item;
+        }
+
+        return null;
     }
 
     public void Initialize()
@@ -81,8 +118,6 @@ public class PlayerController : Unit , IShooter
         {
             AddWeapon(weapon, weapon.SlotIndex);
         }
-
-
     }
 
     void Update()
@@ -93,10 +128,12 @@ public class PlayerController : Unit , IShooter
         ReadInputs();
         Shoot();
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F5))
         {
             CollectXP(3);
         }
+#endif
     }
 
     void ReadInputs()
@@ -184,9 +221,9 @@ public class PlayerController : Unit , IShooter
 
     }
 
-    internal void UnlockUpgrade(UpgradeData data , WeaponBase weapon )
+    internal void UnlockUpgrade(UpgradeData data, WeaponBase weapon)
     {
-        var info = new UpgradeDoneInfo(data.name,GetWeaponIndex(weapon));
+        var info = new UpgradeDoneInfo(data.name, GetWeaponIndex(weapon));
         _upgradesDone.Add(info);
 
         data.Upgrade.Execute(this, weapon);
@@ -213,7 +250,7 @@ public class PlayerController : Unit , IShooter
     {
         var data = Instantiate(weaponData);
 
-        data.Weapon.Initialize(this,data, slot);
+        data.Weapon.Initialize(this, data, slot);
         Weapons.Add(data.Weapon);
     }
 
