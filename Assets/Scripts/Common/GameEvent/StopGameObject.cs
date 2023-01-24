@@ -11,6 +11,9 @@ public class StopGameObject : GameFeedback
 
     public override bool Execute(GameEventInstance gameEvent)
     {
+        if (gameEvent.GameObject == null)
+            return true;
+
         IStoppable stoppable = gameEvent.GameObject.GetComponent<IStoppable>();
         
         if ( stoppable != null )

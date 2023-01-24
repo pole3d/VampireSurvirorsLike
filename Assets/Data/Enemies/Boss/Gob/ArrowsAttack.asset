@@ -26,6 +26,10 @@ MonoBehaviour:
   - rid: 2299966411207081992
   - rid: 2299966411207081994
   - rid: 2299966411207081995
+  - rid: 7194131522698608672
+  - rid: 7194131522698608673
+  - rid: 7194131522698608674
+  - rid: 7194131522698608675
   - rid: 2299966411207081997
   references:
     version: 2
@@ -85,3 +89,19 @@ MonoBehaviour:
       type: {class: StopGameObject, ns: , asm: Assembly-CSharp}
       data:
         IsStopped: 0
+    - rid: 7194131522698608672
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 0.1
+    - rid: 7194131522698608673
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: bd76f3021354e4140b30507ca30a970b, type: 2}
+    - rid: 7194131522698608674
+      type: {class: WaitFeedback, ns: , asm: Assembly-CSharp}
+      data:
+        Timer: 0.1
+    - rid: 7194131522698608675
+      type: {class: ShootWeapon, ns: , asm: Assembly-CSharp}
+      data:
+        WeaponData: {fileID: 11400000, guid: bd76f3021354e4140b30507ca30a970b, type: 2}

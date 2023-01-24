@@ -13,7 +13,7 @@ public class CollectableLife : MonoBehaviour
         
         if (other != null)
         {
-            other.Heal(10);
+            other.Heal(8);
             GameObject.Destroy(gameObject);
         }
     }

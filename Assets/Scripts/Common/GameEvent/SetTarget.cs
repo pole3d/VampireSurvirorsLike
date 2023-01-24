@@ -20,6 +20,6 @@ public class SetContainer : GameFeedback
 
     public override string ToString()
     {
-        return $"Set target for {Container}";
+        return $"Set container for {Container}";
     }
 }

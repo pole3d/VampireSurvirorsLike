@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Repeat 0
   m_EditorClassIdentifier: 
   _name: Hourglass of repetition
-  _description: Repeat the attack 0.5s after
+  _description: Repeat the attack 0.5s after the original attack
   _sprite: {fileID: 21300000, guid: 0c2abcd09b5ca3a46ad40692fccb8592, type: 3}
   _upgrade:
     rid: 443800975833038852

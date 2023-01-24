@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 5_carrot
   m_EditorClassIdentifier: 
-  _life: 700
+  _life: 2000
   _damagePerSeconds: 15
   _moveSpeed: 1.5
   _prefab: {fileID: 7654918703708801626, guid: cc0fc5db85246df48b5f38f98930f3c5, type: 3}

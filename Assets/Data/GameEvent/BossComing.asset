@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Comments: 
   Feedbacks:
+  - rid: 7194131522698608670
   - rid: 2299966458268483584
   - rid: 2299966458268483586
   - rid: 2299966458268483585
@@ -52,3 +53,5 @@ MonoBehaviour:
       type: {class: ActivateFeedback, ns: , asm: Assembly-CSharp}
       data:
         Activate: 0
+    - rid: 7194131522698608670
+      type: {class: SetBoss, ns: , asm: Assembly-CSharp}

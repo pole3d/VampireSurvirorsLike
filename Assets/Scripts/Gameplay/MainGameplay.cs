@@ -61,6 +61,8 @@ public class MainGameplay : MonoBehaviour
     readonly List<EnemyController> _enemies = new List<EnemyController>();
     float _timerIncrement;
     int _timerSeconds;
+    EnemyController _boss;
+    bool _hasBoss;
 
     #endregion
 
@@ -80,25 +82,33 @@ public class MainGameplay : MonoBehaviour
         {
             int level = ScenesManagement.Instance.GetIntValue("Level");
             SceneManager.LoadScene($"Level{level}", LoadSceneMode.Additive);
+
+     
         }
         else if (_debugLevel > 0)
         {
-            ScenesManagement.Instance.SetValue("Level",_debugLevel);
-
+            ScenesManagement.Instance.SetValue("Level", _debugLevel);
             SceneManager.LoadScene($"Level{_debugLevel}", LoadSceneMode.Additive);
         }
         else
+        {
+            ScenesManagement.Instance.SetValue("Level", 1);
             SceneManager.LoadScene($"Level1", LoadSceneMode.Additive);
+        }
+
+        
 
     }
 
     void Start()
     {
+#if UNITY_EDITOR
         if (_debugTimer > 0)
         {
             _timerSeconds = _debugTimer;
             _wavesManager.DebugTimer(_debugTimer);
         }
+#endif
 
         _gameUIManager.RefreshTimer(_timerSeconds);
 
@@ -109,6 +119,12 @@ public class MainGameplay : MonoBehaviour
 
         if (ScenesManagement.Instance.HasValue("upgrades"))
         {
+            int xp = ScenesManagement.Instance.GetIntValue("xp");
+            int playerLevel = ScenesManagement.Instance.GetIntValue("playerLevel");
+
+            if (xp > -1 && playerLevel > -1)
+                _player.ForceXPLevel(xp, playerLevel);
+
             var upgrades = ScenesManagement.Instance.GetData<List<UpgradeDoneInfo>>("upgrades");
 
             if (upgrades != null)
@@ -138,6 +154,7 @@ public class MainGameplay : MonoBehaviour
     void Update()
     {
         UpdateTimer();
+        UpdateBoss();
 
 #if UNITY_EDITOR
         if ( Input.GetKeyDown(KeyCode.F9))
@@ -145,6 +162,20 @@ public class MainGameplay : MonoBehaviour
             SetVictory();
         }
 #endif
+    }
+
+    private void UpdateBoss()
+    {
+        if (_hasBoss == false)
+            return;
+
+        if (State == GameState.GameOver)
+            return;
+
+        if ( _boss == null || _boss.Life <= 0)
+        {
+            SetVictory();
+        }
     }
 
     void UpdateTimer()
@@ -236,6 +267,9 @@ public class MainGameplay : MonoBehaviour
         }
         else
         {
+            ScenesManagement.Instance.SetValue("xp", _player.XP);
+            ScenesManagement.Instance.SetValue("playerLevel", _player.Level);
+
             ScenesManagement.Instance.SetValue("upgrades", _player.UpgradesDone);
             SceneManager.LoadScene("GameMap");
         }
@@ -253,6 +287,12 @@ public class MainGameplay : MonoBehaviour
     #endregion
 
     #region Tools
+
+    public void SetBoss(EnemyController boss)
+    {
+        _boss = boss;
+        _hasBoss = true;
+    }
 
     public EnemyController GetClosestEnemy(Vector3 position)
     {

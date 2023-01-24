@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 7_BOSS_gob_archer
   m_EditorClassIdentifier: 
-  _life: 1500
+  _life: 3000
   _damagePerSeconds: 22
   _moveSpeed: 0.5
   _prefab: {fileID: 7654918703708801626, guid: 0dbe338bb22a3b14c8301862a8fb7712, type: 3}

@@ -7,7 +7,6 @@ using Gameplay.Weapons;
 using TMPro;
 using UnityCommon.Graphics.Actors;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Represents the player
@@ -33,6 +32,7 @@ public class PlayerController : Unit, IShooter
 
     public List<WeaponBase> Weapons => _weapons;
     public List<UpgradeDoneInfo> UpgradesDone => _upgradesDone;
+    public int XP => _xp;
 
     public Vector3 Position => transform.position;
 
@@ -43,6 +43,8 @@ public class PlayerController : Unit, IShooter
     int _xp = 0;
 
 
+    float _speed = 0;
+    float _speedMultiplier = 1;
     ActorView _actorView;
     bool _isDead;
     Rigidbody2D _rb;
@@ -74,6 +76,7 @@ public class PlayerController : Unit, IShooter
         _lifeMax = _playerData.Life;
         _life = LifeMax;
 
+        _speed = _playerData.MoveSpeed;
     }
 
     public void ForceUpgrades(List<UpgradeDoneInfo> upgradesDone)
@@ -100,6 +103,14 @@ public class PlayerController : Unit, IShooter
 
     }
 
+    internal void ForceXPLevel(int xp, int playerLevel)
+    {
+        _xp = xp;
+        _level = playerLevel;
+
+        CheckLevelUp();
+
+    }
 
     UpgradeData GetUpgrade(string name)
     {
@@ -175,7 +186,7 @@ public class PlayerController : Unit, IShooter
         if (_inputs.sqrMagnitude > 0)
         {
             _inputs.Normalize();
-            _rb.velocity = _inputs * _playerData.MoveSpeed;
+            _rb.velocity = _inputs * _speed * _speedMultiplier;
 
             _lastDirection = _inputs;
 
@@ -223,6 +234,9 @@ public class PlayerController : Unit, IShooter
 
     internal void UnlockUpgrade(UpgradeData data, WeaponBase weapon)
     {
+        if ( weapon != null)
+            weapon.Upgrades.Add(data);
+
         var info = new UpgradeDoneInfo(data.name, GetWeaponIndex(weapon));
         _upgradesDone.Add(info);
 
@@ -263,6 +277,7 @@ public class PlayerController : Unit, IShooter
         _xp += value;
 
         CheckLevelUp();
+
     }
 
     public void CheckLevelUp()
@@ -281,7 +296,6 @@ public class PlayerController : Unit, IShooter
             currentLevelMaxXP = _levelUpData.GetXpForLevel(nextLevel);
         }
 
-
         if (_levelUpData.IsLevelMax(_level))
         {
             OnXP?.Invoke(currentLevelMaxXP + 1, currentLevelMinXP, currentLevelMaxXP + 1);
@@ -297,7 +311,6 @@ public class PlayerController : Unit, IShooter
         int currentLevelMaxXP = 0;
         int currentLevelMinXP = 0;
         _xp += debugXP;
-
 
         do
         {
@@ -354,5 +367,8 @@ public class PlayerController : Unit, IShooter
         return enemy.gameObject;
     }
 
-
+    internal void IncreaseMoveSpeed(float multiplier)
+    {
+        _speedMultiplier *= multiplier; 
+    }
 }

@@ -10,27 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
-  m_Name: Push
+  m_Name: Split 1
   m_EditorClassIdentifier: 
-  _name: Flail of push
-  _description: Add a push effect to the weapon
-  _sprite: {fileID: 21300000, guid: e0e7b703c70b2d449b3ae266bad57fed, type: 3}
+  _name: Staff of split
+  _description: 'Split the attack in around
+
+    Damage -60%'
+  _sprite: {fileID: 21300000, guid: 2d0f407e76ed70f47aa23319c8a0bee3, type: 3}
   _upgrade:
-    rid: 2299966180077338624
+    rid: 443800975833038852
   _nextUpgrades: []
   _timesAllowed: 0
   _targetWeapon: 1
   references:
     version: 2
     RefIds:
-    - rid: 2299966180077338624
+    - rid: 443800975833038852
       type: {class: WeaponModifierUpgrade, ns: , asm: Assembly-CSharp}
       data:
         _modifier:
-          rid: 2299966180077338625
-    - rid: 2299966180077338625
-      type: {class: PushModifier, ns: , asm: Assembly-CSharp}
+          rid: 443800987303936000
+    - rid: 443800987303936000
+      type: {class: SplitModifier, ns: , asm: Assembly-CSharp}
       data:
-        _pushForce: 2
-        _pushTimer: 0.2
-        _massmodifier: 10
+        _count: 8
+        _angle: 0.785
+        _damageMultiplier: 0.4

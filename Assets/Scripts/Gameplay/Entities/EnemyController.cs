@@ -16,7 +16,18 @@ public class EnemyController : Unit, IStoppable, IShooter
 {
     public EnemyData Data => _data;
     public BaseMovement Movement => _movement;
-    public bool IsStopped { get; set; }
+    public bool IsStopped
+    {
+        get { return _isStopped; }
+        set
+        {
+            _isStopped = value;
+            if ( _isStopped)
+            {
+                _rb.velocity = new Vector2();
+            }
+        }
+    }
 
     public float DamageMultiplier => 1;
 
@@ -28,6 +39,7 @@ public class EnemyController : Unit, IStoppable, IShooter
 
     [SerializeField] SpriteRenderer _renderer;
 
+    bool _isStopped;
     GameObject _player;
     Rigidbody2D _playerRb;
     Rigidbody2D _rb;
@@ -42,6 +54,9 @@ public class EnemyController : Unit, IStoppable, IShooter
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        _renderer.color = new Color(0, 0, 0, 0);
+        _renderer.DOFade(1, 0.5f);
     }
 
     public void Initialize(GameObject player, EnemyData data, BaseMovement movement)
@@ -62,12 +77,16 @@ public class EnemyController : Unit, IStoppable, IShooter
     private void Update()
     {
         if (IsStopped || _life <= 0)
+        {
+            _rb.velocity = Vector2.zero;
             return;
+        }
 
         if ( _ai != null && ( _currentAI == null || _currentAI.IsDone))
         {
             _currentAI = GameEventsManager.PlayEvents(_ai.Sequences[0].Feedbacks, gameObject);
         }
+
 
         foreach (var player in _playersInTrigger)
         {

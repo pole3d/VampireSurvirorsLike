@@ -43,7 +43,6 @@ public class WeaponUI : MonoBehaviour
 
     public void OnClickSlot()
     {
-        _player.Weapons[_weaponIndex].Upgrades.Add(_upgradeData);
         _player.UnlockUpgrade(_upgradeData ,_player.Weapons[_weaponIndex]);
 
         _panel.Close();

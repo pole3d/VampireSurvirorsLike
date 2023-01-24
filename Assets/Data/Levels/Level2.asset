@@ -25,15 +25,15 @@ MonoBehaviour:
   - _timeToStart: 20
     _timesToRepeat: 60
     _repeatTimer: 1.5
-    _enemyCount: 2
+    _enemyCount: 3
     _enemy: {fileID: 11400000, guid: 7eb6e88c2a7bb60408b12cc4e94a37c7, type: 2}
     _spawnDistance: 15
     _overrideLife: 0
     _movement:
       rid: -2
   - _timeToStart: 50
-    _timesToRepeat: 8
-    _repeatTimer: 4
+    _timesToRepeat: 16
+    _repeatTimer: 2
     _enemyCount: 12
     _enemy: {fileID: 11400000, guid: 5b4201af98a4c6445b26bc76db8875f9, type: 2}
     _spawnDistance: 8
@@ -41,9 +41,9 @@ MonoBehaviour:
     _movement:
       rid: 2299966650246758400
   - _timeToStart: 130
-    _timesToRepeat: 8
-    _repeatTimer: 10
-    _enemyCount: 20
+    _timesToRepeat: 160
+    _repeatTimer: 5
+    _enemyCount: 15
     _enemy: {fileID: 11400000, guid: 7eb6e88c2a7bb60408b12cc4e94a37c7, type: 2}
     _spawnDistance: 15
     _overrideLife: 0

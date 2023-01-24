@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46a8eaf7f7549014c8d97c971d54d2b0, type: 3}
-  m_Name: WeaponThunder0
+  m_Name: MoveSpeed
   m_EditorClassIdentifier: 
-  _name: 'Weapon : Thunder'
-  _description: Thunder !!
-  _sprite: {fileID: 21300000, guid: 58119f9d9d8dec8428346e41de4098ba, type: 3}
+  _name: MoveSpeed
+  _description: Increase movespeed
+  _sprite: {fileID: 21300000, guid: 1af7282aa5b8b2c46b6ac07cf0b6b9bb, type: 3}
   _upgrade:
-    rid: 443800975833038851
+    rid: 7194131522698608671
   _nextUpgrades: []
-  _timesAllowed: 0
+  _timesAllowed: 5
   _targetWeapon: 0
   references:
     version: 2
     RefIds:
-    - rid: 443800975833038851
-      type: {class: AddWeaponUpgrade, ns: , asm: Assembly-CSharp}
+    - rid: 7194131522698608671
+      type: {class: MoveSpeedUpgrade, ns: , asm: Assembly-CSharp}
       data:
-        _data: {fileID: 11400000, guid: a575d7763fd3a834abff2b7481cf9cdc, type: 2}
+        _multiplier: 1.1

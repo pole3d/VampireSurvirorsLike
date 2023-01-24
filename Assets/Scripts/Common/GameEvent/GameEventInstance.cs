@@ -125,6 +125,14 @@ public class GameEventInstance
         _gameobjects.Pop();
     }
 
+    public void PopToRoot()
+    {
+        while (_gameobjects.Count > 1)
+        {
+            _gameobjects.Pop();
+        }
+    }
+
     public bool CheckTrigger(string trigger)
     {
         if (GameEventsManager.Instance.Triggers.Contains(trigger))

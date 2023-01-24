@@ -47,6 +47,12 @@ namespace Gameplay.Weapons
         {
             float angle = 0;
 
+            if (type == ModifierType.AddProjectile)
+            {
+                target += (Vector3)Random.insideUnitCircle;
+            }
+
+
             if (type == ModifierType.Split)
             {
                 angle += values[0];

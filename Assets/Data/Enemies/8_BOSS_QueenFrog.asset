@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 8_BOSS_QueenFrog
   m_EditorClassIdentifier: 
-  _life: 2500
+  _life: 3500
   _damagePerSeconds: 22
   _moveSpeed: 0.5
   _prefab: {fileID: 7654918703708801626, guid: dfaeccfab8bf8a845ac6e22896a54d70, type: 3}
   _spriteOverride: {fileID: 0}
-  _ai: {fileID: 11400000, guid: 27503c287dfe21d46905269232b61e6c, type: 2}
+  _ai: {fileID: 11400000, guid: 38a412fdf58b7634989a26e796e0a70c, type: 2}
