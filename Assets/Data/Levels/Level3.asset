@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   _waves:
-  - _timeToStart: 2
+  - _enabled: 1
+    _timeToStart: 2
     _timesToRepeat: 1
     _repeatTimer: 0
     _enemyCount: 1
@@ -22,7 +23,8 @@ MonoBehaviour:
     _overrideLife: 0
     _movement:
       rid: -2
-  - _timeToStart: 10
+  - _enabled: 0
+    _timeToStart: 10
     _timesToRepeat: 1000
     _repeatTimer: 2
     _enemyCount: 1

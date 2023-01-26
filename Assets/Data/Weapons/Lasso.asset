@@ -25,6 +25,6 @@ MonoBehaviour:
       data:
         _damageMin: 10
         _damageMax: 14
-        _coolDown: 3
+        _coolDown: 2.5
         _throughEnemyCount: 9999
         _prefab: {fileID: 3633932044844237191, guid: a3d4fae4e5f31e046beeab4cc5595196, type: 3}

@@ -19,6 +19,10 @@ public class WaveData
         Circle
     }
 
+    [SerializeField] bool _enabled = true;
+
+
+    public bool Enabled => _enabled;
     public int TimeToStart => _timeToStart;
     public int TimesToRepeat => _timesToRepeat;
     public float RepeatTimer => _repeatTimer;

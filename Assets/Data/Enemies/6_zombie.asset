@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 6_zombie
   m_EditorClassIdentifier: 
+  <PushModifier>k__BackingField: 1
   _life: 17
   _damagePerSeconds: 5
   _moveSpeed: 2.4

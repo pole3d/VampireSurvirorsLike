@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DamageUpgrade 1
   m_EditorClassIdentifier: 
   _name: Sword of strength
-  _description: +20% damage for every weapon
+  _description: +10% damage for every weapon
   _sprite: {fileID: 21300000, guid: 54b4e6a06a634f844a5e52fdb5c9ec58, type: 3}
   _upgrade:
     rid: 443800987303936001
@@ -26,4 +26,4 @@ MonoBehaviour:
     - rid: 443800987303936001
       type: {class: DamageUpgrade, ns: , asm: Assembly-CSharp}
       data:
-        _multiplier: 1.2
+        _multiplier: 1.1

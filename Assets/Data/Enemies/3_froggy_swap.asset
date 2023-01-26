@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 3_froggy_swap
   m_EditorClassIdentifier: 
+  <PushModifier>k__BackingField: 1
   _life: 120
   _damagePerSeconds: 20
   _moveSpeed: 2
   _prefab: {fileID: 7654918703708801626, guid: 40193b7a6e82d7f479c9642f77e61421, type: 3}
   _spriteOverride: {fileID: 0}
+  _ai: {fileID: 0}

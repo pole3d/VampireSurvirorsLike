@@ -102,7 +102,8 @@ public class EnemyController : Unit, IStoppable, IShooter
         if (_push != null)
         {
             _pushTimer -= Time.deltaTime;
-            _rb.velocity = _push.Value;
+            Vector2 pushForce = _push.Value * _data.PushModifier;
+            _rb.velocity = pushForce;
 
             if (_pushTimer <= 0)
             {

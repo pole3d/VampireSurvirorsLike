@@ -20,7 +20,7 @@ public class WaveInstance
 
     public void Update( WavesManager manager, float currentTimer)
     {
-        if (_data.TimeToStart > currentTimer  )
+        if (_data.TimeToStart > currentTimer || _data.Enabled == false )
             return;
 
         _timer -= Time.deltaTime;

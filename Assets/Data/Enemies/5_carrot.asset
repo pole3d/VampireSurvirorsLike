@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 5_carrot
   m_EditorClassIdentifier: 
+  <PushModifier>k__BackingField: 1
   _life: 2000
   _damagePerSeconds: 15
   _moveSpeed: 1.5

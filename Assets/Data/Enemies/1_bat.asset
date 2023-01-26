@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc039ccc39f388b4d87fcee0a88c2b02, type: 3}
   m_Name: 1_bat
   m_EditorClassIdentifier: 
+  <PushModifier>k__BackingField: 1
   _life: 20
   _damagePerSeconds: 20
   _moveSpeed: 1.3
   _prefab: {fileID: 7654918703708801626, guid: 3266e129ff2e2a04caa9d713dede7d5c, type: 3}
   _spriteOverride: {fileID: 0}
+  _ai: {fileID: 0}

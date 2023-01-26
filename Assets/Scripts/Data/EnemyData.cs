@@ -14,6 +14,9 @@ public class EnemyData : ScriptableObject
     public Sprite SpriteOverride => _spriteOverride;
     public AIData AI => _ai;
 
+    [field:SerializeField]
+    public float PushModifier { get; set; } = 1.0f;
+
     [SerializeField] float _life;
     [SerializeField] float _damagePerSeconds;
     [SerializeField] float _moveSpeed;

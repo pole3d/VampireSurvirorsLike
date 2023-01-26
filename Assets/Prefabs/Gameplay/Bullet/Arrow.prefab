@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: 0
-  _timeToLive: 10
+  _timeToLive: 1
   _prefabHit: {fileID: 823392064445550621, guid: af632934c8cd77b419ff63a7f2be672a, type: 3}
   _prefabTextHit: {fileID: 1270660368350708304, guid: 440e45976bcc89f4d961a4e3ee81cd85, type: 3}
   _hitObstacle: 1
